@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, CSSProp } from "styled-components";
 
 const colors = {
   red: "#FF0000",
@@ -27,9 +27,17 @@ const colors = {
   sub5: "#1B3303",
   a: "radial-gradient(50% 50% at 50% 50%, #F2F25A 0%, rgba(25, 190, 126, 0.51) 100%)",
   card: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
-};
+} as const;
 
-function FONT({ weight, size, lineHeight, letterSpacing, notoSans }) {
+interface Font {
+  weight: 300 | 400 | 500 | 600 | 700;
+  size: number;
+  lineHeight: number;
+  letterSpacing: number;
+  notoSans?: boolean;
+}
+
+function FONT({ weight, size, lineHeight, letterSpacing, notoSans }: Font): string {
   return `
     font-family: ${notoSans ? "Noto Sans" : "Pretendard"};
     font-weight: ${weight};
@@ -67,10 +75,16 @@ const fonts = {
   footer1: FONT({ weight: 600, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   footer2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   cardBody5: FONT({ weight: 700, size: 2.3, lineHeight: 140, letterSpacing: 4 }),
-};
+} as const;
 
-const media = {
-  desktop: (...args) =>
+type BackQuoteArgs = string[];
+
+interface Media {
+  desktop: (...args: BackQuoteArgs) => CSSProp | undefined;
+}
+
+const media: Media = {
+  desktop: (...args: BackQuoteArgs) =>
     css`
       @media screen and (min-width: 48rem), screen and (min-height: 48rem) and (orientation: landscape) {
         ${args}
@@ -82,6 +96,6 @@ const theme = {
   colors,
   fonts,
   media,
-};
+} as const;
 
 export default theme;
