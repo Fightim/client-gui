@@ -5,21 +5,21 @@ import { IcApply } from "../../store/assets";
 
 export default function Header() {
   return (
-    <HeaderContainer>
-      <Logo>svg</Logo>
-      <LinksContainer>
+    <StHeaderContainer>
+      <StLogo>svg</StLogo>
+      <StLinksContainer>
         <Link to="">AWS 연동</Link>
         <Link to="">아키텍쳐 설계</Link>
-      </LinksContainer>
-      <CompleteButton>
+      </StLinksContainer>
+      <StCompleteButton>
         <IcApply />
         완료 버튼
-      </CompleteButton>
-    </HeaderContainer>
+      </StCompleteButton>
+    </StHeaderContainer>
   );
 }
 
-const HeaderContainer = styled.header`
+const StHeaderContainer = styled.header`
   height: 5.8rem;
 
   display: flex;
@@ -29,11 +29,11 @@ const HeaderContainer = styled.header`
   box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.25);
 `;
 
-const Logo = styled.div`
+const StLogo = styled.div`
   margin: 0 -2rem 0 2rem;
 `;
 
-const LinksContainer = styled.div`
+const StLinksContainer = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
 
@@ -42,7 +42,7 @@ const LinksContainer = styled.div`
   }
 `;
 
-const CompleteButton = styled.button`
+const StCompleteButton = styled.button`
   width: 182px;
   height: 40px;
 

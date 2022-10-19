@@ -9,7 +9,7 @@ const InstanceBox = styled.article`
   background-color: ${({ theme }) => theme.colors.white100};
 `;
 
-const Title = styled.header`
+const BoxTitle = styled.header`
   height: 4rem;
 
   display: flex;
@@ -25,14 +25,26 @@ const Title = styled.header`
   color: ${({ theme }) => theme.colors.white100};
 `;
 
-const VPCTitle = styled(Title)`
+const BoxBody = styled.div`
+  height: calc(100% - 4rem);
+`;
+
+const VPCBoxTitle = styled(BoxTitle)`
   background-color: ${({ theme }) => theme.colors.blue100};
+`;
+
+const VPCBoxBody = styled(BoxBody)`
+  background-color: ${({ theme }) => theme.colors.blue040};
+
+  padding: 1rem 1.2rem;
 `;
 
 const St = {
   InstanceBox,
-  Title,
-  VPCTitle,
+  BoxTitle,
+  BoxBody,
+  VPCBoxTitle,
+  VPCBoxBody,
 };
 
 export default St;

@@ -4,28 +4,36 @@ import St from "./styled/instanceBox";
 
 export default function Main() {
   return (
-    <MainContainer>
-      <InstanceSection>
+    <StMainContainer>
+      <StInstanceSection>
         {/* TODO :: 한 컴포넌트로 조작 */}
         <St.InstanceBox>
-          <St.Title>EC2 인스턴스</St.Title>
+          <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
+          <St.BoxBody>a</St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
-          <St.Title>로드 밸런서</St.Title>
+          <St.BoxTitle>로드 밸런서</St.BoxTitle>
+          <St.BoxBody>a</St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
-          <St.Title>RDS</St.Title>
+          <St.BoxTitle>RDS</St.BoxTitle>
+          <St.BoxBody>a</St.BoxBody>
         </St.InstanceBox>
-      </InstanceSection>
-      <VPCSection>
-        <St.VPCTitle>Default VPC</St.VPCTitle>
-      </VPCSection>
-      <InfoSection>right</InfoSection>
-    </MainContainer>
+      </StInstanceSection>
+      <StVPCSection>
+        <St.VPCBoxTitle>Default VPC</St.VPCBoxTitle>
+        <St.VPCBoxBody>
+          <article></article>
+          <article></article>
+          <article></article>
+        </St.VPCBoxBody>
+      </StVPCSection>
+      <StInfoSection>right</StInfoSection>
+    </StMainContainer>
   );
 }
 
-const MainContainer = styled.main`
+const StMainContainer = styled.main`
   height: calc(100vh - 5.8rem);
 
   display: flex;
@@ -40,7 +48,7 @@ const MainContainer = styled.main`
   }
 `;
 
-const InstanceSection = styled.section`
+const StInstanceSection = styled.section`
   width: 31.7rem;
 
   display: flex;
@@ -52,13 +60,13 @@ const InstanceSection = styled.section`
   }
 `;
 
-const VPCSection = styled.section`
+const StVPCSection = styled.section`
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.blue040};
 `;
 
-const InfoSection = styled.section`
+const StInfoSection = styled.section`
   width: 31.7rem;
 
   border-radius: 0.6rem;
