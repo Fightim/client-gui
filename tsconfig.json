@@ -17,10 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noImplicitAny": true,
+    "types": ["vite-plugin-svgr/client"]
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx", "public/mockServiceWorker.js",
+    "**/*.tsx", "public/mockServiceWorker.js"
   ],
   "exclude": [
     "node_modules"
