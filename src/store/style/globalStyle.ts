@@ -1,6 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -57,10 +64,10 @@ export const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
   
-  
   /* 위에가 styled-reset 내용 */
   * {
     box-sizing: border-box;
+    font-family: 'SCoreDream', sans-serif;
   }
    
   html {
@@ -69,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
     
     scroll-behavior: smooth;
-    font-family: sans-serif;
+    font-family: 'SCoreDream', sans-serif;
     font-size: 62.5%;
     user-select: none;
   }
