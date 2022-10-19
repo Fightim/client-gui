@@ -22,15 +22,18 @@ export default function Header() {
 const StHeaderContainer = styled.header`
   height: 5.8rem;
 
+  position: relative;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.25);
 `;
 
 const StLogo = styled.div`
-  margin: 0 -2rem 0 2rem;
+  position: absolute;
+  left: 2rem;
 `;
 
 const StLinksContainer = styled.div`
@@ -46,11 +49,12 @@ const StCompleteButton = styled.button`
   width: 182px;
   height: 40px;
 
+  position: absolute;
+  right: 8.7rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin: 0 8.7rem 0 -8.7rem;
 
   background: ${({ theme }) => theme.colors.blue200};
   border-radius: 6px;
