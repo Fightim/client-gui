@@ -1,5 +1,6 @@
 const colors = {
   blue030: "#F6F6FA",
+  blue040: "#DBE6F5",
   blue050: "#EEF5FC",
   blue100: "#567CF0",
   blue200: "#292E85",
