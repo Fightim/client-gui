@@ -26,7 +26,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
     font: inherit;
-    font-size: 100%;
   }
   
   /* HTML5 display-role reset for older browsers */
@@ -67,7 +66,6 @@ export const GlobalStyle = createGlobalStyle`
   /* 위에가 styled-reset 내용 */
   * {
     box-sizing: border-box;
-    font-family: 'SCoreDream', sans-serif;
   }
    
   html {
@@ -78,6 +76,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: 'SCoreDream', sans-serif;
     font-size: 62.5%;
+    color: ${({ theme }) => theme.colors.black100};
     user-select: none;
   }
   
