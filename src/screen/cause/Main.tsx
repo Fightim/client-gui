@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import St from "./@styled/instanceBox";
 import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
+import DroppedInstanceIcon from "./instanceIcon/DroppedInstanceIcon";
 
 function X() {
   const a = 1;
@@ -15,35 +16,51 @@ export default function Main() {
         <St.InstanceBox>
           <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
           <St.BoxBody>
+            <DraggableInstanceIcon type={0} />
             <DraggableInstanceIcon type={1} />
           </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
           <St.BoxTitle>로드 밸런서</St.BoxTitle>
-          <St.BoxBody>a</St.BoxBody>
+          <St.BoxBody>
+            <DraggableInstanceIcon type={2} />
+          </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
           <St.BoxTitle>RDS</St.BoxTitle>
-          <St.BoxBody>a</St.BoxBody>
+          <St.BoxBody>
+            <DraggableInstanceIcon type={3} />
+          </St.BoxBody>
         </St.InstanceBox>
       </StInstanceSection>
       <StVPCSection>
         <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
         <StVPCContainerBody>
           {/* TODO :: 한 컴포넌트로 조작 */}
+          {/* TODO :: onDragOver와 border 조작 함께 */}
           {/* TODO :: onDrop :: 해당 인스턴스를 context 데이터에 추가
           {/* TODO :: onDrop :: 해당 인스턴스를 UI에 추가 */}
           <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={X}>
             <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
-            <StVPCBoxBody>s</StVPCBoxBody>
+            <StVPCBoxBody>
+              <DroppedInstanceIcon type={0} />
+              <DroppedInstanceIcon type={1} />
+              <DroppedInstanceIcon type={2} />
+            </StVPCBoxBody>
           </StVPCBox>
           <StVPCBox>
             <StVPCBoxTitle>Private Subnet</StVPCBoxTitle>
-            <StVPCBoxBody>s</StVPCBoxBody>
+            <StVPCBoxBody>
+              <DroppedInstanceIcon type={0} />
+              <DroppedInstanceIcon type={1} />
+            </StVPCBoxBody>
           </StVPCBox>
           <StVPCBox>
             <StVPCBoxTitle>Private Subnet</StVPCBoxTitle>
-            <StVPCBoxBody>s</StVPCBoxBody>
+            <StVPCBoxBody>
+              <DroppedInstanceIcon type={3} />
+              <DroppedInstanceIcon type={3} />
+            </StVPCBoxBody>
           </StVPCBox>
         </StVPCContainerBody>
       </StVPCSection>
@@ -118,6 +135,8 @@ const StVPCBoxTitle = styled(St.BoxTitle)`
 `;
 
 const StVPCBoxBody = styled(St.BoxBody)`
+  position: relative;
+
   height: calc(100% - 3rem);
 
   padding: 2rem 2.6rem;

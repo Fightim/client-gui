@@ -28,6 +28,11 @@ const BoxBody = styled.div`
   padding: 2.4rem 2.6rem;
 
   border-radius: 0 0 0.6rem 0.6rem;
+
+  /* DraggableII, DroppedII :: strong */
+  & > strong:not(:last-child) {
+    margin: 0 2.6rem 2rem 0;
+  }
 `;
 
 const St = {
