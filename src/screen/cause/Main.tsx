@@ -3,6 +3,10 @@ import styled from "styled-components";
 import DraggableInstanceIcon from "./DraggableInstanceIcon";
 import St from "./styled/instanceBox";
 
+function X() {
+  const a = 1;
+}
+
 export default function Main() {
   return (
     <StMainContainer>
@@ -27,11 +31,7 @@ export default function Main() {
         <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
         <StVPCContainerBody>
           {/* TODO :: 한 컴포넌트로 조작 */}
-          <StVPCBox
-            onDragEnter={(e) => console.log(e)}
-            onDragLeave={(e) => console.log(e)}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => console.log(e)}>
+          <StVPCBox onDragEnter={X} onDragLeave={X} onDragOver={(e) => e.preventDefault()} onDrop={X}>
             <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
             <StVPCBoxBody>s</StVPCBoxBody>
           </StVPCBox>

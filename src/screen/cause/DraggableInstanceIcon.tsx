@@ -4,13 +4,13 @@ interface DraggableInstanceIconProps {
   type: 0 | 1 | 2;
 }
 
+function X() {
+  const a = 1;
+}
+
 export default function DraggableInstanceIcon(props: DraggableInstanceIconProps) {
   return (
-    <div
-      draggable="true"
-      onDragStart={(e) => console.log(e)}
-      onDragEnd={(e) => console.log(e)}
-      onDrag={(e) => console.log(e)}>
+    <div draggable="true" onDragStart={X} onDragEnd={X} onDrag={X}>
       <InstanceIcon {...props} active={true} />
     </div>
   );
