@@ -1,45 +1,7 @@
 import styled from "styled-components";
 
-import { IcALB, IcMySQL, IcT2 } from "../../../store/assets";
+import { droppedInstanceIcons } from "../../../store/instanceIcon/dropped";
 import { InstanceIconType } from "../../../store/types/instanceIcon";
-
-const StIcT2 = styled(IcT2)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const StIcALB = styled(IcALB)`
-  width: 3.8rem;
-  height: 3.8rem;
-`;
-
-const StIcMySQL = styled(IcMySQL)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const droppedInstanceIcons = [
-  {
-    element: <StIcT2 />,
-    name: "t2.micro.ubuntu",
-  },
-  {
-    element: <StIcT2 />,
-    name: "t2.micro.centos",
-  },
-  {
-    element: <StIcALB />,
-    name: "ALB",
-  },
-  {
-    element: <StIcMySQL />,
-    name: "MySQL",
-  },
-];
 
 interface DroppedInstanceIconProps {
   type: InstanceIconType;
@@ -62,6 +24,14 @@ export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   );
 }
 
+const StIconWrapperForALB = styled.strong`
+  position: absolute;
+  right: 2.6rem;
+  bottom: 2rem;
+
+  cursor: pointer;
+`;
+
 const StIconWrapper = styled.strong<{ active: boolean; type: InstanceIconType }>`
   display: inline-flex;
   align-items: center;
@@ -70,13 +40,6 @@ const StIconWrapper = styled.strong<{ active: boolean; type: InstanceIconType }>
     active ? (type <= 1 ? colors.orange100 : colors.purple100) : colors.black100};
   font-weight: ${({ active }) => (active ? 600 : 200)};
   font-size: 1.6rem;
-
-  cursor: pointer;
-`;
-const StIconWrapperForALB = styled.strong`
-  position: absolute;
-  right: 2.6rem;
-  bottom: 2rem;
 
   cursor: pointer;
 `;

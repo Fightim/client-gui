@@ -1,47 +1,7 @@
 import styled from "styled-components";
 
-import { IcALB, IcMySQL, IcT2 } from "../../../store/assets";
+import { instanceIcons } from "../../../store/instanceIcon/draggable";
 import { InstanceIconType } from "../../../store/types/instanceIcon";
-
-const StIcT2 = styled(IcT2)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const StIcALB = styled(IcALB)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const StIcMySQL = styled(IcMySQL)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const instanceIcons = [
-  {
-    element: <StIcT2 />,
-    name: "t2.micro.ubuntu",
-  },
-  {
-    element: <StIcT2 />,
-    name: "t2.micro.centos",
-  },
-  {
-    element: <StIcALB />,
-    name: "ALB",
-  },
-  {
-    element: <StIcMySQL />,
-    name: "MySQL",
-  },
-];
 
 interface InstanceIconProps {
   type: InstanceIconType;
@@ -50,6 +10,8 @@ interface InstanceIconProps {
 
 export default function InstanceIcon(props: InstanceIconProps) {
   const { type, active } = props;
+
+  console.log(type);
 
   return (
     <StIconWrapper active={active} type={type}>
