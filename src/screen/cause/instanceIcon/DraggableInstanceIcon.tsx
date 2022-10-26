@@ -24,7 +24,7 @@ export default function DraggableInstanceIcon(props: DraggableInstanceIconProps)
       onMouseOver={() => setIsActive(true)}
       onFocus={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}>
-      <InstanceIcon {...props} active={isActive} />
+      <InstanceIcon type={props.type} active={isActive} />
     </strong>
   );
 }
