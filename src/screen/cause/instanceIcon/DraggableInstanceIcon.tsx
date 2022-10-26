@@ -17,6 +17,7 @@ export default function DraggableInstanceIcon(props: DraggableInstanceIconProps)
   return (
     <div
       draggable="true"
+      style={{ display: "inline-block" }}
       onDragStart={handleDragForActiveBox}
       onDragEnd={handleDragForActiveBox}
       onMouseOver={() => setIsActive(true)}

@@ -1,19 +1,6 @@
 import styled from "styled-components";
 
 import { IcALB, IcMySQL, IcT2 } from "../../../store/assets";
-
-const StIconWrapper = styled.strong<{ active: boolean; type: 0 | 1 | 2 }>`
-  display: flex;
-  align-items: center;
-
-  color: ${({ theme: { colors }, active, type }) =>
-    active ? (type === 0 ? colors.orange100 : colors.purple100) : colors.black100};
-  font-weight: ${({ active }) => (active ? 600 : 200)};
-  font-size: 1.6rem;
-
-  cursor: pointer;
-`;
-
 const StIcT2 = styled(IcT2)`
   width: 3.8rem;
   height: 3.8rem;
@@ -65,3 +52,15 @@ export default function InstanceIcon(props: InstanceIconProps) {
     </StIconWrapper>
   );
 }
+
+const StIconWrapper = styled.strong<{ active: boolean; type: 0 | 1 | 2 }>`
+  display: inline-flex;
+  align-items: center;
+
+  color: ${({ theme: { colors }, active, type }) =>
+    active ? (type === 0 ? colors.orange100 : colors.purple100) : colors.black100};
+  font-weight: ${({ active }) => (active ? 600 : 200)};
+  font-size: 1.6rem;
+
+  cursor: pointer;
+`;
