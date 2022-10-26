@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import InstanceIcon from "./InstanceIcon";
+import DraggableInstanceIcon from "./DraggableInstanceIcon";
 import St from "./styled/instanceBox";
 
 export default function Main() {
@@ -11,7 +11,7 @@ export default function Main() {
         <St.InstanceBox>
           <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
           <St.BoxBody>
-            <InstanceIcon type={1} active={true} />
+            <DraggableInstanceIcon type={1} />
           </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
@@ -27,7 +27,11 @@ export default function Main() {
         <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
         <StVPCContainerBody>
           {/* TODO :: 한 컴포넌트로 조작 */}
-          <StVPCBox>
+          <StVPCBox
+            onDragEnter={(e) => console.log(e)}
+            onDragLeave={(e) => console.log(e)}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => console.log(e)}>
             <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
             <StVPCBoxBody>s</StVPCBoxBody>
           </StVPCBox>

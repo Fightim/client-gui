@@ -10,6 +10,8 @@ const StIconWrapper = styled.strong<{ active: boolean; type: 0 | 1 | 2 }>`
     active ? (type === 0 ? colors.orange100 : colors.purple100) : colors.black100};
   font-weight: ${({ active }) => (active ? 600 : 200)};
   font-size: 1.6rem;
+
+  cursor: pointer;
 `;
 
 const StIcT2 = styled(IcT2)`
