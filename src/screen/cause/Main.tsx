@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import DraggableInstanceIcon from "./DraggableInstanceIcon";
-import St from "./styled/instanceBox";
+import St from "./@styled/instanceBox";
+import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
 
 function X() {
   const a = 1;
@@ -31,7 +31,9 @@ export default function Main() {
         <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
         <StVPCContainerBody>
           {/* TODO :: 한 컴포넌트로 조작 */}
-          <StVPCBox onDragEnter={X} onDragLeave={X} onDragOver={(e) => e.preventDefault()} onDrop={X}>
+          {/* TODO :: onDrop :: 해당 인스턴스를 context 데이터에 추가
+          {/* TODO :: onDrop :: 해당 인스턴스를 UI에 추가 */}
+          <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={X}>
             <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
             <StVPCBoxBody>s</StVPCBoxBody>
           </StVPCBox>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IcALB, IcMySQL, IcT2 } from "../../store/assets";
+import { IcALB, IcMySQL, IcT2 } from "../../../store/assets";
 
 const StIconWrapper = styled.strong<{ active: boolean; type: 0 | 1 | 2 }>`
   display: flex;
