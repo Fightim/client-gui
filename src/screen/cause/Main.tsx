@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import InstanceIcon from "./InstanceIcon";
 import St from "./styled/instanceBox";
 
 export default function Main() {
@@ -9,7 +10,9 @@ export default function Main() {
         {/* TODO :: 한 컴포넌트로 조작 */}
         <St.InstanceBox>
           <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
-          <St.BoxBody>a</St.BoxBody>
+          <St.BoxBody>
+            <InstanceIcon type={1} active={true} />
+          </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
           <St.BoxTitle>로드 밸런서</St.BoxTitle>
