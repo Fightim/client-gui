@@ -1,43 +1,22 @@
-import styled from "styled-components";
-
-import { IcALB, IcMySQL, IcT2 } from "../assets";
-
-const StIcT2 = styled(IcT2)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const StIcALB = styled(IcALB)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
-
-const StIcMySQL = styled(IcMySQL)`
-  width: 3.8rem;
-  height: 3.8rem;
-
-  margin-right: 1.1rem;
-`;
+import IcALB from "./alb.svg";
+import IcMySQL from "./mysql.svg";
+import IcT2 from "./t2.svg";
 
 export const instanceIcons = {
   T2_UBUNTU: {
-    element: <StIcT2 />,
+    element: <img src={IcT2} alt="ubuntu" style={{ margin: "1.1rem" }} />,
     name: "t2.micro ubuntu",
   },
   T2_CENTOS: {
-    element: <StIcT2 />,
+    element: <img src={IcT2} alt="centos" style={{ margin: "1.1rem" }} />,
     name: "t2.micro centos",
   },
   ALB: {
-    element: <StIcALB />,
+    element: <img src={IcALB} alt="alb" style={{ margin: "1.1rem" }} />,
     name: "ALB",
   },
   MYSQL: {
-    element: <StIcMySQL />,
+    element: <img src={IcMySQL} alt="mysql" style={{ margin: "1.1rem" }} />,
     name: "MySQL",
   },
 };
