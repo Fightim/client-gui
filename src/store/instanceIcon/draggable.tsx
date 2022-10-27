@@ -26,11 +26,11 @@ const StIcMySQL = styled(IcMySQL)`
 export const instanceIcons = {
   T2_UBUNTU: {
     element: <StIcT2 />,
-    name: "t2.micro.ubuntu",
+    name: "t2.micro ubuntu",
   },
   T2_CENTOS: {
     element: <StIcT2 />,
-    name: "t2.micro.centos",
+    name: "t2.micro centos",
   },
   ALB: {
     element: <StIcALB />,
