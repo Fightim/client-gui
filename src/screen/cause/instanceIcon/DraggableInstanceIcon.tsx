@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { InstanceIconType } from "../../../store/types/instanceIcon";
+import { InstanceIconType } from "../../../store/types/instanceIcon.d";
 import InstanceIcon from "./InstanceIcon";
 
 interface DraggableInstanceIconProps {

@@ -65,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
   
   /* 위에가 styled-reset 내용 */
   * {
-    font-family: 'SCoreDream', ㄴsans-serif;
+    font-family: 'SCoreDream', sans-serif;
     box-sizing: border-box;
   }
    
