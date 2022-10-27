@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { instanceIcons } from "../../../store/instanceIcon/draggable";
-import { InstanceIconType } from "../../../store/types/instanceIcon";
+import { InstanceIconType, instanceIconType } from "../../../store/types/instanceIcon.d";
 
 interface InstanceIconProps {
   type: InstanceIconType;
@@ -25,7 +25,11 @@ const StIconWrapper = styled.div<{ active: boolean; type: InstanceIconType }>`
   align-items: center;
 
   color: ${({ theme: { colors }, active, type }) =>
-    active ? (type <= 1 ? colors.orange100 : colors.purple100) : colors.black100};
+    active
+      ? type === instanceIconType.Ubuntu || type === instanceIconType.Centos
+        ? colors.orange100
+        : colors.purple100
+      : colors.black100};
   font-weight: ${({ active }) => (active ? 600 : 200)};
   font-size: 1.6rem;
 

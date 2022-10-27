@@ -23,21 +23,21 @@ const StIcMySQL = styled(IcMySQL)`
   margin-right: 1.1rem;
 `;
 
-export const instanceIcons = [
-  {
+export const instanceIcons = {
+  T2_UBUNTU: {
     element: <StIcT2 />,
     name: "t2.micro.ubuntu",
   },
-  {
+  T2_CENTOS: {
     element: <StIcT2 />,
     name: "t2.micro.centos",
   },
-  {
+  ALB: {
     element: <StIcALB />,
     name: "ALB",
   },
-  {
+  MYSQL: {
     element: <StIcMySQL />,
     name: "MySQL",
   },
-];
+};

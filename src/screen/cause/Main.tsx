@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { instanceIconType } from "../../store/types/instanceIcon.d";
 import St from "./@styled/instanceBox";
 import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
 import DroppedInstanceIcon from "./instanceIcon/DroppedInstanceIcon";
@@ -16,20 +17,20 @@ export default function Main() {
         <St.InstanceBox>
           <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
           <St.BoxBody>
-            <DraggableInstanceIcon type={0} />
-            <DraggableInstanceIcon type={1} />
+            <DraggableInstanceIcon type={instanceIconType.Ubuntu} />
+            <DraggableInstanceIcon type={instanceIconType.Centos} />
           </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
           <St.BoxTitle>로드 밸런서</St.BoxTitle>
           <St.BoxBody>
-            <DraggableInstanceIcon type={2} />
+            <DraggableInstanceIcon type={instanceIconType.ALB} />
           </St.BoxBody>
         </St.InstanceBox>
         <St.InstanceBox>
           <St.BoxTitle>RDS</St.BoxTitle>
           <St.BoxBody>
-            <DraggableInstanceIcon type={3} />
+            <DraggableInstanceIcon type={instanceIconType.MySQL} />
           </St.BoxBody>
         </St.InstanceBox>
       </StInstanceSection>
@@ -43,23 +44,23 @@ export default function Main() {
           <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={X}>
             <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
             <StVPCBoxBody>
-              <DroppedInstanceIcon type={0} />
-              <DroppedInstanceIcon type={1} />
-              <DroppedInstanceIcon type={2} />
+              <DroppedInstanceIcon type={instanceIconType.Ubuntu} />
+              <DroppedInstanceIcon type={instanceIconType.Centos} />
+              <DroppedInstanceIcon type={instanceIconType.ALB} />
             </StVPCBoxBody>
           </StVPCBox>
           <StVPCBox>
             <StVPCBoxTitle>Private Subnet</StVPCBoxTitle>
             <StVPCBoxBody>
-              <DroppedInstanceIcon type={0} />
-              <DroppedInstanceIcon type={1} />
+              <DroppedInstanceIcon type={instanceIconType.Ubuntu} />
+              <DroppedInstanceIcon type={instanceIconType.Centos} />
             </StVPCBoxBody>
           </StVPCBox>
           <StVPCBox>
             <StVPCBoxTitle>Private Subnet</StVPCBoxTitle>
             <StVPCBoxBody>
-              <DroppedInstanceIcon type={3} />
-              <DroppedInstanceIcon type={3} />
+              <DroppedInstanceIcon type={instanceIconType.MySQL} />
+              <DroppedInstanceIcon type={instanceIconType.MySQL} />
             </StVPCBoxBody>
           </StVPCBox>
         </StVPCContainerBody>

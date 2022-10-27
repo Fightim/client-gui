@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { droppedInstanceIcons } from "../../../store/instanceIcon/dropped";
-import { InstanceIconType } from "../../../store/types/instanceIcon";
+import { InstanceIconType, instanceIconType } from "../../../store/types/instanceIcon.d";
 
 interface DroppedInstanceIconProps {
   type: InstanceIconType;
@@ -14,7 +14,8 @@ export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   // TODO :: 더블클릭 -> 정보창의 data context 에 업데이트
   // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
 
-  if (type === 2) return <StIconWrapperForALB>{droppedInstanceIcons[type].element}</StIconWrapperForALB>;
+  if (type === instanceIconType.ALB)
+    return <StIconWrapperForALB>{droppedInstanceIcons[type].element}</StIconWrapperForALB>;
 
   return (
     <StIconWrapper active={isActive} type={type}>
@@ -37,7 +38,11 @@ const StIconWrapper = styled.strong<{ active: boolean; type: InstanceIconType }>
   align-items: center;
 
   color: ${({ theme: { colors }, active, type }) =>
-    active ? (type <= 1 ? colors.orange100 : colors.purple100) : colors.black100};
+    active
+      ? type === instanceIconType.Ubuntu || type === instanceIconType.Centos
+        ? colors.orange100
+        : colors.purple100
+      : colors.black100};
   font-weight: ${({ active }) => (active ? 600 : 200)};
   font-size: 1.6rem;
 
