@@ -1,12 +1,33 @@
 import styled from "styled-components";
 
+import useALB from "../../service/hooks/instanceContext/useALB";
+import usePublicCentos from "../../service/hooks/instanceContext/usePublicCentos";
+import usePublicUbuntu from "../../service/hooks/instanceContext/usePublicUbuntu";
+import useDrag from "../../service/hooks/useDrag";
 import { instanceIconType } from "../../store/types/instanceIcon.d";
 import St from "./@styled/instanceBox";
 import DroppedInstanceIcon from "./instanceIcon/DroppedInstanceIcon";
 
 export default function VPCSection() {
-  function X(e: React.DragEvent<HTMLElement>) {
-    console.log(e);
+  const { dragRef } = useDrag();
+  const { publicUbuntuInstances, addPublicUbuntuInstances, removePublicUbuntuInstances } = usePublicUbuntu();
+  const { publicCentosInstances, addPublicCentosInstances, removePublicCentosInstances } = usePublicCentos();
+  const { instances: ALBInstances, addInstance: addALBInstance, removeInstance: removeALBInstance } = useALB();
+
+  function onDrop() {
+    switch (dragRef.current) {
+      case instanceIconType.Ubuntu:
+        addPublicUbuntuInstances("" + Math.random());
+        break;
+      case instanceIconType.Centos:
+        addPublicCentosInstances("" + Math.random());
+        break;
+      case instanceIconType.ALB:
+        addALBInstance("" + Math.random());
+        break;
+      default:
+        break;
+    }
   }
 
   return (
@@ -15,14 +36,18 @@ export default function VPCSection() {
       <StVPCContainerBody>
         {/* TODO :: 한 컴포넌트로 조작 */}
         {/* TODO :: onDragOver와 border 조작 함께 */}
-        {/* TODO :: onDrop :: 해당 인스턴스를 context 데이터에 추가*/}
-        {/* TODO :: onDrop :: 해당 인스턴스를 UI에 추가 */}
-        <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={X}>
+        <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop}>
           <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
           <StVPCBoxBody>
-            <DroppedInstanceIcon type={instanceIconType.Ubuntu} />
-            <DroppedInstanceIcon type={instanceIconType.Centos} />
-            <DroppedInstanceIcon type={instanceIconType.ALB} />
+            {[...publicUbuntuInstances].map((instance, i) => (
+              <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} />
+            ))}
+            {[...publicCentosInstances].map((instance, i) => (
+              <DroppedInstanceIcon key={i} type={instanceIconType.Centos} />
+            ))}
+            {[...ALBInstances].map((instance, i) => (
+              <DroppedInstanceIcon key={i} type={instanceIconType.ALB} />
+            ))}
           </StVPCBoxBody>
         </StVPCBox>
         <StVPCBox>
