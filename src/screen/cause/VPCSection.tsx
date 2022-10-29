@@ -8,6 +8,7 @@ import { instanceIconType } from "../../store/types/instanceIcon.d";
 import Style from "./@styled/instanceBox";
 import St from "./@styled/vpc";
 import DroppedInstanceIcon from "./instanceIcon/DroppedInstanceIcon";
+import PrivateSubnetInstance from "./vpc/PrivateSubnetInstance";
 import PublicSubnet from "./vpc/PublicSubnet";
 
 export default function VPCSection() {
@@ -16,13 +17,7 @@ export default function VPCSection() {
       <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
       <StVPCContainerBody>
         <PublicSubnet />
-        <St.VPCBox>
-          <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
-          <St.VPCBoxBody>
-            <DroppedInstanceIcon type={instanceIconType.Ubuntu} />
-            <DroppedInstanceIcon type={instanceIconType.Centos} />
-          </St.VPCBoxBody>
-        </St.VPCBox>
+        <PrivateSubnetInstance />
         <St.VPCBox>
           <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
           <St.VPCBoxBody>
