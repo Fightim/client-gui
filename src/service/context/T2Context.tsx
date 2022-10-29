@@ -1,18 +1,47 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext.d";
+import useInstance from "../hooks/instanceContext/useInstance";
 
 export const T2Context = createContext<InstanceContext>({
-  instances: new Set(),
-  addInstance: () => {},
-  removeInstance: () => {},
+  publicUbuntuInstances: new Set(),
+  addPublicUbuntuInstances: () => {},
+  removePublicUbuntuInstances: () => {},
+  publicCentosInstances: new Set(),
+  addPublicCentosInstances: () => {},
+  removePublicCentosInstances: () => {},
+  privateUbuntuInstances: new Set(),
+  addPrivateUbuntuInstances: () => {},
+  removePrivateUbuntuInstances: () => {},
+  privateCentosInstances: new Set(),
+  addPrivateCentosInstances: () => {},
+  removePrivateCentosInstances: () => {},
 });
 
 export default function T2Provider(props: React.PropsWithChildren) {
   const { children } = props;
 
-  const [instances, setInstances] = useState<Set<string>>(new Set());
+  const {
+    instances: publicUbuntuInstances,
+    addInstance: addPublicUbuntuInstances,
+    removeInstance: removePublicUbuntuInstances,
+  } = useInstance();
+  const {
+    instances: publicCentosInstances,
+    addInstance: addPublicCentosInstances,
+    removeInstance: removePublicCentosInstances,
+  } = useInstance();
+  const {
+    instances: privateUbuntuInstances,
+    addInstance: addPrivateUbuntuInstances,
+    removeInstance: removePrivateUbuntuInstances,
+  } = useInstance();
+  const {
+    instances: privateCentosInstances,
+    addInstance: addPrivateCentosInstances,
+    removeInstance: removePrivateCentosInstances,
+  } = useInstance();
 
   useEffect(() => {
     // TODO :: 초기 API 통신하여 state 관리
@@ -21,14 +50,26 @@ export default function T2Provider(props: React.PropsWithChildren) {
     // TODO :: 3. 4가지 커스텀훅으로 분리하여 전달
   }, []);
 
-  const addInstance = (instanceId: string) => {
-    setInstances(new Set(instances.add(instanceId)));
-  };
+  return (
+    <T2Context.Provider
+      value={{
+        publicUbuntuInstances,
+        addPublicUbuntuInstances,
+        removePublicUbuntuInstances,
 
-  const removeInstance = (instanceId: string) => {
-    instances.delete(instanceId);
-    setInstances(new Set(instances));
-  };
+        publicCentosInstances,
+        addPublicCentosInstances,
+        removePublicCentosInstances,
 
-  return <T2Context.Provider value={{ instances, addInstance, removeInstance }}>{children}</T2Context.Provider>;
+        privateUbuntuInstances,
+        addPrivateUbuntuInstances,
+        removePrivateUbuntuInstances,
+
+        privateCentosInstances,
+        addPrivateCentosInstances,
+        removePrivateCentosInstances,
+      }}>
+      {children}
+    </T2Context.Provider>
+  );
 }
