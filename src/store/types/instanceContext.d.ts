@@ -19,3 +19,9 @@ export interface RDSContext {
   addInstance: (instanceId: string) => void;
   removeInstance: (instanceId: string) => void;
 }
+
+export interface LoadBalancerContext {
+  instances: Set<string>;
+  addInstance: (instanceId: string) => void;
+  removeInstance: (instanceId: string) => void;
+}
