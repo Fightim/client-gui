@@ -13,3 +13,9 @@ export interface InstanceContext {
   addPrivateCentosInstances: (instanceId: string) => void;
   removePrivateCentosInstances: (instanceId: string) => void;
 }
+
+export interface RDSContext {
+  instances: Set<string>;
+  addInstance: (instanceId: string) => void;
+  removeInstance: (instanceId: string) => void;
+}
