@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
-import useALB from "../../service/hooks/instanceContext/useALB";
-import usePublicCentos from "../../service/hooks/instanceContext/usePublicCentos";
-import usePublicUbuntu from "../../service/hooks/instanceContext/usePublicUbuntu";
-import useDrag from "../../service/hooks/useDrag";
-import { instanceIconType } from "../../store/types/instanceIcon.d";
 import Style from "./@styled/instanceBox";
-import St from "./@styled/vpc";
-import DroppedInstanceIcon from "./instanceIcon/DroppedInstanceIcon";
 import PrivateSubnetInstance from "./vpc/PrivateSubnetInstance";
+import PrivateSubnetRDS from "./vpc/PrivateSubnetRDS";
 import PublicSubnet from "./vpc/PublicSubnet";
 
 export default function VPCSection() {
@@ -18,13 +12,7 @@ export default function VPCSection() {
       <StVPCContainerBody>
         <PublicSubnet />
         <PrivateSubnetInstance />
-        <St.VPCBox>
-          <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
-          <St.VPCBoxBody>
-            <DroppedInstanceIcon type={instanceIconType.MySQL} />
-            <DroppedInstanceIcon type={instanceIconType.MySQL} />
-          </St.VPCBoxBody>
-        </St.VPCBox>
+        <PrivateSubnetRDS />
       </StVPCContainerBody>
     </StVPCSection>
   );

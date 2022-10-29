@@ -8,9 +8,9 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PublicSubnet() {
   const { dragRef } = useDrag();
-  const { publicUbuntuInstances, addPublicUbuntuInstances, removePublicUbuntuInstances } = usePublicUbuntu();
-  const { publicCentosInstances, addPublicCentosInstances, removePublicCentosInstances } = usePublicCentos();
-  const { instances: ALBInstances, addInstance: addALBInstance, removeInstance: removeALBInstance } = useALB();
+  const { publicUbuntuInstances, addPublicUbuntuInstances } = usePublicUbuntu();
+  const { publicCentosInstances, addPublicCentosInstances } = usePublicCentos();
+  const { instances: ALBInstances, addInstance: addALBInstance } = useALB();
 
   function onDrop() {
     switch (dragRef.current) {

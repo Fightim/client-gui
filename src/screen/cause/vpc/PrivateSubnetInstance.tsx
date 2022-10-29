@@ -1,4 +1,3 @@
-import useALB from "../../../service/hooks/instanceContext/useALB";
 import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCentos";
 import usePublicUbuntu from "../../../service/hooks/instanceContext/usePublicUbuntu";
 import useDrag from "../../../service/hooks/useDrag";
@@ -8,8 +7,8 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetInstance() {
   const { dragRef } = useDrag();
-  const { publicUbuntuInstances, addPublicUbuntuInstances, removePublicUbuntuInstances } = usePublicUbuntu();
-  const { publicCentosInstances, addPublicCentosInstances, removePublicCentosInstances } = usePublicCentos();
+  const { publicUbuntuInstances, addPublicUbuntuInstances } = usePublicUbuntu();
+  const { publicCentosInstances, addPublicCentosInstances } = usePublicCentos();
 
   function onDrop() {
     switch (dragRef.current) {
