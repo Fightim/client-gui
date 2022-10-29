@@ -1,5 +1,5 @@
-import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCentos";
-import usePublicUbuntu from "../../../service/hooks/instanceContext/usePublicUbuntu";
+import usePrivateCentos from "../../../service/hooks/instanceContext/usePrivateCentos";
+import usePrivateUbuntu from "../../../service/hooks/instanceContext/usePrivateUbuntu";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
 import St from "../@styled/vpc";
@@ -7,16 +7,16 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetInstance() {
   const { dragRef } = useDrag();
-  const { publicUbuntuInstances, addPublicUbuntuInstances } = usePublicUbuntu();
-  const { publicCentosInstances, addPublicCentosInstances } = usePublicCentos();
+  const { privateUbuntuInstances, addPrivateUbuntuInstances } = usePrivateUbuntu();
+  const { privateCentosInstances, addPrivateCentosInstances } = usePrivateCentos();
 
   function onDrop() {
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
-        addPublicUbuntuInstances("" + Math.random());
+        addPrivateUbuntuInstances("" + Math.random());
         break;
       case instanceIconType.Centos:
-        addPublicCentosInstances("" + Math.random());
+        addPrivateCentosInstances("" + Math.random());
         break;
       default:
         break;
@@ -27,10 +27,10 @@ export default function PrivateSubnetInstance() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...publicUbuntuInstances].map((instance, i) => (
+        {[...privateUbuntuInstances].map((instance, i) => (
           <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} />
         ))}
-        {[...publicCentosInstances].map((instance, i) => (
+        {[...privateCentosInstances].map((instance, i) => (
           <DroppedInstanceIcon key={i} type={instanceIconType.Centos} />
         ))}
       </St.VPCBoxBody>
