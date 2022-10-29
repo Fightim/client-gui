@@ -14,7 +14,6 @@ function handleDragForActiveBox() {
 
 export default function DraggableInstanceIcon(props: DraggableInstanceIconProps) {
   const [isActive, setIsActive] = useState(false);
-
   return (
     <strong
       draggable="true"

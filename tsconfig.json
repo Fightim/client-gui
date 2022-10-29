@@ -20,7 +20,7 @@
     "types": ["vite-plugin-svgr/client"]
   },
   "include": [
-    "**/*.ts",
+    "**/*.ts","**/*.d.ts",
     "**/*.tsx", "public/mockServiceWorker.js"
   ],
   "exclude": [

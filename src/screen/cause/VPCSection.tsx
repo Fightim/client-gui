@@ -15,8 +15,8 @@ export default function VPCSection() {
       <StVPCContainerBody>
         {/* TODO :: 한 컴포넌트로 조작 */}
         {/* TODO :: onDragOver와 border 조작 함께 */}
-        {/* TODO :: onDrop :: 해당 인스턴스를 context 데이터에 추가
-          {/* TODO :: onDrop :: 해당 인스턴스를 UI에 추가 */}
+        {/* TODO :: onDrop :: 해당 인스턴스를 context 데이터에 추가*/}
+        {/* TODO :: onDrop :: 해당 인스턴스를 UI에 추가 */}
         <StVPCBox onDragOver={(e) => e.preventDefault()} onDrop={X}>
           <StVPCBoxTitle>Public Subnet</StVPCBoxTitle>
           <StVPCBoxBody>
