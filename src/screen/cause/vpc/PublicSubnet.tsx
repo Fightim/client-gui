@@ -40,7 +40,6 @@ export default function PublicSubnet() {
 
   return (
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
-      {/* TODO :: onDragOver와 border 조작 함께 */}
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...publicUbuntuInstances].map((instance, i) => (

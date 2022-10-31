@@ -13,7 +13,6 @@ export default function InstanceIcon(props: InstanceIconProps) {
 
   return (
     <StIconWrapper active={active} type={type}>
-      {/* BUG :: 이거 바뀌면 svg 전체 바뀜 */}
       {instanceIcons[type].element}
       {instanceIcons[type].name}
     </StIconWrapper>
