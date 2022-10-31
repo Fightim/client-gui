@@ -1,10 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Style from "./instanceBox.styled";
 
 const VPCBox = styled.article<{ isactive: boolean }>`
   box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.18);
   border-radius: 0.8rem;
+
+  ${({ isactive }) =>
+    isactive &&
+    css`
+      box-shadow: 0 0 0.8rem 0.4rem rgba(239, 196, 43, 0.4);
+    `};
 `;
 
 const VPCBoxTitle = styled(Style.BoxTitle)`

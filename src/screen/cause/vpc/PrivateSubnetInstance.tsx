@@ -6,11 +6,18 @@ import St from "../@styled/vpc.styled";
 import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetInstance() {
-  const { dragRef } = useDrag();
+  const { dragRef, isDragging } = useDrag();
   const { privateUbuntuInstances, addPrivateUbuntuInstances } = usePrivateUbuntu();
   const { privateCentosInstances, addPrivateCentosInstances } = usePrivateCentos();
 
+  const MAX_SIZE = 2;
+  const isAffordBox = privateUbuntuInstances.size + privateCentosInstances.size < MAX_SIZE;
+  const isCorrectBox =
+    (dragRef.current === instanceIconType.Centos || dragRef.current === instanceIconType.Ubuntu) && isAffordBox;
+
   function onDrop() {
+    if (!isCorrectBox) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
         addPrivateUbuntuInstances("" + Math.random());
@@ -24,7 +31,7 @@ export default function PrivateSubnetInstance() {
   }
 
   return (
-    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={true}>
+    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...privateUbuntuInstances].map((instance, i) => (

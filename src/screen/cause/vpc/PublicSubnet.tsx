@@ -7,12 +7,22 @@ import St from "../@styled/vpc.styled";
 import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PublicSubnet() {
-  const { dragRef } = useDrag();
+  const { dragRef, isDragging } = useDrag();
   const { publicUbuntuInstances, addPublicUbuntuInstances } = usePublicUbuntu();
   const { publicCentosInstances, addPublicCentosInstances } = usePublicCentos();
   const { instances: ALBInstances, addInstance: addALBInstance } = useALB();
 
+  const MAX_SIZE = 2;
+  const isInstanceAffordBox = publicUbuntuInstances.size + publicCentosInstances.size < MAX_SIZE;
+  const isALBAffordBox = ALBInstances.size === 0;
+  const isCorrectBox =
+    ((dragRef.current === instanceIconType.Centos || dragRef.current === instanceIconType.Ubuntu) &&
+      isInstanceAffordBox) ||
+    (dragRef.current === instanceIconType.ALB && isALBAffordBox);
+
   function onDrop() {
+    if (!isCorrectBox) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
         addPublicUbuntuInstances("" + Math.random());
@@ -29,7 +39,7 @@ export default function PublicSubnet() {
   }
 
   return (
-    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={true}>
+    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       {/* TODO :: onDragOver와 border 조작 함께 */}
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
