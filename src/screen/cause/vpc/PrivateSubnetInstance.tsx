@@ -2,7 +2,7 @@ import usePrivateCentos from "../../../service/hooks/instanceContext/usePrivateC
 import usePrivateUbuntu from "../../../service/hooks/instanceContext/usePrivateUbuntu";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
-import St from "../@styled/vpc";
+import St from "../@styled/vpc.styled";
 import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetInstance() {
@@ -24,7 +24,7 @@ export default function PrivateSubnetInstance() {
   }
 
   return (
-    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop}>
+    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={true}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...privateUbuntuInstances].map((instance, i) => (

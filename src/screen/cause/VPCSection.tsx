@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Style from "./@styled/instanceBox";
+import Style from "./@styled/instanceBox.styled";
 import PrivateSubnetInstance from "./vpc/PrivateSubnetInstance";
 import PrivateSubnetRDS from "./vpc/PrivateSubnetRDS";
 import PublicSubnet from "./vpc/PublicSubnet";

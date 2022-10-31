@@ -16,8 +16,6 @@ export default function DraggableInstanceIcon(props: DraggableInstanceIconProps)
   function onDragStart() {
     startDrag();
     dragRef.current = type;
-    // TODO :: onDragStart -> 가능한 박스 border 처리(onDragOver) -> context로 dragging 관리 (DraggingContext)
-    // TODO :: onDragEnd -> 반대
   }
 
   function onDragEnd() {

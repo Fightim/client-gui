@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import Style from "./instanceBox";
+import Style from "./instanceBox.styled";
 
-const VPCBox = styled.article`
+const VPCBox = styled.article<{ isactive: boolean }>`
   box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.18);
   border-radius: 0.8rem;
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { instanceIconType } from "../../store/types/instanceIcon.d";
-import St from "./@styled/instanceBox";
+import St from "./@styled/instanceBox.styled";
 import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
 
 export default function InstanceSection() {

@@ -3,7 +3,7 @@ import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCen
 import usePublicUbuntu from "../../../service/hooks/instanceContext/usePublicUbuntu";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
-import St from "../@styled/vpc";
+import St from "../@styled/vpc.styled";
 import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PublicSubnet() {
@@ -29,7 +29,7 @@ export default function PublicSubnet() {
   }
 
   return (
-    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop}>
+    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={true}>
       {/* TODO :: onDragOver와 border 조작 함께 */}
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>

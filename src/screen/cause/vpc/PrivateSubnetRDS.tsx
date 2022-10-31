@@ -1,7 +1,7 @@
 import useMySQL from "../../../service/hooks/instanceContext/useMySQL";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
-import St from "../@styled/vpc";
+import St from "../@styled/vpc.styled";
 import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetRDS() {
@@ -19,7 +19,7 @@ export default function PrivateSubnetRDS() {
   }
 
   return (
-    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop}>
+    <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={true}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...instances].map((instance, i) => (
