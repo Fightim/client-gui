@@ -1,24 +1,31 @@
 import styled from "styled-components";
 
+import useOption from "../../../service/hooks/instanceContext/useOption";
 import { droppedInstanceIcons } from "../../../store/instanceIcon/dropped";
 import { InstanceIconType, instanceIconType } from "../../../store/types/instanceIcon.d";
 
 interface DroppedInstanceIconProps {
   type: InstanceIconType;
+  instanceId: string;
 }
 
 export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
-  const { type } = props;
+  const { type, instanceId } = props;
+
+  const { handleInstanceId } = useOption();
 
   const isActive = true;
-  // TODO :: 더블클릭 -> 정보창의 data context 에 업데이트
   // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
 
   if (type === instanceIconType.ALB)
-    return <StIconWrapperForALB>{droppedInstanceIcons[type].element}</StIconWrapperForALB>;
+    return (
+      <StIconWrapperForALB onDoubleClick={() => handleInstanceId(instanceId)}>
+        {droppedInstanceIcons[type].element}
+      </StIconWrapperForALB>
+    );
 
   return (
-    <StIconWrapper active={isActive} type={type}>
+    <StIconWrapper onDoubleClick={() => handleInstanceId(instanceId)} active={isActive} type={type}>
       {droppedInstanceIcons[type].element}
       {droppedInstanceIcons[type].name}
     </StIconWrapper>

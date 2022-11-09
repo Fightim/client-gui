@@ -43,13 +43,13 @@ export default function PublicSubnet() {
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...publicUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
         ))}
         {[...publicCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
         ))}
         {[...ALBInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

@@ -18,6 +18,7 @@ export default function OptionProvider(props: React.PropsWithChildren) {
   };
 
   useEffect(() => {
+    console.log(instanceId);
     // TODO :: if(instanceId.length > 1) 통신값 받아오기
   }, [instanceId]);
 

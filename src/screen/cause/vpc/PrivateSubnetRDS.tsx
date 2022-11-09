@@ -29,7 +29,7 @@ export default function PrivateSubnetRDS() {
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...instances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.MySQL} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.MySQL} instanceId={instance} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

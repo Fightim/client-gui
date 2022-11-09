@@ -35,10 +35,10 @@ export default function PrivateSubnetInstance() {
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...privateUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
         ))}
         {[...privateCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>
