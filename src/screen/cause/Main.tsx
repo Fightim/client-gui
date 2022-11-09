@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import DragProvider from "../../service/context/DragContext";
+import OptionProvider from "../../service/context/OptionContext";
 import InfoSection from "./InfoSection";
 import InstanceSection from "./InstanceSection";
 import VPCSection from "./VPCSection";
@@ -10,9 +11,11 @@ export default function Main() {
     <StMainContainer>
       <DragProvider>
         <InstanceSection />
-        <VPCSection />
+        <OptionProvider>
+          <VPCSection />
+          <InfoSection />
+        </OptionProvider>
       </DragProvider>
-      <InfoSection />
     </StMainContainer>
   );
 }
