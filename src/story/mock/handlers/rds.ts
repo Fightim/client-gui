@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const rdsHandler = [
-  rest.post(`${process.env.REACT_APP_BASE_URL}/rds`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}/rds`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -22,7 +22,7 @@ export const rdsHandler = [
       }),
     );
   }),
-  rest.get(`${process.env.REACT_APP_BASE_URL}/rds/*`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}/rds/*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
