@@ -9,6 +9,7 @@ interface InstanceInfoProps {
 
 export default function InstanceInfo(props: InstanceInfoProps) {
   const { id } = props;
+
   const { instanceOption } = useOption(id, instanceIconType.Ubuntu);
   console.log(instanceOption.data);
 
