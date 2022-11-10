@@ -8,7 +8,7 @@ const QUERY_KEY = {
   type: "type",
 };
 
-export const useOption = (id: string, type: InstanceIconType) => {
+export const useFetchOption = (id: string, type: InstanceIconType) => {
   const fetcher = () => getInstanceOption(id);
   const { data } = useQuery([QUERY_KEY.option, type, id], fetcher);
 
