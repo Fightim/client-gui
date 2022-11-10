@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import styled from "styled-components";
 
 import useDblClick from "../../service/hooks/instanceContext/useDblClick";
+import Loader from "../common/Loader";
 import CheckBtn from "./info/CheckBtn";
 import DeleteBtn from "./info/DeleteBtn";
 import InstanceInfo from "./info/InstanceInfo";
@@ -15,15 +17,17 @@ export default function InfoSection() {
   const { instanceId } = useDblClick();
 
   return (
-    <StInfoSection>
-      <InstanceInfo id={instanceId} />
-      {/* <LoadBalancerInfo />
+    <Suspense fallback={<Loader />}>
+      <StInfoSection>
+        <InstanceInfo id={instanceId} />
+        {/* <LoadBalancerInfo />
       <RDSInfo /> */}
-      <StBtnWrapper>
-        <DeleteBtn />
-        <CheckBtn />
-      </StBtnWrapper>
-    </StInfoSection>
+        <StBtnWrapper>
+          <DeleteBtn />
+          <CheckBtn />
+        </StBtnWrapper>
+      </StInfoSection>
+    </Suspense>
   );
 }
 
