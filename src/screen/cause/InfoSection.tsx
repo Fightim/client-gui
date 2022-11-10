@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
-import { useInstanceOption } from "../../service/hooks/queries/instances";
-import Options from "./info/Options";
+import useDblClick from "../../service/hooks/instanceContext/useDblClick";
+import InstanceInfo from "./info/InstanceInfo";
 
 // TODO ::
 // 1. react-query 틀잡기
 // 2. responseDto 옵셔널 타이핑
 // 3. 각 옵셔널에 맞는 UI 제작
+// +. type(, id)을 가지고 컴포넌트 조작
 
 export default function InfoSection() {
-  const { instanceOption } = useInstanceOption("123");
-  console.log(instanceOption.data);
+  const { instanceId } = useDblClick();
 
   return (
     <StInfoSection>
-      <Options name={instanceOption.data.options.name} />
+      <InstanceInfo id={instanceId} />
+      {/* <LoadBalancerInfo />
+      <RDSInfo /> */}
     </StInfoSection>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import useOption from "../../../service/hooks/instanceContext/useOption";
+import useDblClick from "../../../service/hooks/instanceContext/useDblClick";
 import { droppedInstanceIcons } from "../../../store/instanceIcon/dropped";
 import { InstanceIconType, instanceIconType } from "../../../store/types/instanceIcon.d";
 
@@ -12,7 +12,7 @@ interface DroppedInstanceIconProps {
 export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   const { type, instanceId } = props;
 
-  const { handleInstanceId } = useOption();
+  const { handleInstanceId } = useDblClick();
 
   const isActive = true;
   // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
