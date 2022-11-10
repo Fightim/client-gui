@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 import useDblClick from "../../service/hooks/instanceContext/useDblClick";
+import CheckBtn from "./info/CheckBtn";
+import DeleteBtn from "./info/DeleteBtn";
 import InstanceInfo from "./info/InstanceInfo";
 
 // TODO ::
@@ -17,11 +19,17 @@ export default function InfoSection() {
       <InstanceInfo id={instanceId} />
       {/* <LoadBalancerInfo />
       <RDSInfo /> */}
+      <StBtnWrapper>
+        <DeleteBtn />
+        <CheckBtn />
+      </StBtnWrapper>
     </StInfoSection>
   );
 }
 
 const StInfoSection = styled.section`
+  position: relative;
+
   width: 31.7rem;
 
   display: flex;
@@ -33,4 +41,18 @@ const StInfoSection = styled.section`
   border-radius: 0.6rem;
 
   background-color: ${({ theme }) => theme.colors.white100};
+`;
+
+const StBtnWrapper = styled.div`
+  position: absolute;
+  right: 0rem;
+  bottom: 1rem;
+  left: 0rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 1.5rem;
 `;
