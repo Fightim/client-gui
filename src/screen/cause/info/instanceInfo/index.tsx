@@ -1,7 +1,7 @@
-import { useFetchOption } from "../../../service/hooks/queries/instances";
-import { instanceIconType } from "../../../store/types/instanceIcon.d";
-import InstanceInformations from "./instance/InstanceInformations";
-import InstanceOptions from "./instance/InstanceOptions";
+import { useFetchOption } from "../../../../service/hooks/queries/instances";
+import { instanceIconType } from "../../../../store/types/instanceIcon.d";
+import InstanceInformations from "./InstanceInformations";
+import InstanceOptions from "./InstanceOptions";
 
 interface InstanceInfoProps {
   id: string;

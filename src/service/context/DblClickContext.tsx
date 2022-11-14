@@ -2,7 +2,7 @@
 import { createContext, useState } from "react";
 
 import { IDblClickContext } from "../../store/types/dblClickContext.d";
-import { InstanceIconType } from "../../store/types/instanceIcon.d";
+import { InstanceIconType, InstanceIconTypeWithNull } from "../../store/types/instanceIcon.d";
 
 export const DblClickContext = createContext<IDblClickContext>({
   instanceId: "",
@@ -15,7 +15,7 @@ export default function DblClickProvider(props: React.PropsWithChildren) {
   const { children } = props;
 
   const [instanceId, setInstanceId] = useState("");
-  const [instanceType, setInstanceType] = useState<InstanceIconType | null>(null);
+  const [instanceType, setInstanceType] = useState<InstanceIconTypeWithNull>(null);
 
   const handleInstanceId = (id: string) => {
     setInstanceId(id);

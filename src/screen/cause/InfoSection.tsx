@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import styled from "styled-components";
 
 import useDblClick from "../../service/hooks/instanceContext/useDblClick";
+import { instanceIconType, InstanceIconTypeWithNull } from "../../store/types/instanceIcon.d";
 import Loader from "../common/Loader";
 import CheckBtn from "./info/CheckBtn";
 import DeleteBtn from "./info/DeleteBtn";
-import InstanceInfo from "./info/InstanceInfo";
+import InstanceInfo from "./info/instanceInfo";
+import LoadBalancerInfo from "./info/loadBalancerInfo";
 
 // TODO ::
 // 1. react-query 틀잡기
@@ -14,18 +16,32 @@ import InstanceInfo from "./info/InstanceInfo";
 // +. type(, id)을 가지고 컴포넌트 조작
 
 export default function InfoSection() {
-  const { instanceId } = useDblClick();
+  const { instanceId, instanceType } = useDblClick();
+
+  const infoComponentByType = (_instanceType: InstanceIconTypeWithNull) => {
+    switch (_instanceType) {
+      case instanceIconType.Ubuntu:
+      case instanceIconType.Centos:
+        return <InstanceInfo id={instanceId} />;
+      case instanceIconType.ALB:
+        return <LoadBalancerInfo />;
+      case instanceIconType.MySQL:
+        return <div>MYMYMYM</div>;
+      default:
+        return null;
+    }
+  };
 
   return (
     <Suspense fallback={<Loader />}>
       <StInfoSection>
-        <InstanceInfo id={instanceId} />
-        {/* <LoadBalancerInfo />
-      <RDSInfo /> */}
-        <StBtnWrapper>
-          <DeleteBtn />
-          <CheckBtn />
-        </StBtnWrapper>
+        <>
+          {infoComponentByType(instanceType)}
+          <StBtnWrapper>
+            <DeleteBtn />
+            <CheckBtn />
+          </StBtnWrapper>
+        </>
       </StInfoSection>
     </Suspense>
   );

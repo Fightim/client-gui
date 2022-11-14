@@ -6,3 +6,4 @@ export const instanceIconType = {
 } as const;
 
 export type InstanceIconType = typeof instanceIconType[keyof typeof instanceIconType];
+export type InstanceIconTypeWithNull = InstanceIconType | null;
