@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import useInput from "../../../service/hooks/useInput";
-import { OptionTitle } from "../@styled/info.styled";
+import useInput from "../../../../service/hooks/useInput";
+import { OptionTitle } from "../../@styled/info.styled";
 
 interface InstanceOptionsProps {
   name: string;

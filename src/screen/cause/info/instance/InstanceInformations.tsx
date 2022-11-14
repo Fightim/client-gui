@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { IcArrowBlue } from "../../../store/assets";
-import { OptionTitle } from "../@styled/info.styled";
+import { IcArrowBlue } from "../../../../store/assets";
+import { OptionTitle } from "../../@styled/info.styled";
 
 // TODO :: any 삭제
 export default function InstanceInformations(props: any) {
