@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const OptionTitle = styled.h3`
+const OptionTitle = styled.h3`
   width: 17rem;
   height: 3rem;
 
@@ -33,6 +33,8 @@ const Input = styled.input`
   height: 3rem;
 
   padding-left: 1.6rem;
+  margin-bottom: 0.6rem;
+
   font-size: 1.4rem;
   line-height: 1.7rem;
 

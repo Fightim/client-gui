@@ -14,7 +14,7 @@ export default function RDSInfo(props: RDSInfoProps) {
 
   return (
     <>
-      <RDSOptions name={rdsOption.data.options.name} />
+      <RDSOptions name={rdsOption.data.options.name} masterUserName={rdsOption.data.options.masterUserName} />
       <RDSInformations {...rdsOption.data.informations} />
     </>
   );
