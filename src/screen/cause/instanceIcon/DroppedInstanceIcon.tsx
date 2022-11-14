@@ -12,20 +12,25 @@ interface DroppedInstanceIconProps {
 export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   const { type, instanceId } = props;
 
-  const { handleInstanceId } = useDblClick();
+  const { handleInstanceId, handleInstanceType } = useDblClick();
 
   const isActive = true;
   // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
 
+  function handleDoubleClick(type: InstanceIconType, instanceId: string) {
+    handleInstanceType(type);
+    handleInstanceId(instanceId);
+  }
+
   if (type === instanceIconType.ALB)
     return (
-      <StIconWrapperForALB onDoubleClick={() => handleInstanceId(instanceId)}>
+      <StIconWrapperForALB onDoubleClick={() => handleDoubleClick(type, instanceId)}>
         {droppedInstanceIcons[type].element}
       </StIconWrapperForALB>
     );
 
   return (
-    <StIconWrapper onDoubleClick={() => handleInstanceId(instanceId)} active={isActive} type={type}>
+    <StIconWrapper onDoubleClick={() => handleDoubleClick(type, instanceId)} active={isActive} type={type}>
       {droppedInstanceIcons[type].element}
       {droppedInstanceIcons[type].name}
     </StIconWrapper>
