@@ -1,5 +1,4 @@
-import { useFetchOption } from "../../../../service/hooks/queries/instances";
-import { instanceIconType } from "../../../../store/types/instanceIcon.d";
+import { useFetchInstanceOption } from "../../../../service/hooks/queries/instances";
 import InstanceInformations from "./InstanceInformations";
 import InstanceOptions from "./InstanceOptions";
 
@@ -10,7 +9,7 @@ interface InstanceInfoProps {
 export default function InstanceInfo(props: InstanceInfoProps) {
   const { id } = props;
 
-  const { instanceOption } = useFetchOption(id, instanceIconType.Ubuntu);
+  const { instanceOption } = useFetchInstanceOption(id);
   console.log(instanceOption.data);
 
   return (
