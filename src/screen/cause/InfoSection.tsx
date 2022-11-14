@@ -8,12 +8,7 @@ import CheckBtn from "./info/CheckBtn";
 import DeleteBtn from "./info/DeleteBtn";
 import InstanceInfo from "./info/instanceInfo";
 import LoadBalancerInfo from "./info/loadBalancerInfo";
-
-// TODO ::
-// 1. react-query 틀잡기
-// 2. responseDto 옵셔널 타이핑
-// 3. 각 옵셔널에 맞는 UI 제작
-// +. type(, id)을 가지고 컴포넌트 조작
+import RDSInfo from "./info/rdsInfo";
 
 export default function InfoSection() {
   const { instanceId, instanceType } = useDblClick();
@@ -24,9 +19,9 @@ export default function InfoSection() {
       case instanceIconType.Centos:
         return <InstanceInfo id={instanceId} />;
       case instanceIconType.ALB:
-        return <LoadBalancerInfo />;
+        return <LoadBalancerInfo id={instanceId} />;
       case instanceIconType.MySQL:
-        return <div>MYMYMYM</div>;
+        return <RDSInfo id={instanceId} />;
       default:
         return null;
     }
