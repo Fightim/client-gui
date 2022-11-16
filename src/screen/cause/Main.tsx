@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import DragProvider from "../../service/context/DragContext";
 import DblClickProvider from "../../service/context/DblClickContext";
+import DragProvider from "../../service/context/DragContext";
 import InfoSection from "./InfoSection";
 import InstanceSection from "./InstanceSection";
 import VPCSection from "./VPCSection";

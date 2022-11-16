@@ -7,7 +7,6 @@ import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
 export default function InstanceSection() {
   return (
     <StInstanceSection>
-      {/* TODO :: 한 컴포넌트로 조작 */}
       <St.InstanceBox>
         <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
         <St.BoxBody>
