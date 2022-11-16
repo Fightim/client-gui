@@ -13,6 +13,9 @@ import {
   removeRDSIdsBeforePost,
 } from "../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../store/assets";
+import { createInstances } from "../../story/api/instances";
+import { createRDS } from "../../story/api/rds";
+import { createLoadBalancer } from "../../story/api/loadBalancers";
 
 export default function Header() {
   const { privateUbuntuInstances } = usePrivateUbuntu();
@@ -23,7 +26,7 @@ export default function Header() {
   const { instances: rds } = useRDS();
 
   // TODO :: 로딩뷰
-  function handleClickComplete() {
+  async function handleClickComplete() {
     const postingInstances = removeInstanceIdsBeforePost([
       ...privateUbuntuInstances,
       ...publicUbuntuInstances,
@@ -32,6 +35,10 @@ export default function Header() {
     ]);
     const postingALB = removeALBIdsBeforePost([...alb][0]);
     const postingRDS = removeRDSIdsBeforePost([...rds][0]);
+
+    await createInstances(postingInstances);
+    await createLoadBalancer(postingALB);
+    await createRDS(postingRDS);
   }
 
   return (

@@ -7,7 +7,7 @@ export const getLoadBalancerOption = async (id: string) => {
   return data;
 };
 
-export const postLoadBalancers = async (loadBalancer: CreateLoadBalancerDto) => {
+export const createLoadBalancer = async (loadBalancer: CreateLoadBalancerDto) => {
   const { data } = await client.post("/load-balancers", loadBalancer);
 
   return data;

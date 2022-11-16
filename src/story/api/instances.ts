@@ -7,7 +7,7 @@ export const getInstanceOption = async (id: string) => {
   return data;
 };
 
-export const postInstances = async (instances: CreateInstanceDto[]) => {
+export const createInstances = async (instances: CreateInstanceDto[]) => {
   const { data } = await client.post("/instances", instances);
 
   return data;
