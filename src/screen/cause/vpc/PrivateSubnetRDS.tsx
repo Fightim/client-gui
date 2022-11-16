@@ -8,7 +8,7 @@ export default function PrivateSubnetRDS() {
   const { dragRef, isDragging } = useDrag();
   const { instances, addInstance } = useRDS();
 
-  const MAX_SIZE = 2;
+  const MAX_SIZE = 1;
   const isAffordBox = instances.size < MAX_SIZE;
   const isCorrectBox = dragRef.current === instanceIconType.RDS && isAffordBox;
 

@@ -37,8 +37,6 @@ export default function CompleteButton() {
     await createInstances(postingInstances);
     await createLoadBalancer(postingALB);
     await createRDS(postingRDS);
-
-    console.log(postingALB, postingInstances, postingRDS);
   }
 
   return (

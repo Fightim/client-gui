@@ -10,7 +10,7 @@ export default function PrivateSubnetInstance() {
   const { privateUbuntuInstances, addPrivateUbuntuInstances } = usePrivateUbuntu();
   const { privateCentosInstances, addPrivateCentosInstances } = usePrivateCentos();
 
-  const MAX_SIZE = 2;
+  const MAX_SIZE = 1;
   const isAffordBox = privateUbuntuInstances.size + privateCentosInstances.size < MAX_SIZE;
   const isCorrectBox =
     (dragRef.current === instanceIconType.Centos || dragRef.current === instanceIconType.Ubuntu) && isAffordBox;
