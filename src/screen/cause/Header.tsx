@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useALB from "../../service/hooks/instanceContext/useALB";
+import useMySQL from "../../service/hooks/instanceContext/useMySQL";
 
 import usePrivateCentos from "../../service/hooks/instanceContext/usePrivateCentos";
 import usePrivateUbuntu from "../../service/hooks/instanceContext/usePrivateUbuntu";
 import usePublicCentos from "../../service/hooks/instanceContext/usePublicCentos";
 import usePublicUbuntu from "../../service/hooks/instanceContext/usePublicUbuntu";
-import { removeIdsBeforePost } from "../../service/util/removeIdsBeforePost.ts";
+import {
+  removeALBIdsBeforePost,
+  removeInstanceIdsBeforePost,
+  removeRDSIdsBeforePost,
+} from "../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../store/assets";
 
 export default function Header() {
@@ -13,18 +19,19 @@ export default function Header() {
   const { publicUbuntuInstances } = usePublicUbuntu();
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
+  const { instances: alb } = useALB();
+  const { instances: rds } = useMySQL();
 
+  // TODO :: 로딩뷰
   function handleClickComplete() {
-    // TODO :: 로딩뷰
-
-    // reduce 로 id 값 제거
-    const droppedInstances = [
+    const postingInstances = removeInstanceIdsBeforePost([
       ...privateUbuntuInstances,
       ...publicUbuntuInstances,
       ...privateCentosInstances,
       ...publicCentosInstances,
-    ];
-    const postingInstances = removeIdsBeforePost(droppedInstances);
+    ]);
+    const postingALB = removeALBIdsBeforePost([...alb][0]);
+    const postingRDS = removeRDSIdsBeforePost([...rds][0]);
   }
 
   return (
