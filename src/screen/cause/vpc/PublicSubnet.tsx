@@ -43,7 +43,10 @@ export default function PublicSubnet() {
         });
         break;
       case instanceIconType.ALB:
-        addALBInstance("" + Math.random());
+        addALBInstance({
+          id: "" + Math.random(),
+          name: "울ㄹ라라alb",
+        });
         break;
       default:
         break;
@@ -61,7 +64,7 @@ export default function PublicSubnet() {
           <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
         {[...ALBInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-export default function useALBData() {
-  const [instances, setInstances] = useState<Set<string>>(new Set());
+import { ALBData } from "../../../../store/types/instanceContext";
 
-  const addInstance = (instanceId: string) => {
+export default function useALBData() {
+  const [instances, setInstances] = useState<Set<ALBData>>(new Set());
+
+  const addInstance = (instanceId: ALBData) => {
     setInstances(new Set(instances.add(instanceId)));
   };
 
-  const removeInstance = (instanceId: string) => {
+  const removeInstance = (instanceId: ALBData) => {
     instances.delete(instanceId);
     setInstances(new Set(instances));
   };
