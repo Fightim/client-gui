@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { RDSData } from "../../../../store/types/instanceContext";
 
-export default function useMySQLData() {
+export default function useRDSData() {
   const [instances, setInstances] = useState<Set<RDSData>>(new Set());
 
   const addInstance = (instanceId: RDSData) => {

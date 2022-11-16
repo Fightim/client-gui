@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import useALB from "../../service/hooks/instanceContext/useALB";
-import useMySQL from "../../service/hooks/instanceContext/useMySQL";
+import useRDS from "../../service/hooks/instanceContext/useRDS";
 
 import usePrivateCentos from "../../service/hooks/instanceContext/usePrivateCentos";
 import usePrivateUbuntu from "../../service/hooks/instanceContext/usePrivateUbuntu";
@@ -20,7 +20,7 @@ export default function Header() {
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
   const { instances: alb } = useALB();
-  const { instances: rds } = useMySQL();
+  const { instances: rds } = useRDS();
 
   // TODO :: 로딩뷰
   function handleClickComplete() {

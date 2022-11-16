@@ -23,7 +23,7 @@ export default function InstanceSection() {
       <St.InstanceBox>
         <St.BoxTitle>RDS</St.BoxTitle>
         <St.BoxBody>
-          <DraggableInstanceIcon type={instanceIconType.MySQL} />
+          <DraggableInstanceIcon type={instanceIconType.RDS} />
         </St.BoxBody>
       </St.InstanceBox>
     </StInstanceSection>

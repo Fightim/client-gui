@@ -1,5 +1,5 @@
 import ALBProvider from "../../service/context/ALBContext";
-import MySQLProvider from "../../service/context/MySQLContext";
+import RDSProvider from "../../service/context/RDSContext";
 import T2Provider from "../../service/context/T2Context";
 import Header from "../cause/Header";
 import Main from "../cause/Main";
@@ -7,12 +7,12 @@ import Main from "../cause/Main";
 export default function Cause() {
   return (
     <T2Provider>
-      <MySQLProvider>
+      <RDSProvider>
         <ALBProvider>
           <Header />
           <Main />
         </ALBProvider>
-      </MySQLProvider>
+      </RDSProvider>
     </T2Provider>
   );
 }
