@@ -23,6 +23,9 @@ export default function PublicSubnet() {
   function onDrop() {
     if (!isCorrectBox) return;
 
+    const name = prompt("인스턴스의 이름을 입력해주세요.", "");
+    if (!name) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
         addPublicUbuntuInstances({
@@ -30,7 +33,7 @@ export default function PublicSubnet() {
           type: "t2.micro",
           os: "UBUNTU",
           tier: "WEBSERVER",
-          name: "asdf",
+          name,
         });
         break;
       case instanceIconType.Centos:
@@ -39,13 +42,13 @@ export default function PublicSubnet() {
           type: "t2.micro",
           os: "CENTOS",
           tier: "WEBSERVER",
-          name: "asdf",
+          name,
         });
         break;
       case instanceIconType.ALB:
         addALBInstance({
           id: "" + Math.random(),
-          name: "울ㄹ라라alb",
+          name,
         });
         break;
       default:

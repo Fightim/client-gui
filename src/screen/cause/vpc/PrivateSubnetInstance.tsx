@@ -18,6 +18,9 @@ export default function PrivateSubnetInstance() {
   function onDrop() {
     if (!isCorrectBox) return;
 
+    const name = prompt("인스턴스의 이름을 입력해주세요.", "");
+    if (!name) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
         addPrivateUbuntuInstances({
