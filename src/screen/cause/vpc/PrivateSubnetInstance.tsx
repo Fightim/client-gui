@@ -20,10 +20,22 @@ export default function PrivateSubnetInstance() {
 
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
-        addPrivateUbuntuInstances("" + Math.random());
+        addPrivateUbuntuInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "UBUNTU",
+          tier: "WAS",
+          name: "asdf",
+        });
         break;
       case instanceIconType.Centos:
-        addPrivateCentosInstances("" + Math.random());
+        addPrivateCentosInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "CENTOS",
+          tier: "WAS",
+          name: "asdf",
+        });
         break;
       default:
         break;
@@ -35,10 +47,10 @@ export default function PrivateSubnetInstance() {
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...privateUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
         {[...privateCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

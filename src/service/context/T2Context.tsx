@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useEffect } from "react";
 
-import { InstanceContext } from "../../store/types/instanceContext.d";
+import { InstanceContext } from "../../store/types/instanceContext";
 import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
 
 export const T2Context = createContext<InstanceContext>({

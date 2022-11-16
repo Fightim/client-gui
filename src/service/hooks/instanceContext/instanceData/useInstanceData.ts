@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-export default function useInstanceData() {
-  const [instances, setInstances] = useState<Set<string>>(new Set());
+import { InstanceData } from "../../../../store/types/instanceContext";
 
-  const addInstance = (instanceId: string) => {
+export default function useInstanceData() {
+  const [instances, setInstances] = useState<Set<InstanceData>>(new Set());
+
+  const addInstance = (instanceId: InstanceData) => {
     setInstances(new Set(instances.add(instanceId)));
   };
 
-  const removeInstance = (instanceId: string) => {
+  const removeInstance = (instanceId: InstanceData) => {
     instances.delete(instanceId);
     setInstances(new Set(instances));
   };

@@ -25,10 +25,22 @@ export default function PublicSubnet() {
 
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
-        addPublicUbuntuInstances("" + Math.random());
+        addPublicUbuntuInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "UBUNTU",
+          tier: "WEBSERVER",
+          name: "asdf",
+        });
         break;
       case instanceIconType.Centos:
-        addPublicCentosInstances("" + Math.random());
+        addPublicCentosInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "CENTOS",
+          tier: "WEBSERVER",
+          name: "asdf",
+        });
         break;
       case instanceIconType.ALB:
         addALBInstance("" + Math.random());
@@ -43,10 +55,10 @@ export default function PublicSubnet() {
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...publicUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
         {[...publicCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
         {[...ALBInstances].map((instance, i) => (
           <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance} />
