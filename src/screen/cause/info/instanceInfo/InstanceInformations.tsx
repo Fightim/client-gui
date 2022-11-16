@@ -13,8 +13,8 @@ export default function InstanceInformations(props: any) {
       <ContentWrapper>{id}</ContentWrapper>
 
       <St.Title>보안 그룹</St.Title>
-      {securityGroup.map((security: string, idx: number) => (
-        <ContentWrapper key={idx}>{security}</ContentWrapper>
+      {securityGroup.map((security: string) => (
+        <ContentWrapper key={security}>{security}</ContentWrapper>
       ))}
 
       <St.Title>대상 그룹 인스턴스</St.Title>

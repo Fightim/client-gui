@@ -34,8 +34,8 @@ export default function PrivateSubnetRDS() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...instances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.MySQL} instanceId={instance.id} />
+        {[...instances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.MySQL} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

@@ -46,11 +46,11 @@ export default function PrivateSubnetInstance() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...privateUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance.id} />
+        {[...privateUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
-        {[...privateCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance.id} />
+        {[...privateCentosInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

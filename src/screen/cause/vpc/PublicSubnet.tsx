@@ -57,14 +57,14 @@ export default function PublicSubnet() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...publicUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance.id} />
+        {[...publicUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
-        {[...publicCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance.id} />
+        {[...publicCentosInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
-        {[...ALBInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance.id} />
+        {[...ALBInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.ALB} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>
