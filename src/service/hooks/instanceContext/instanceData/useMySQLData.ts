@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useInstance() {
+export default function useMySQLData() {
   const [instances, setInstances] = useState<Set<string>>(new Set());
 
   const addInstance = (instanceId: string) => {

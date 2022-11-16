@@ -2,7 +2,7 @@
 import { createContext, useEffect } from "react";
 
 import { RDSContext } from "../../store/types/instanceContext.d";
-import useInstance from "../hooks/instanceContext/useInstance";
+import useInstance from "../hooks/instanceContext/instanceData/useInstanceData";
 
 export const MySQLContext = createContext<RDSContext>({
   instances: new Set(),

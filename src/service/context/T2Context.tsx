@@ -2,7 +2,7 @@
 import { createContext, useEffect } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext.d";
-import useInstance from "../hooks/instanceContext/useInstance";
+import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
 
 export const T2Context = createContext<InstanceContext>({
   publicUbuntuInstances: new Set(),
@@ -26,22 +26,22 @@ export default function T2Provider(props: React.PropsWithChildren) {
     instances: publicUbuntuInstances,
     addInstance: addPublicUbuntuInstances,
     removeInstance: removePublicUbuntuInstances,
-  } = useInstance();
+  } = useInstanceData();
   const {
     instances: publicCentosInstances,
     addInstance: addPublicCentosInstances,
     removeInstance: removePublicCentosInstances,
-  } = useInstance();
+  } = useInstanceData();
   const {
     instances: privateUbuntuInstances,
     addInstance: addPrivateUbuntuInstances,
     removeInstance: removePrivateUbuntuInstances,
-  } = useInstance();
+  } = useInstanceData();
   const {
     instances: privateCentosInstances,
     addInstance: addPrivateCentosInstances,
     removeInstance: removePrivateCentosInstances,
-  } = useInstance();
+  } = useInstanceData();
 
   useEffect(() => {
     // TODO :: 초기 API 통신하여 state 관리

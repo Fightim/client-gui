@@ -2,7 +2,7 @@
 import { createContext, useEffect } from "react";
 
 import { LoadBalancerContext } from "../../store/types/instanceContext.d";
-import useInstance from "../hooks/instanceContext/useInstance";
+import useInstance from "../hooks/instanceContext/instanceData/useInstanceData";
 
 export const ALBContext = createContext<LoadBalancerContext>({
   instances: new Set(),
