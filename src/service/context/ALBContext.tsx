@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useEffect } from "react";
 
-import { RDSContext } from "../../store/types/instanceContext.d";
+import { LoadBalancerContext } from "../../store/types/instanceContext.d";
 import useALBData from "../hooks/instanceContext/instanceData/useALBData";
 
-export const ALBContext = createContext<RDSContext>({
+export const ALBContext = createContext<LoadBalancerContext>({
   instances: new Set(),
   addInstance: () => {},
   removeInstance: () => {},

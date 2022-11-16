@@ -17,7 +17,13 @@ export default function PrivateSubnetRDS() {
 
     switch (dragRef.current) {
       case instanceIconType.MySQL:
-        addInstance("" + Math.random());
+        addInstance({
+          id: "" + Math.random(),
+          name: "sdf",
+          masterUserName: "fsda",
+          rdsPassword: "asdf",
+          rdsPasswordCheck: "asdf",
+        });
         break;
       default:
         break;
@@ -29,7 +35,7 @@ export default function PrivateSubnetRDS() {
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...instances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.MySQL} instanceId={instance} />
+          <DroppedInstanceIcon key={i} type={instanceIconType.MySQL} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

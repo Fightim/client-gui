@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-export default function useMySQLData() {
-  const [instances, setInstances] = useState<Set<string>>(new Set());
+import { RDSData } from "../../../../store/types/instanceContext";
 
-  const addInstance = (instanceId: string) => {
+export default function useMySQLData() {
+  const [instances, setInstances] = useState<Set<RDSData>>(new Set());
+
+  const addInstance = (instanceId: RDSData) => {
     setInstances(new Set(instances.add(instanceId)));
   };
 
-  const removeInstance = (instanceId: string) => {
+  const removeInstance = (instanceId: RDSData) => {
     instances.delete(instanceId);
     setInstances(new Set(instances));
   };

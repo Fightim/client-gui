@@ -1,10 +1,14 @@
-import { CreateInstanceDto, CreateLoadBalancerDto } from "./requestDto";
+import { CreateInstanceDto, CreateLoadBalancerDto, CreateRdsDto } from "./requestDto";
 
 export interface InstanceData extends CreateInstanceDto {
   id: string;
 }
 
 export interface ALBData extends CreateLoadBalancerDto {
+  id: string;
+}
+
+export interface RDSData extends CreateRdsDto {
   id: string;
 }
 
@@ -23,14 +27,14 @@ export interface InstanceContext {
   removePrivateCentosInstances: (_instanceId: InstanceData) => void;
 }
 
-export interface RDSContext {
+export interface LoadBalancerContext {
   instances: Set<ALBData>;
   addInstance: (_instanceId: ALBData) => void;
   removeInstance: (_instanceId: ALBData) => void;
 }
 
-export interface LoadBalancerContext {
-  instances: Set<string>;
-  addInstance: (_instanceId: string) => void;
-  removeInstance: (_instanceId: string) => void;
+export interface RDSContext {
+  instances: Set<RDSData>;
+  addInstance: (_instanceId: RDSData) => void;
+  removeInstance: (_instanceId: RDSData) => void;
 }

@@ -2,7 +2,7 @@
 import { createContext, useEffect } from "react";
 
 import { RDSContext } from "../../store/types/instanceContext.d";
-import useInstance from "../hooks/instanceContext/instanceData/useInstanceData";
+import useMySQLData from "../hooks/instanceContext/instanceData/useMySQLData";
 
 export const MySQLContext = createContext<RDSContext>({
   instances: new Set(),
@@ -13,7 +13,7 @@ export const MySQLContext = createContext<RDSContext>({
 export default function MySQLProvider(props: React.PropsWithChildren) {
   const { children } = props;
 
-  const { instances, addInstance, removeInstance } = useInstance();
+  const { instances, addInstance, removeInstance } = useMySQLData();
 
   useEffect(() => {
     // TODO :: 초기 API 통신하여 state 관리
