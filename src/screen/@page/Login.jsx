@@ -42,56 +42,45 @@ const StyledButton = styled.button`
 export default function Login() {
 
   const dispatch=useDispatch();
-
+ 
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
 
+  const onEmailHandler=(event)=>{
+    setEmail(event.target.value);
+  }
   
+  const onPasswordHandler=(event)=>{
+    setPassword(event.target.value);
+  }
+  
+  
+  const submitHandler=(event)=>{
+    event.preventDefault(); //reload막기
+    console.log('email',email);
+    console.log('password',password);
+
+    let body={
+      email:email,
+      password:password,
+    }
+      dispatch(loginUser(body));    
+    }
+  
+
   return (
     <>
   <div>
 
     <div className="out">
-      <form onSubmit={function (event){
-        event.preventDefault(); //reload막기
-
-        console.log('email',email);
-        console.log('password',password);
-
-
-        if(!email){
-          return alert("email을 입력하세요.");
-        }
-        else if(!password){
-          return alert("password를 입력하세요.");
-        }
-        else{
-          let body={
-            email:email,
-            password:password,
-          };
-        
-          dispatch(loginUser(body));
-
-          axios.post("Endpoint",body)
-          .then((res)=>{
-            console.log(res.data);
-            if(res.data.code===200){
-              console.log("로그인 완료");
-              //로그인 성공하면 페이지 이동하게
-              //token값 받아옴
-            }
-          });
-        }
-        // setLoading(true);
-      }}>
+      <form onSubmit={submitHandler}>
     <a>email</a>
     <br/>
     <br/>
     <StyledInput 
-    type="email" 
+    type="text" 
     value={email} 
-    onChange={(e)=>setEmail(e.currentTarget.value)}
+    onChange={onEmailHandler}
     ></StyledInput>
     <br/>
     <br/>
@@ -101,13 +90,14 @@ export default function Login() {
     <StyledInput
     type="password"
     value={password}
-    onChange={(e)=>setPassword(e.currentTarget.value)}
+    onChange={onPasswordHandler}
     ></StyledInput>
     <br/>
     <br/>
     <br/>
     <StyledButton
-    formAction=''>
+    type="submit"
+    >
       <img
           alt="apply"
           src={applyimg}
