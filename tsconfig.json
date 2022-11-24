@@ -3,7 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -22,7 +22,7 @@
   "include": [
     "**/*.ts","**/*.d.ts",
     "**/*.tsx", "public/mockServiceWorker.js"
-  ],
+, "src/screen/@page/Login.jsx"  ],
   "exclude": [
     "node_modules"
   ],

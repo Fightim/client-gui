@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Cause, Error404, Login } from "./screen/@page";
+import { Cause, Error404, Login, RegistKey } from "./screen/@page";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/key" element={<RegistKey />} />
         <Route path="/cause" element={<Cause />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
