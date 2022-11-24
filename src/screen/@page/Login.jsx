@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import applyimg from "../login/applyimg.png";
-import { postLoginUser } from "../login/loginUser";
+import { createUser, postLoginUser } from "../login/loginUser";
 
 const StyledInput = styled.input`
   height: 50px;
@@ -32,6 +32,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoginState, setIsLoginState] = useState(true);
 
   const onEmailHandler = (event) => {
     setEmail(event.target.value);
@@ -44,11 +45,11 @@ export default function Login() {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    await postLoginUser(
+    const postFunction = isLoginState ? postLoginUser : createUser;
+    await postFunction(
       {
         email,
         password,
-        passwordCheck: password,
       },
       linkToKeyPage,
     );
@@ -62,7 +63,7 @@ export default function Login() {
     <>
       <div>
         <div className="out">
-          <h1>로그인</h1>
+          <h1>{isLoginState ? "로그인" : "회원가입"}</h1>
           <br />
           <br />
           <br />
@@ -86,6 +87,10 @@ export default function Login() {
             </StyledButton>
             <br />
           </form>
+          <br />
+          <button className="signup" onClick={() => setIsLoginState((prev) => !prev)}>
+            {isLoginState ? "회원가입" : "로그인"}
+          </button>
         </div>
       </div>
     </>
