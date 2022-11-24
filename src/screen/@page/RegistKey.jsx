@@ -7,7 +7,7 @@ import applyimg from "../login/applyimg.png";
 import { createUser, postLoginUser } from "../login/loginUser";
 import { StyledButton, StyledInput } from "../login/styled";
 
-export default function Login() {
+export default function RegistKey() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
