@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext";
 import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
@@ -44,27 +44,29 @@ export default function T2Provider(props: React.PropsWithChildren) {
   } = useInstanceData();
 
   const { instances } = useFetchInstances();
-  instances?.data.forEach((instance) => {
-    const postInstance = {
-      id: instance.informations.id,
-      type: instance.informations.type,
-      os: instance.informations.os,
-      tier: instance.informations.tier,
-      name: instance.options.name,
-    };
-    if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER") {
-      addPublicUbuntuInstances(postInstance);
-    }
-    if (instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER") {
-      addPublicCentosInstances(postInstance);
-    }
-    if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS") {
-      addPrivateUbuntuInstances(postInstance);
-    }
-    if (instance.informations.os === "CENTOS" && instance.informations.tier === "WAS") {
-      addPrivateCentosInstances(postInstance);
-    }
-  });
+  useEffect(() => {
+    instances?.data.forEach((instance) => {
+      const postInstance = {
+        id: instance.informations.id,
+        type: instance.informations.type,
+        os: instance.informations.os,
+        tier: instance.informations.tier,
+        name: instance.options.name,
+      };
+      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER") {
+        return addPublicUbuntuInstances(postInstance);
+      }
+      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER") {
+        return addPublicCentosInstances(postInstance);
+      }
+      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS") {
+        return addPrivateUbuntuInstances(postInstance);
+      }
+      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WAS") {
+        return addPrivateCentosInstances(postInstance);
+      }
+    });
+  }, [instances]);
 
   return (
     <T2Context.Provider

@@ -11,7 +11,7 @@ export const instancesHandler = [
               "name": "string"
             },
             "informations": {
-              "id": "string",
+              "id": "string11",
               "type": "t2.micro",
               "os": "CENTOS",
               "tier": "WEBSERVER",
@@ -29,7 +29,7 @@ export const instancesHandler = [
               "name": "string"
             },
             "informations": {
-              "id": "string",
+              "id": "string22",
               "type": "t2.micro",
               "os": "UBUNTU",
               "tier": "WEBSERVER",
@@ -47,7 +47,7 @@ export const instancesHandler = [
               "name": "string"
             },
             "informations": {
-              "id": "string",
+              "id": "string33",
               "type": "t2.micro",
               "os": "CENTOS",
               "tier": "WAS",
@@ -65,7 +65,7 @@ export const instancesHandler = [
               "name": "string"
             },
             "informations": {
-              "id": "string",
+              "id": "string44",
               "type": "t2.micro",
               "os": "UBUNTU",
               "tier": "WAS",
