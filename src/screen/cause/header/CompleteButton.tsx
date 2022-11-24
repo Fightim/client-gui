@@ -12,8 +12,8 @@ import {
 } from "../../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../../store/assets";
 import { createInstances } from "../../../story/api/instances";
-import { createLoadBalancer } from "../../../story/api/loadBalancers";
-import { createRDS } from "../../../story/api/rds";
+// import { createLoadBalancer } from "../../../story/api/loadBalancers";
+// import { createRDS } from "../../../story/api/rds";
 
 export default function CompleteButton() {
   const { privateUbuntuInstances } = usePrivateUbuntu();

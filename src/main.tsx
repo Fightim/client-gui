@@ -9,9 +9,9 @@ import { GlobalStyle } from "./store/style/globalStyle";
 import theme from "./store/style/theme";
 import { worker } from "./story/mock/browser";
 
-// if (import.meta.env.DEV) {
-//   worker.start();
-// }
+if (import.meta.env.DEV) {
+  worker.start();
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
