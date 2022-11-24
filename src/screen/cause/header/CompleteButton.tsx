@@ -31,12 +31,14 @@ export default function CompleteButton() {
       ...privateCentosInstances,
       ...publicCentosInstances,
     ]);
-    const postingALB = removeALBIdsBeforePost([...alb][0]);
-    const postingRDS = removeRDSIdsBeforePost([...rds][0]);
+    // TEST :: ALB, RDS TEST
+    // const postingALB = removeALBIdsBeforePost([...alb][0]);
+    // const postingRDS = removeRDSIdsBeforePost([...rds][0]);
 
-    await createInstances(postingInstances);
-    await createLoadBalancer(postingALB);
-    await createRDS(postingRDS);
+    const testRes = await createInstances(postingInstances);
+    console.log("testRes", testRes);
+    // await createLoadBalancer(postingALB);
+    // await createRDS(postingRDS);
   }
 
   return (
