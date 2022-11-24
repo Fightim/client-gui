@@ -23,15 +23,33 @@ export default function PublicSubnet() {
   function onDrop() {
     if (!isCorrectBox) return;
 
+    const name = prompt("인스턴스의 이름을 입력해주세요.", "");
+    if (!name) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
-        addPublicUbuntuInstances("" + Math.random());
+        addPublicUbuntuInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "UBUNTU",
+          tier: "WEBSERVER",
+          name,
+        });
         break;
       case instanceIconType.Centos:
-        addPublicCentosInstances("" + Math.random());
+        addPublicCentosInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "CENTOS",
+          tier: "WEBSERVER",
+          name,
+        });
         break;
       case instanceIconType.ALB:
-        addALBInstance("" + Math.random());
+        addALBInstance({
+          id: "" + Math.random(),
+          name,
+        });
         break;
       default:
         break;
@@ -42,14 +60,14 @@ export default function PublicSubnet() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...publicUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
+        {[...publicUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
-        {[...publicCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
+        {[...publicCentosInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
-        {[...ALBInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.ALB} instanceId={instance} />
+        {[...ALBInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.ALB} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

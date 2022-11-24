@@ -2,7 +2,7 @@
 import { createContext, useEffect } from "react";
 
 import { LoadBalancerContext } from "../../store/types/instanceContext.d";
-import useInstance from "../hooks/instanceContext/useInstance";
+import useALBData from "../hooks/instanceContext/instanceData/useALBData";
 
 export const ALBContext = createContext<LoadBalancerContext>({
   instances: new Set(),
@@ -13,7 +13,7 @@ export const ALBContext = createContext<LoadBalancerContext>({
 export default function ALBProvider(props: React.PropsWithChildren) {
   const { children } = props;
 
-  const { instances, addInstance, removeInstance } = useInstance();
+  const { instances, addInstance, removeInstance } = useALBData();
 
   useEffect(() => {
     // TODO :: 초기 API 통신하여 state 관리

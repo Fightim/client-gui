@@ -1,5 +1,5 @@
 import IcALB from "./alb.svg";
-import IcMySQL from "./mysql.svg";
+import IcRDS from "./rds.svg";
 import IcT2 from "./t2.svg";
 
 export const instanceIcons = {
@@ -16,7 +16,7 @@ export const instanceIcons = {
     name: "ALB",
   },
   MYSQL: {
-    element: <img src={IcMySQL} alt="mysql" style={{ margin: "1.1rem" }} />,
-    name: "MySQL",
+    element: <img src={IcRDS} alt="rds" style={{ margin: "1.1rem" }} />,
+    name: "RDS",
   },
 };

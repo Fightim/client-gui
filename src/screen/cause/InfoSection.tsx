@@ -20,7 +20,7 @@ export default function InfoSection() {
         return <InstanceInfo id={instanceId} />;
       case instanceIconType.ALB:
         return <LoadBalancerInfo id={instanceId} />;
-      case instanceIconType.MySQL:
+      case instanceIconType.RDS:
         return <RDSInfo id={instanceId} />;
       default:
         return null;

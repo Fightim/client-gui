@@ -8,7 +8,7 @@ export const instancesHandler = [
         status: 200,
         success: true,
         message: "로그인 성공",
-        data: {
+        data: [{
           options: {
             name: "아이디",
           },
@@ -23,7 +23,22 @@ export const instancesHandler = [
             storageVolume: "볼륨",
             storageType: "SSD",
           },
-        },
+        }, {
+          options: {
+            name: "아이디22",
+          },
+          informations: {
+            id: "아이디2",
+            type: "t2.micro",
+            os: "UBUNTU",
+            tier: "WEBSERVER",
+            publicIp: "아이피",
+            privateIp: "아이피",
+            securityGroup: ["랄", "랄랄"],
+            storageVolume: "볼륨",
+            storageType: "SSD",
+          },
+        }],
       }),
     );
   }),

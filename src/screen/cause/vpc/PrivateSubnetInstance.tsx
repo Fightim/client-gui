@@ -10,7 +10,7 @@ export default function PrivateSubnetInstance() {
   const { privateUbuntuInstances, addPrivateUbuntuInstances } = usePrivateUbuntu();
   const { privateCentosInstances, addPrivateCentosInstances } = usePrivateCentos();
 
-  const MAX_SIZE = 2;
+  const MAX_SIZE = 1;
   const isAffordBox = privateUbuntuInstances.size + privateCentosInstances.size < MAX_SIZE;
   const isCorrectBox =
     (dragRef.current === instanceIconType.Centos || dragRef.current === instanceIconType.Ubuntu) && isAffordBox;
@@ -18,12 +18,27 @@ export default function PrivateSubnetInstance() {
   function onDrop() {
     if (!isCorrectBox) return;
 
+    const name = prompt("인스턴스의 이름을 입력해주세요.", "");
+    if (!name) return;
+
     switch (dragRef.current) {
       case instanceIconType.Ubuntu:
-        addPrivateUbuntuInstances("" + Math.random());
+        addPrivateUbuntuInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "UBUNTU",
+          tier: "WAS",
+          name: "asdf",
+        });
         break;
       case instanceIconType.Centos:
-        addPrivateCentosInstances("" + Math.random());
+        addPrivateCentosInstances({
+          id: "" + Math.random(),
+          type: "t2.micro",
+          os: "CENTOS",
+          tier: "WAS",
+          name: "asdf",
+        });
         break;
       default:
         break;
@@ -34,11 +49,11 @@ export default function PrivateSubnetInstance() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...privateUbuntuInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Ubuntu} instanceId={instance} />
+        {[...privateUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
-        {[...privateCentosInstances].map((instance, i) => (
-          <DroppedInstanceIcon key={i} type={instanceIconType.Centos} instanceId={instance} />
+        {[...privateCentosInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

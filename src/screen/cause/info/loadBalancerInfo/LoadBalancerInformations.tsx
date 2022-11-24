@@ -13,13 +13,13 @@ export default function LoadBalancerInformations(props: any) {
       <ContentWrapper>{domain}</ContentWrapper>
 
       <St.Title>보안 그룹</St.Title>
-      {securityGroup.map((security: string, idx: number) => (
-        <ContentWrapper key={idx}>{security}</ContentWrapper>
+      {securityGroup.map((security: string) => (
+        <ContentWrapper key={security}>{security}</ContentWrapper>
       ))}
 
       <St.Title>타겟 인스턴스 그룹</St.Title>
-      {targetGroupInstances.map((target: string, idx: number) => (
-        <ContentWrapper key={idx}>{target}</ContentWrapper>
+      {targetGroupInstances.map((target: string) => (
+        <ContentWrapper key={target}>{target}</ContentWrapper>
       ))}
     </>
   );

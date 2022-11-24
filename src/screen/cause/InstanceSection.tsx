@@ -7,7 +7,6 @@ import DraggableInstanceIcon from "./instanceIcon/DraggableInstanceIcon";
 export default function InstanceSection() {
   return (
     <StInstanceSection>
-      {/* TODO :: 한 컴포넌트로 조작 */}
       <St.InstanceBox>
         <St.BoxTitle>EC2 인스턴스</St.BoxTitle>
         <St.BoxBody>
@@ -24,7 +23,7 @@ export default function InstanceSection() {
       <St.InstanceBox>
         <St.BoxTitle>RDS</St.BoxTitle>
         <St.BoxBody>
-          <DraggableInstanceIcon type={instanceIconType.MySQL} />
+          <DraggableInstanceIcon type={instanceIconType.RDS} />
         </St.BoxBody>
       </St.InstanceBox>
     </StInstanceSection>

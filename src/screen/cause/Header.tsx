@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-import { IcApply } from "../../store/assets";
+import CompleteButton from "./header/CompleteButton";
 
 export default function Header() {
   return (
@@ -11,10 +10,7 @@ export default function Header() {
         <Link to="">AWS 연동</Link>
         <Link to="">아키텍쳐 설계</Link>
       </StLinksContainer>
-      <StCompleteButton>
-        <IcApply />
-        완료 버튼
-      </StCompleteButton>
+      <CompleteButton />
     </StHeaderContainer>
   );
 }
@@ -42,28 +38,5 @@ const StLinksContainer = styled.div`
 
   & > a:not(:last-child) {
     margin-right: 8rem;
-  }
-`;
-
-const StCompleteButton = styled.button`
-  width: 182px;
-  height: 40px;
-
-  position: absolute;
-  right: 8.7rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: ${({ theme }) => theme.colors.blue200};
-  border-radius: 6px;
-
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.white100};
-
-  & > svg {
-    margin-right: 1rem;
   }
 `;
