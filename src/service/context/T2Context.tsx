@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext";
 import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
@@ -44,11 +43,28 @@ export default function T2Provider(props: React.PropsWithChildren) {
     removeInstance: removePrivateCentosInstances,
   } = useInstanceData();
 
-  // TODO :: 초기 API 통신하여 state 관리
-  // TODO :: 1. instance API
-  // TODO :: 2. Public/Private, ubuntu/centos 4가지 분류하여 setState
-  // TODO :: 3. 4가지 커스텀훅으로 분리하여 전달
   const { instances } = useFetchInstances();
+  instances?.data.forEach((instance) => {
+    const postInstance = {
+      id: instance.informations.id,
+      type: instance.informations.type,
+      os: instance.informations.os,
+      tier: instance.informations.tier,
+      name: instance.options.name,
+    };
+    if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER") {
+      addPublicUbuntuInstances(postInstance);
+    }
+    if (instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER") {
+      addPublicCentosInstances(postInstance);
+    }
+    if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS") {
+      addPrivateUbuntuInstances(postInstance);
+    }
+    if (instance.informations.os === "CENTOS" && instance.informations.tier === "WAS") {
+      addPrivateCentosInstances(postInstance);
+    }
+  });
 
   return (
     <T2Context.Provider
