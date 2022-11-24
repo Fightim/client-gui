@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import applyimg from "../login/applyimg.png";
-import { createUser, postLoginUser } from "../login/loginUser";
 import { StyledButton, StyledInput } from "../login/styled";
+import { createUser, postLoginUser } from "../login/userAPI";
 
 export default function Login() {
   const navigate = useNavigate();
