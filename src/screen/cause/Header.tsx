@@ -7,8 +7,8 @@ export default function Header() {
     <StHeaderContainer>
       <StLogo>svg</StLogo>
       <StLinksContainer>
-        <Link to="">AWS 연동</Link>
-        <Link to="">아키텍쳐 설계</Link>
+        <Link to="/key">AWS 연동</Link>
+        <Link to="/cause">아키텍쳐 설계</Link>
       </StLinksContainer>
       <CompleteButton />
     </StHeaderContainer>
