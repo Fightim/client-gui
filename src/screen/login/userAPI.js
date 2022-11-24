@@ -1,8 +1,10 @@
 import axios from "axios";
 
+import { client } from "../../story/api";
+
 export async function postLoginUser(dataToSubmit, onLoginUser) {
   try {
-    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/login`, dataToSubmit);
+    const res = await client.post(`${import.meta.env.VITE_BASE_URL}/auth/login`, dataToSubmit);
 
     localStorage.setItem("user-token", res.data.token);
     onLoginUser();
@@ -17,7 +19,7 @@ export async function postLoginUser(dataToSubmit, onLoginUser) {
 
 export async function createUser(dataToSubmit, onLoginUser) {
   try {
-    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/users`, {
+    const res = await client.post(`${import.meta.env.VITE_BASE_URL}/users`, {
       ...dataToSubmit,
       passwordCheck: dataToSubmit.password,
     });
@@ -35,7 +37,7 @@ export async function createUser(dataToSubmit, onLoginUser) {
 
 export async function registKey(dataToSubmit, onLoginUser) {
   try {
-    await axios.post(`${import.meta.env.VITE_BASE_URL}/users/key`, dataToSubmit);
+    await client.post(`${import.meta.env.VITE_BASE_URL}/users/key`, dataToSubmit);
 
     onLoginUser();
   } catch (error) {

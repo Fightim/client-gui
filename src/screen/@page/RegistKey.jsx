@@ -5,58 +5,56 @@ import { useNavigate } from "react-router-dom";
 
 import applyimg from "../login/applyimg.png";
 import { StyledButton, StyledInput } from "../login/styled";
-import { createUser, postLoginUser } from "../login/userAPI";
+import { registKey } from "../login/userAPI";
 
 export default function RegistKey() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoginState, setIsLoginState] = useState(true);
+  const [accessKey, setAccessKey] = useState("");
+  const [secret, setSecret] = useState("");
 
   const onEmailHandler = (event) => {
-    setEmail(event.target.value);
+    setAccessKey(event.target.value);
   };
 
   const onPasswordHandler = (event) => {
-    setPassword(event.target.value);
+    setSecret(event.target.value);
   };
 
-  const submitHandler = async (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
-    const postFunction = isLoginState ? postLoginUser : createUser;
-    await postFunction(
+    registKey(
       {
-        email,
-        password,
+        accessKey,
+        secret,
       },
       linkToKeyPage,
     );
   };
 
   const linkToKeyPage = () => {
-    navigate("/key");
+    navigate("/cause");
   };
 
   return (
     <>
       <div>
         <div className="out">
-          <h1>{isLoginState ? "로그인" : "회원가입"}</h1>
+          <h1>AWS KEY 등록</h1>
           <br />
           <br />
           <br />
           <form onSubmit={submitHandler}>
-            <label htmlFor="email">email</label>
+            <label htmlFor="accessKey">accessKey</label>
             <br />
             <br />
-            <StyledInput id="email" type="text" value={email} onChange={onEmailHandler}></StyledInput>
+            <StyledInput id="accessKey" type="text" value={accessKey} onChange={onEmailHandler}></StyledInput>
             <br />
             <br />
-            <label htmlFor="password">password</label>
+            <label htmlFor="secret">secret</label>
             <br />
             <br />
-            <StyledInput id="password" type="password" value={password} onChange={onPasswordHandler}></StyledInput>
+            <StyledInput id="secret" type="password" value={secret} onChange={onPasswordHandler}></StyledInput>
             <br />
             <br />
             <br />
@@ -67,9 +65,6 @@ export default function RegistKey() {
             <br />
           </form>
           <br />
-          <button className="signup" onClick={() => setIsLoginState((prev) => !prev)}>
-            {isLoginState ? "회원가입" : "로그인"}
-          </button>
         </div>
       </div>
     </>

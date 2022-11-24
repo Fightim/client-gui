@@ -21,11 +21,11 @@ export default function Login() {
     setPassword(event.target.value);
   };
 
-  const submitHandler = async (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
     const postFunction = isLoginState ? postLoginUser : createUser;
-    await postFunction(
+    postFunction(
       {
         email,
         password,
