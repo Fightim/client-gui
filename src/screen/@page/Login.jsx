@@ -1,9 +1,11 @@
 import "../login/Login.css";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import applyimg from "../login/applyimg.png";
+import { postLoginUser } from "../login/loginUser";
 
 const StyledInput = styled.input`
   height: 50px;
@@ -20,14 +22,14 @@ const StyledButton = styled.button`
   width: 200px;
   background-color: #ff9a3e;
   border-color: #ff9a3e;
-  font-color: #ffffff;
+  color: #ffffff;
   border-radius: 5px;
   font-size: 20px;
   color: white;
 `;
-export default function Login() {
-  // const dispatch=useDispatch();
 
+export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,21 +40,32 @@ export default function Login() {
   const onPasswordHandler = (event) => {
     setPassword(event.target.value);
   };
-  const submitHandler = (event) => {
-    event.preventDefault(); //reload막기
-    console.log("email", email);
-    console.log("password", password);
 
-    // let body = {
-    //   email: email,
-    //   password: password,
-    // };
-    // dispatch(loginUser(body));
+  const submitHandler = async (event) => {
+    event.preventDefault();
+
+    await postLoginUser(
+      {
+        email,
+        password,
+        passwordCheck: password,
+      },
+      linkToKeyPage,
+    );
   };
+
+  const linkToKeyPage = () => {
+    navigate("/key");
+  };
+
   return (
     <>
       <div>
         <div className="out">
+          <h1>로그인</h1>
+          <br />
+          <br />
+          <br />
           <form onSubmit={submitHandler}>
             <label htmlFor="email">email</label>
             <br />
