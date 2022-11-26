@@ -13,7 +13,7 @@ import RDSInfo from "./info/rdsInfo";
 export default function InfoSection() {
   const { instanceId, instanceType } = useDblClick();
 
-  const infoComponentByType = (_instanceType: InstanceIconTypeWithNull) => {
+  const InfoComponentByType = (_instanceType: InstanceIconTypeWithNull) => {
     switch (_instanceType) {
       case instanceIconType.Ubuntu:
       case instanceIconType.Centos:
@@ -29,15 +29,7 @@ export default function InfoSection() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <StInfoSection>
-        <>
-          {infoComponentByType(instanceType)}
-          <StBtnWrapper>
-            <DeleteBtn />
-            <CheckBtn />
-          </StBtnWrapper>
-        </>
-      </StInfoSection>
+      <StInfoSection>{InfoComponentByType(instanceType)}</StInfoSection>
     </Suspense>
   );
 }
@@ -56,18 +48,4 @@ const StInfoSection = styled.section`
   border-radius: 0.6rem;
 
   background-color: ${({ theme }) => theme.colors.white100};
-`;
-
-const StBtnWrapper = styled.div`
-  position: absolute;
-  right: 0rem;
-  bottom: 1rem;
-  left: 0rem;
-
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-
-  padding: 0 1.5rem;
 `;

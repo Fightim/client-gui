@@ -1,4 +1,5 @@
 import { useFetchInstanceOption } from "../../../../service/hooks/queries/instances";
+import BtnContainer from "../BtnContainer";
 import InstanceInformations from "./InstanceInformations";
 import InstanceOptions from "./InstanceOptions";
 
@@ -16,6 +17,7 @@ export default function InstanceInfo(props: InstanceInfoProps) {
     <>
       <InstanceOptions name={instanceOption.options.name} />
       <InstanceInformations {...instanceOption.informations} />
+      <BtnContainer />
     </>
   );
 }
