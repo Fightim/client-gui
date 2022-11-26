@@ -4,7 +4,7 @@ import DeleteBtn from "./DeleteBtn";
 
 interface BtnContainerProps {
   instanceId: string;
-  publicIp: string;
+  publicIp: string | null;
 }
 
 export default function BtnContainer(props: BtnContainerProps) {

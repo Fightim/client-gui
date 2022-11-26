@@ -135,7 +135,7 @@ export const instancesHandler = [
             type: "t2.micro",
             os: "UBUNTU",
             tier: "WEBSERVER",
-            publicIp: "아이피",
+            publicIp: null,
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
             storageVolume: "볼륨",
