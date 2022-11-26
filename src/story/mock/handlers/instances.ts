@@ -4,82 +4,81 @@ export const instancesHandler = [
   rest.get(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json({
-        data: [
-          {
-            "options": {
-              "name": "string"
-            },
-            "informations": {
-              "id": "string11",
-              "type": "t2.micro",
-              "os": "CENTOS",
-              "tier": "WEBSERVER",
-              "publicIp": "string",
-              "privateIp": "string",
-              "securityGroup": [
-                "string"
-              ],
-              "storageVolume": "string",
-              "storageType": "SSD"
-            }
+      ctx.json([
+        {
+          "options": {
+            "name": "string"
           },
-          {
-            "options": {
-              "name": "string"
-            },
-            "informations": {
-              "id": "string22",
-              "type": "t2.micro",
-              "os": "UBUNTU",
-              "tier": "WEBSERVER",
-              "publicIp": "string",
-              "privateIp": "string",
-              "securityGroup": [
-                "string"
-              ],
-              "storageVolume": "string",
-              "storageType": "SSD"
-            }
-          },
-          {
-            "options": {
-              "name": "string"
-            },
-            "informations": {
-              "id": "string33",
-              "type": "t2.micro",
-              "os": "CENTOS",
-              "tier": "WAS",
-              "publicIp": "string",
-              "privateIp": "string",
-              "securityGroup": [
-                "string"
-              ],
-              "storageVolume": "string",
-              "storageType": "SSD"
-            }
-          },
-          {
-            "options": {
-              "name": "string"
-            },
-            "informations": {
-              "id": "string44",
-              "type": "t2.micro",
-              "os": "UBUNTU",
-              "tier": "WAS",
-              "publicIp": "string",
-              "privateIp": "string",
-              "securityGroup": [
-                "string"
-              ],
-              "storageVolume": "string",
-              "storageType": "SSD"
-            }
+          "informations": {
+            "id": "string11",
+            "type": "t2.micro",
+            "os": "CENTOS",
+            "tier": "WEBSERVER",
+            "publicIp": "string",
+            "privateIp": "string",
+            "securityGroup": [
+              "string"
+            ],
+            "storageVolume": "string",
+            "storageType": "SSD"
           }
-        ],
-      }),
+        },
+        {
+          "options": {
+            "name": "string"
+          },
+          "informations": {
+            "id": "string22",
+            "type": "t2.micro",
+            "os": "UBUNTU",
+            "tier": "WEBSERVER",
+            "publicIp": "string",
+            "privateIp": "string",
+            "securityGroup": [
+              "string"
+            ],
+            "storageVolume": "string",
+            "storageType": "SSD"
+          }
+        },
+        {
+          "options": {
+            "name": "string"
+          },
+          "informations": {
+            "id": "string33",
+            "type": "t2.micro",
+            "os": "CENTOS",
+            "tier": "WAS",
+            "publicIp": "string",
+            "privateIp": "string",
+            "securityGroup": [
+              "string"
+            ],
+            "storageVolume": "string",
+            "storageType": "SSD"
+          }
+        },
+        {
+          "options": {
+            "name": "string"
+          },
+          "informations": {
+            "id": "string44",
+            "type": "t2.micro",
+            "os": "UBUNTU",
+            "tier": "WAS",
+            "publicIp": "string",
+            "privateIp": "string",
+            "securityGroup": [
+              "string"
+            ],
+            "storageVolume": "string",
+            "storageType": "SSD"
+          }
+        }
+      ],
+      ),
     );
   }),
   rest.post(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {

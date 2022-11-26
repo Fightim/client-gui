@@ -45,7 +45,7 @@ export default function T2Provider(props: React.PropsWithChildren) {
 
   const { instances } = useFetchInstances();
   useEffect(() => {
-    instances?.data.forEach((instance) => {
+    instances?.forEach((instance) => {
       const postInstance = {
         id: instance.informations.id,
         type: instance.informations.type,
