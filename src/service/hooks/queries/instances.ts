@@ -14,10 +14,10 @@ export const useFetchInstances = () => {
 };
 
 export const useFetchInstanceOption = (id: string) => {
-  const { data } = useQuery([QUERY_KEY.option, id], () => getInstanceOption(id));
+  const { data } = useQuery<{ data: InstanceResponseDto }>([QUERY_KEY.option, id], () => getInstanceOption(id));
 
   return {
-    instanceOption: data,
+    instanceOption: data?.data,
   };
 };
 

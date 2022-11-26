@@ -10,12 +10,12 @@ export default function InstanceInfo(props: InstanceInfoProps) {
   const { id } = props;
 
   const { instanceOption } = useFetchInstanceOption(id);
-  console.log(instanceOption.data);
 
+  if (!instanceOption) return <div>Error</div>;
   return (
     <>
-      <InstanceOptions name={instanceOption.data.options.name} />
-      <InstanceInformations {...instanceOption.data.informations} />
+      <InstanceOptions name={instanceOption.options.name} />
+      <InstanceInformations {...instanceOption.informations} />
     </>
   );
 }
