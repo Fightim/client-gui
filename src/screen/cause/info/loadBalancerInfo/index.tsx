@@ -1,4 +1,5 @@
 import { useFetchLoadBalancerOption } from "../../../../service/hooks/queries/loadBalancers";
+import BtnContainer from "../BtnContainer";
 import LoadBalancerInformations from "./LoadBalancerInformations";
 import LoadBalancerOptions from "./LoadBalancerOptions";
 
@@ -16,6 +17,7 @@ export default function LoadBalancerInfo(props: LoadBalancerInfoProps) {
     <>
       <LoadBalancerOptions name={loadBalancerOption.data.options.name} />
       <LoadBalancerInformations {...loadBalancerOption.data.informations} />
+      <BtnContainer instanceId={id} publicIp={loadBalancerOption.informations.publicIp} />
     </>
   );
 }

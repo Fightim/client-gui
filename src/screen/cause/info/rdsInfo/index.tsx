@@ -1,4 +1,5 @@
 import { useFetchRDSOption } from "../../../../service/hooks/queries/rds";
+import BtnContainer from "../BtnContainer";
 import RDSInformations from "./RDSInformations";
 import RDSOptions from "./RDSOptions";
 
@@ -16,6 +17,7 @@ export default function RDSInfo(props: RDSInfoProps) {
     <>
       <RDSOptions name={rdsOption.data.options.name} masterUserName={rdsOption.data.options.masterUserName} />
       <RDSInformations {...rdsOption.data.informations} />
+      <BtnContainer instanceId={id} publicIp={rdsOption.informations.publicIp} />
     </>
   );
 }

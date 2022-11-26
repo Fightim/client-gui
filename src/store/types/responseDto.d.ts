@@ -11,7 +11,7 @@ interface InstanceInformations {
   type: "t2.micro";
   os: "UBUNTU" | "CENTOS";
   tier: "WEBSERVER" | "WAS";
-  publicIp: string;
+  publicIp: string | null;
   privateIp: string;
   securityGroup: string[];
   storageVolume: string;

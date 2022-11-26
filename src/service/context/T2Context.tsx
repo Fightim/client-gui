@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useEffect } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext";
 import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
+import { useFetchInstances } from "../hooks/queries/instances";
 
 export const T2Context = createContext<InstanceContext>({
   publicUbuntuInstances: new Set(),
@@ -43,12 +43,30 @@ export default function T2Provider(props: React.PropsWithChildren) {
     removeInstance: removePrivateCentosInstances,
   } = useInstanceData();
 
+  const { instances } = useFetchInstances();
   useEffect(() => {
-    // TODO :: 초기 API 통신하여 state 관리
-    // TODO :: 1. instance API
-    // TODO :: 2. Public/Private, ubuntu/centos 4가지 분류하여 setState
-    // TODO :: 3. 4가지 커스텀훅으로 분리하여 전달
-  }, []);
+    instances?.forEach((instance) => {
+      const postInstance = {
+        id: instance.informations.id,
+        type: instance.informations.type,
+        os: instance.informations.os,
+        tier: instance.informations.tier,
+        name: instance.options.name,
+      };
+      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER") {
+        return addPublicUbuntuInstances(postInstance);
+      }
+      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER") {
+        return addPublicCentosInstances(postInstance);
+      }
+      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS") {
+        return addPrivateUbuntuInstances(postInstance);
+      }
+      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WAS") {
+        return addPrivateCentosInstances(postInstance);
+      }
+    });
+  }, [instances]);
 
   return (
     <T2Context.Provider

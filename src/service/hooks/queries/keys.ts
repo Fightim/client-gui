@@ -3,4 +3,5 @@ export const QUERY_KEY = {
   create_instances: "create_instances",
   create_load_balancer: "create_load-balancer",
   create_rds: "create_rds",
+  get_instances: "get_instances"
 };

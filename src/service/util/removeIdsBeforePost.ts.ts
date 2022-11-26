@@ -1,10 +1,16 @@
 import { ALBData, InstanceData, RDSData } from "../../store/types/instanceContext";
 import { CreateInstanceDto, CreateLoadBalancerDto, CreateRdsDto } from "../../store/types/requestDto";
 
+const checkIsCurrentInstance = (_id: string) => +_id < 1;
+
 export const removeInstanceIdsBeforePost = (instances: InstanceData[]): CreateInstanceDto[] => {
   const currentInstances = instances.reduce((acc: CreateInstanceDto[], instance) => {
     const { id: _id, ...currentInstance } = instance;
-    acc.push(currentInstance);
+
+    if (checkIsCurrentInstance(_id)) {
+      acc.push(currentInstance);
+    }
+
     return acc;
   }, []);
 

@@ -9,9 +9,9 @@ import { GlobalStyle } from "./store/style/globalStyle";
 import theme from "./store/style/theme";
 import { worker } from "./story/mock/browser";
 
-// if (import.meta.env.DEV) {
-//   worker.start();
-// }
+if (import.meta.env.DEV) {
+  worker.start();
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,14 +27,14 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <LoaderProvider>
-          <GlobalStyle />
-          <App />
-        </LoaderProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme}>
+      <LoaderProvider>
+        <GlobalStyle />
+        <App />
+      </LoaderProvider>
+    </ThemeProvider>
+  </QueryClientProvider>,
+  // </React.StrictMode>,
 );

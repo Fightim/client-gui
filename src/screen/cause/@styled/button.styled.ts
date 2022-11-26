@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BtnWrapper = styled.button<{ bgcolor: string }>`
+export const BtnWrapper = styled.a<{ bgcolor: string }>`
   height: 3.6rem;
 
   display: flex;

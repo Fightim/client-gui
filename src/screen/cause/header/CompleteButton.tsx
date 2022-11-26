@@ -5,21 +5,22 @@ import usePrivateUbuntu from "../../../service/hooks/instanceContext/usePrivateU
 import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCentos";
 import usePublicUbuntu from "../../../service/hooks/instanceContext/usePublicUbuntu";
 import useRDS from "../../../service/hooks/instanceContext/useRDS";
+import { useCreateInstancesMutation } from "../../../service/hooks/queries/instances";
 import {
   removeALBIdsBeforePost,
   removeInstanceIdsBeforePost,
   removeRDSIdsBeforePost,
 } from "../../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../../store/assets";
-import { createInstances } from "../../../story/api/instances";
-import { createLoadBalancer } from "../../../story/api/loadBalancers";
-import { createRDS } from "../../../story/api/rds";
+// import { createLoadBalancer } from "../../../story/api/loadBalancers";
+// import { createRDS } from "../../../story/api/rds";
 
 export default function CompleteButton() {
   const { privateUbuntuInstances } = usePrivateUbuntu();
   const { publicUbuntuInstances } = usePublicUbuntu();
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
+  const { mutateAsync: mutateAsyncCreateInstances } = useCreateInstancesMutation();
   const { instances: alb } = useALB();
   const { instances: rds } = useRDS();
 
@@ -31,12 +32,14 @@ export default function CompleteButton() {
       ...privateCentosInstances,
       ...publicCentosInstances,
     ]);
-    const postingALB = removeALBIdsBeforePost([...alb][0]);
-    const postingRDS = removeRDSIdsBeforePost([...rds][0]);
+    // TEST :: ALB, RDS TEST
+    // const postingALB = removeALBIdsBeforePost([...alb][0]);
+    // const postingRDS = removeRDSIdsBeforePost([...rds][0]);
 
-    await createInstances(postingInstances);
-    await createLoadBalancer(postingALB);
-    await createRDS(postingRDS);
+    const testRes = await mutateAsyncCreateInstances(postingInstances);
+    console.log("testRes", testRes);
+    // await createLoadBalancer(postingALB);
+    // await createRDS(postingRDS);
   }
 
   return (
