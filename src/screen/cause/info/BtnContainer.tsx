@@ -2,11 +2,18 @@ import styled from "styled-components";
 import CheckBtn from "./CheckBtn";
 import DeleteBtn from "./DeleteBtn";
 
-export default function BtnContainer() {
+interface BtnContainerProps {
+  instanceId: string;
+  publicIp: string;
+}
+
+export default function BtnContainer(props: BtnContainerProps) {
+  const { instanceId, publicIp } = props;
+
   return (
     <StBtnWrapper>
       <DeleteBtn />
-      <CheckBtn />
+      <CheckBtn hyperLink={`http://${publicIp}/${localStorage.getItem("user-token")}`} />
     </StBtnWrapper>
   );
 }

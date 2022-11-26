@@ -17,7 +17,7 @@ export default function InstanceInfo(props: InstanceInfoProps) {
     <>
       <InstanceOptions name={instanceOption.options.name} />
       <InstanceInformations {...instanceOption.informations} />
-      <BtnContainer />
+      <BtnContainer instanceId={id} publicIp={instanceOption.informations.publicIp} />
     </>
   );
 }

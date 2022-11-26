@@ -17,7 +17,7 @@ export default function LoadBalancerInfo(props: LoadBalancerInfoProps) {
     <>
       <LoadBalancerOptions name={loadBalancerOption.data.options.name} />
       <LoadBalancerInformations {...loadBalancerOption.data.informations} />
-      <BtnContainer />
+      <BtnContainer instanceId={id} publicIp={loadBalancerOption.informations.publicIp} />
     </>
   );
 }
