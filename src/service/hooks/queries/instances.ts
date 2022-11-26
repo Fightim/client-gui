@@ -28,6 +28,9 @@ export const useCreateInstancesMutation = () => {
   return useMutation(createInstances, {
     onSuccess() {
       queryClient.invalidateQueries(QUERY_KEY.get_instances);
+      // TODO :: 서버 데이터 캐시 무효화 제대로 처리하기
+      // TODO :: instances 4가지 데이터 비워주기 처리 필요
+      window.location.reload();
     },
     onMutate() {
       showLoader();
