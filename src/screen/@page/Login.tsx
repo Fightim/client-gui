@@ -13,15 +13,15 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isLoginState, setIsLoginState] = useState(true);
 
-  const onEmailHandler = (event) => {
+  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const onPasswordHandler = (event) => {
+  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const postFunction = isLoginState ? postLoginUser : createUser;

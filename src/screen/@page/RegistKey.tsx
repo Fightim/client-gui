@@ -12,15 +12,15 @@ export default function RegistKey() {
   const [accessKey, setAccessKey] = useState("");
   const [secret, setSecret] = useState("");
 
-  const onEmailHandler = (event) => {
+  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAccessKey(event.target.value);
   };
 
-  const onPasswordHandler = (event) => {
+  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSecret(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     registKey(
