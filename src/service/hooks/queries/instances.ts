@@ -1,7 +1,8 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { InstanceResponseDto } from "../../../store/types/responseDto";
 
-import { getInstanceOption, getInstances } from "../../../story/api/instances";
+import { createInstances, getInstanceOption, getInstances } from "../../../story/api/instances";
+import useLoader from "../useLoader";
 import { QUERY_KEY } from "./keys";
 
 export const useFetchInstances = () => {
@@ -20,3 +21,19 @@ export const useFetchInstanceOption = (id: string) => {
   };
 };
 
+export const useCreateInstancesMutation = () => {
+  const queryClient = useQueryClient();
+  const { showLoader, hideLoader } = useLoader();
+
+  return useMutation(createInstances, {
+    onSuccess() {
+      queryClient.invalidateQueries(QUERY_KEY.get_instances);
+    },
+    onMutate() {
+      showLoader();
+    },
+    onSettled() {
+      hideLoader();
+    },
+  })
+}
