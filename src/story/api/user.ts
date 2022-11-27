@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { client } from "../../story/api";
+import { client } from ".";
 
 export async function postLoginUser(dataToSubmit: {
   "email": string;

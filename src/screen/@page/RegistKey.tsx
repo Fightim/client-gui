@@ -1,11 +1,9 @@
-import "../login/Login.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import applyimg from "../login/applyimg.png";
-import { StyledButton, StyledInput } from "../login/styled";
-import { registKey } from "../login/userAPI";
+import { registKey } from "../../story/api/user";
+import { IcApply } from "../../store/assets";
+import styled from "styled-components";
 
 export default function RegistKey() {
   const navigate = useNavigate();
@@ -37,36 +35,65 @@ export default function RegistKey() {
   };
 
   return (
-    <>
-      <div>
-        <div className="out">
-          <h1>AWS KEY 등록</h1>
-          <br />
-          <br />
-          <br />
-          <form onSubmit={submitHandler}>
-            <label htmlFor="accessKey">accessKey</label>
-            <br />
-            <br />
-            <StyledInput id="accessKey" type="text" value={accessKey} onChange={onEmailHandler}></StyledInput>
-            <br />
-            <br />
-            <label htmlFor="secret">secret</label>
-            <br />
-            <br />
-            <StyledInput id="secret" type="password" value={secret} onChange={onPasswordHandler}></StyledInput>
-            <br />
-            <br />
-            <br />
-            <StyledButton type="submit">
-              <img alt="apply" src={applyimg} width="20px" height="20px"></img>
-              &nbsp;확인
-            </StyledButton>
-            <br />
-          </form>
-          <br />
-        </div>
-      </div>
-    </>
+    <StRoot className="out">
+      <h1>AWS KEY 등록</h1>
+      <br />
+      <br />
+      <br />
+      <form onSubmit={submitHandler}>
+        <label htmlFor="accessKey">accessKey</label>
+        <br />
+        <br />
+        <StInput id="accessKey" type="text" value={accessKey} onChange={onEmailHandler}></StInput>
+        <br />
+        <br />
+        <label htmlFor="secret">secret</label>
+        <br />
+        <br />
+        <StInput id="secret" type="password" value={secret} onChange={onPasswordHandler}></StInput>
+        <br />
+        <br />
+        <br />
+        <StButton type="submit">
+          <IcApply />
+          &nbsp;확인
+        </StButton>
+        <br />
+      </form>
+      <br />
+    </StRoot>
   );
 }
+
+const StRoot = styled.main`
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: inherit;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 150px 0;
+`;
+
+const StInput = styled.input`
+  height: 50px;
+  width: 350px;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f6f6fa;
+  border: solid #dfdfdf;
+  padding-left: 20px;
+`;
+
+const StButton = styled.button`
+  height: 50px;
+  width: 200px;
+  background-color: #ff9a3e;
+  border-color: #ff9a3e;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+`;

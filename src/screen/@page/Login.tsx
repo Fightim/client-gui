@@ -1,11 +1,9 @@
-import "../login/Login.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import applyimg from "../login/applyimg.png";
-import { StyledButton, StyledInput } from "../login/styled";
-import { createUser, postLoginUser } from "../login/userAPI";
+import { createUser, postLoginUser } from "../../story/api/user";
+import { IcApply } from "../../store/assets";
+import styled from "styled-components";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -39,39 +37,70 @@ export default function Login() {
   };
 
   return (
-    <>
-      <div>
-        <div className="out">
-          <h1>{isLoginState ? "로그인" : "회원가입"}</h1>
-          <br />
-          <br />
-          <br />
-          <form onSubmit={submitHandler}>
-            <label htmlFor="email">email</label>
-            <br />
-            <br />
-            <StyledInput id="email" type="text" value={email} onChange={onEmailHandler}></StyledInput>
-            <br />
-            <br />
-            <label htmlFor="password">password</label>
-            <br />
-            <br />
-            <StyledInput id="password" type="password" value={password} onChange={onPasswordHandler}></StyledInput>
-            <br />
-            <br />
-            <br />
-            <StyledButton type="submit">
-              <img alt="apply" src={applyimg} width="20px" height="20px"></img>
-              &nbsp;확인
-            </StyledButton>
-            <br />
-          </form>
-          <br />
-          <button className="signup" onClick={() => setIsLoginState((prev) => !prev)}>
-            {isLoginState ? "회원가입" : "로그인"}
-          </button>
-        </div>
-      </div>
-    </>
+    <StRoot>
+      <h1>{isLoginState ? "로그인" : "회원가입"}</h1>
+      <br />
+      <br />
+      <br />
+      <form onSubmit={submitHandler}>
+        <label htmlFor="email">email</label>
+        <br />
+        <br />
+        <StInput id="email" type="text" value={email} onChange={onEmailHandler}></StInput>
+        <br />
+        <br />
+        <label htmlFor="password">password</label>
+        <br />
+        <br />
+        <StInput id="password" type="password" value={password} onChange={onPasswordHandler}></StInput>
+        <br />
+        <br />
+        <br />
+        <StButton type="submit">
+          <IcApply />
+          &nbsp;확인
+        </StButton>
+        <br />
+      </form>
+      <br />
+      <StSignup onClick={() => setIsLoginState((prev) => !prev)}>{isLoginState ? "회원가입" : "로그인"}</StSignup>
+    </StRoot>
   );
 }
+
+const StRoot = styled.main`
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: inherit;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 150px 0;
+`;
+
+const StInput = styled.input`
+  height: 50px;
+  width: 350px;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f6f6fa;
+  border: solid #dfdfdf;
+  padding-left: 20px;
+`;
+
+const StButton = styled.button`
+  height: 50px;
+  width: 200px;
+  background-color: #ff9a3e;
+  border-color: #ff9a3e;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+`;
+
+const StSignup = styled.button`
+  font-size: 14px;
+`;
