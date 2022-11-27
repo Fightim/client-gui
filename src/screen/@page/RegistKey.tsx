@@ -35,7 +35,7 @@ export default function RegistKey() {
   };
 
   return (
-    <StRoot className="out">
+    <StRoot>
       <h1>AWS KEY 등록</h1>
       <br />
       <br />
