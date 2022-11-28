@@ -1,7 +1,8 @@
 import { rest } from "msw";
+import { PATH } from "../../api/instances";
 
 export const instancesHandler = [
-  rest.get(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.instances}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([
@@ -19,7 +20,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageType": "SSD"
           }
         },
         {
@@ -36,7 +36,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageType": "SSD"
           }
         },
         {
@@ -53,7 +52,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageType": "SSD"
           }
         },
         {
@@ -70,14 +68,13 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageType": "SSD"
           }
         }
       ],
       ),
     );
   }),
-  rest.post(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.instances}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -96,7 +93,6 @@ export const instancesHandler = [
             publicIp: "아이피",
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageType: "SSD",
           },
         }, {
           options: {
@@ -110,13 +106,12 @@ export const instancesHandler = [
             publicIp: "아이피",
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageType: "SSD",
           },
         }],
       }),
     );
   }),
-  rest.get(`${import.meta.env.VITE_BASE_URL}/instances/*`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.instances}/*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -132,7 +127,6 @@ export const instancesHandler = [
             publicIp: null,
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageType: "SSD",
           },
         },
       }),

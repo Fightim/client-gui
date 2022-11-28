@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useDeleteInstancesMutation } from "../../../service/hooks/queries/instances";
+import { LOCAL_STORAGE_KEY } from "../../../story/api/user";
 import CheckBtn from "./CheckBtn";
 import DeleteBtn from "./DeleteBtn";
 
@@ -14,7 +15,7 @@ export default function BtnContainer(props: BtnContainerProps) {
   return (
     <StBtnWrapper>
       <DeleteBtn instanceId={instanceId} />
-      <CheckBtn hyperLink={`http://${publicIp}/${localStorage.getItem("user-token")}`} />
+      {publicIp && <CheckBtn hyperLink={`http://${publicIp}/${localStorage.getItem(LOCAL_STORAGE_KEY)}`} />}
     </StBtnWrapper>
   );
 }

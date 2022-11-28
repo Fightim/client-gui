@@ -6,7 +6,7 @@ import { GifLoader } from "../../store/assets";
 export default function Loader() {
   return ReactDOM.createPortal(
     <StLoaderWrapper>
-      <img src={GifLoader} alt="로딩" width={118} height={118} />
+      <StLoaderImg src={GifLoader} alt="loading" />
     </StLoaderWrapper>,
     document.querySelector("#root") as Element,
   );
@@ -25,4 +25,9 @@ const StLoaderWrapper = styled.div`
   align-items: center;
 
   background-color: rgba(0, 0, 0, 20%);
+`;
+
+const StLoaderImg = styled.img`
+  width: 11.8rem;
+  height: 11.8rem;
 `;

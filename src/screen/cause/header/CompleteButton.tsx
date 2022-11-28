@@ -24,7 +24,6 @@ export default function CompleteButton() {
   const { instances: alb } = useALB();
   const { instances: rds } = useRDS();
 
-  // TODO :: 로딩뷰
   async function handleClickComplete() {
     const postingInstances = removeInstanceIdsBeforePost([
       ...privateUbuntuInstances,

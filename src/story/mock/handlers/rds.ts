@@ -1,7 +1,8 @@
 import { rest } from "msw";
+import { PATH } from "../../api/rds";
 
 export const rdsHandler = [
-  rest.post(`${import.meta.env.VITE_BASE_URL}/rds`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.rds}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -22,7 +23,7 @@ export const rdsHandler = [
       }),
     );
   }),
-  rest.get(`${import.meta.env.VITE_BASE_URL}/rds/*`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.rds}/*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
