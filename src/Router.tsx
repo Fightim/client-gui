@@ -6,6 +6,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<div>Hello, Fightim!</div>} />
         <Route path="/login" element={<Login />} />
         <Route path="/key" element={<RegistKey />} />
         <Route path="/cause" element={<Cause />} />
