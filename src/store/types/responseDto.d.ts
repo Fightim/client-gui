@@ -14,7 +14,6 @@ interface InstanceInformations {
   publicIp: string | null;
   privateIp: string;
   securityGroup: string[];
-  storageVolume: string;
   storageType: "SSD" | "HDD";
 }
 

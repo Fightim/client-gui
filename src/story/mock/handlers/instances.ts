@@ -19,7 +19,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageVolume": "string",
             "storageType": "SSD"
           }
         },
@@ -37,7 +36,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageVolume": "string",
             "storageType": "SSD"
           }
         },
@@ -55,7 +53,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageVolume": "string",
             "storageType": "SSD"
           }
         },
@@ -73,7 +70,6 @@ export const instancesHandler = [
             "securityGroup": [
               "string"
             ],
-            "storageVolume": "string",
             "storageType": "SSD"
           }
         }
@@ -100,7 +96,6 @@ export const instancesHandler = [
             publicIp: "아이피",
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageVolume: "볼륨",
             storageType: "SSD",
           },
         }, {
@@ -115,7 +110,6 @@ export const instancesHandler = [
             publicIp: "아이피",
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageVolume: "볼륨",
             storageType: "SSD",
           },
         }],
@@ -138,7 +132,6 @@ export const instancesHandler = [
             publicIp: null,
             privateIp: "아이피",
             securityGroup: ["랄", "랄랄"],
-            storageVolume: "볼륨",
             storageType: "SSD",
           },
         },
