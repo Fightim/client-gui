@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useDeleteInstancesMutation } from "../../../service/hooks/queries/instances";
-import { LOCAL_STORAGE_KEY } from "../../../story/api/user";
+
 import CheckBtn from "./CheckBtn";
 import DeleteBtn from "./DeleteBtn";
+
+const LOCAL_STORAGE_KEY = "user-token";
 
 interface BtnContainerProps {
   instanceId: string;

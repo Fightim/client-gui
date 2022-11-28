@@ -1,7 +1,8 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
 import { Cause, Error404, Login, RegistKey } from "./screen/@page";
-import { LOCAL_STORAGE_KEY } from "./story/api/user";
+
+const LOCAL_STORAGE_KEY = "user-token";
 
 export const ROUTER_PATH = {
   start: "/",
