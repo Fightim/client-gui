@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ROUTER_PATH } from "../../Router";
 import { ImgLogo } from "../../store/assets";
 import CompleteButton from "./header/CompleteButton";
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user-token");
+    navigate(ROUTER_PATH.login);
+  };
+
   return (
     <StHeaderContainer>
       <StLogo src={ImgLogo} alt="logo" />
       <StLinksContainer>
+        <StLogoutBtn onClick={handleLogout}>로그아웃</StLogoutBtn>
         <Link to={ROUTER_PATH.registerKey}>AWS 연동</Link>
         <Link to={ROUTER_PATH.cause}>아키텍쳐 설계</Link>
       </StLinksContainer>
@@ -37,11 +45,16 @@ const StLogo = styled.img`
   height: 3.6rem;
 `;
 
+const StLogoutBtn = styled.button`
+  font-size: 1.6rem;
+  font-weight: 500;
+`;
+
 const StLinksContainer = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
 
-  & > a:not(:last-child) {
+  & > *:not(:last-child) {
     margin-right: 8rem;
   }
 `;
