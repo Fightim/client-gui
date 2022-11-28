@@ -6,7 +6,7 @@ import useLoader from "../useLoader";
 import { QUERY_KEY } from "./keys";
 
 export const useFetchPublicUbuntuInstances = () => {
-  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 1], () => getInstances(), {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, QUERY_KEY.public_ubuntu], () => getInstances(), {
     staleTime: 10000,
     select: data => data.filter(instance => instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER")
   });
@@ -17,7 +17,7 @@ export const useFetchPublicUbuntuInstances = () => {
 };
 
 export const useFetchPublicCentosInstances = () => {
-  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 2], () => getInstances(), {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, QUERY_KEY.public_centos], () => getInstances(), {
     staleTime: 10000,
     select: data => data.filter(instance => instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER")
   });
@@ -28,7 +28,7 @@ export const useFetchPublicCentosInstances = () => {
 };
 
 export const useFetchPrivateUbuntuInstances = () => {
-  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 3], () => getInstances(), {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, QUERY_KEY.private_ubuntu], () => getInstances(), {
     staleTime: 10000,
     select: data => data.filter(instance => instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS")
   });
@@ -39,7 +39,7 @@ export const useFetchPrivateUbuntuInstances = () => {
 };
 
 export const useFetchPrivateCentosInstances = () => {
-  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 4], () => getInstances(), {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, QUERY_KEY.private_centos], () => getInstances(), {
     staleTime: 10000,
     select: data => data.filter(instance => instance.informations.os === "CENTOS" && instance.informations.tier === "WAS")
   });
@@ -63,8 +63,7 @@ export const useCreateInstancesMutation = () => {
 
   return useMutation(createInstances, {
     onSuccess() {
-      queryClient.invalidateQueries(QUERY_KEY.get_instances);
-      window.location.reload();
+      queryClient.invalidateQueries([QUERY_KEY.get_instances]);
     },
     onMutate() {
       showLoader();
@@ -81,8 +80,7 @@ export const useDeleteInstancesMutation = () => {
 
   return useMutation(deleteInstances, {
     onSuccess() {
-      queryClient.invalidateQueries(QUERY_KEY.get_instances);
-      window.location.reload();
+      queryClient.invalidateQueries([QUERY_KEY.get_instances]);
     },
     onMutate() {
       showLoader();

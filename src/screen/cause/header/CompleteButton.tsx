@@ -35,8 +35,7 @@ export default function CompleteButton() {
     // const postingALB = removeALBIdsBeforePost([...alb][0]);
     // const postingRDS = removeRDSIdsBeforePost([...rds][0]);
 
-    const testRes = await mutateAsyncCreateInstances(postingInstances);
-    console.log("testRes", testRes);
+    await mutateAsyncCreateInstances(postingInstances);
     // await createLoadBalancer(postingALB);
     // await createRDS(postingRDS);
   }
