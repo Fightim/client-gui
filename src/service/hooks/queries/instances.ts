@@ -5,8 +5,44 @@ import { createInstances, deleteInstances, getInstanceOption, getInstances } fro
 import useLoader from "../useLoader";
 import { QUERY_KEY } from "./keys";
 
-export const useFetchInstances = () => {
-  const { data } = useQuery<InstanceResponseDto[]>(QUERY_KEY.get_instances, () => getInstances());
+export const useFetchPublicUbuntuInstances = () => {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 1], () => getInstances(), {
+    staleTime: 10000,
+    select: data => data.filter(instance => instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER")
+  });
+
+  return {
+    instances: data,
+  };
+};
+
+export const useFetchPublicCentosInstances = () => {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 2], () => getInstances(), {
+    staleTime: 10000,
+    select: data => data.filter(instance => instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER")
+  });
+
+  return {
+    instances: data,
+  };
+};
+
+export const useFetchPrivateUbuntuInstances = () => {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 3], () => getInstances(), {
+    staleTime: 10000,
+    select: data => data.filter(instance => instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS")
+  });
+
+  return {
+    instances: data,
+  };
+};
+
+export const useFetchPrivateCentosInstances = () => {
+  const { data } = useQuery<InstanceResponseDto[]>([QUERY_KEY.get_instances, 4], () => getInstances(), {
+    staleTime: 10000,
+    select: data => data.filter(instance => instance.informations.os === "CENTOS" && instance.informations.tier === "WAS")
+  });
 
   return {
     instances: data,
@@ -28,8 +64,6 @@ export const useCreateInstancesMutation = () => {
   return useMutation(createInstances, {
     onSuccess() {
       queryClient.invalidateQueries(QUERY_KEY.get_instances);
-      // TODO :: 서버 데이터 캐시 무효화 제대로 처리하기
-      // TODO :: instances 4가지 데이터 비워주기 처리 필요
       window.location.reload();
     },
     onMutate() {
@@ -48,8 +82,6 @@ export const useDeleteInstancesMutation = () => {
   return useMutation(deleteInstances, {
     onSuccess() {
       queryClient.invalidateQueries(QUERY_KEY.get_instances);
-      // TODO :: 서버 데이터 캐시 무효화 제대로 처리하기
-      // TODO :: instances 4가지 데이터 비워주기 처리 필요
       window.location.reload();
     },
     onMutate() {
