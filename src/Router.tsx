@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
 import { Cause, Error404, Login, RegistKey } from "./screen/@page";
 
@@ -6,28 +6,27 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>Hello, Fightim!</div>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/key" element={<RegistKey />} />
-        <Route path="/cause" element={<Cause />} />
-        <Route path="*" element={<Error404 />} />
+        <Route element={<PublicRoute restricted={true} />}>
+          <Route path="/" element={<Navigate to="login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/key" element={<RegistKey />} />
+          <Route path="/cause" element={<Cause />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
-/**
-<Route path={routePaths.Main} element={PublicRoute({ Component: <MainPage /> })} />
-<Route path={routePaths.Login} element={PublicRoute({ Component: <LoginPage />, restricted: true })} />
-<Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
+const PublicRoute = ({ restricted = false }) => {
+  const isLogined = localStorage.getItem("user-token");
+  return isLogined && restricted ? <Navigate to="/cause" replace /> : <Outlet />;
+};
 
- const PublicRoute = ({ Component, restricted = false }) => {
-   const isLogined = localStorage.getItem("piickle-token");
-   return isLogined && restricted ? <MainPage /> : Component;
-  };
-  
-  const PrivateRoute = ({ Component }) => {
-    const isLogined = localStorage.getItem("piickle-token");
-    return isLogined ? Component : <LoginPage />;
-  };
-  */
+const PrivateRoute = () => {
+  const isLogined = localStorage.getItem("user-token");
+  return isLogined ? <Outlet /> : <Navigate to="/login" replace />;
+};
