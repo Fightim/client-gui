@@ -17,7 +17,7 @@ import { IcApply } from "../../../store/assets";
 
 export default function CompleteButton() {
   const { privateUbuntuInstances } = usePrivateUbuntu();
-  const { publicUbuntuInstances } = usePublicUbuntu();
+  const { publicUbuntuInstances, resetCurrentInstances } = usePublicUbuntu();
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
   const { mutateAsync: mutateAsyncCreateInstances } = useCreateInstancesMutation();
@@ -31,13 +31,15 @@ export default function CompleteButton() {
       ...privateCentosInstances,
       ...publicCentosInstances,
     ]);
-    // TEST :: ALB, RDS TEST
+    // TODO :: ALB, RDS TEST
     // const postingALB = removeALBIdsBeforePost([...alb][0]);
     // const postingRDS = removeRDSIdsBeforePost([...rds][0]);
 
     await mutateAsyncCreateInstances(postingInstances);
     // await createLoadBalancer(postingALB);
     // await createRDS(postingRDS);
+
+    resetCurrentInstances();
   }
 
   return (

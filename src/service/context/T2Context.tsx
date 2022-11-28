@@ -16,6 +16,7 @@ export const T2Context = createContext<InstanceContext>({
   privateCentosInstances: new Set(),
   addPrivateCentosInstances: () => {},
   removePrivateCentosInstances: () => {},
+  resetCurrentInstances: () => {},
 });
 
 export default function T2Provider(props: React.PropsWithChildren) {
@@ -25,22 +26,33 @@ export default function T2Provider(props: React.PropsWithChildren) {
     instances: publicUbuntuInstances,
     addInstance: addPublicUbuntuInstances,
     removeInstance: removePublicUbuntuInstances,
+    resetInstance: resetPublicUbuntuInstances,
   } = useInstanceData();
   const {
     instances: publicCentosInstances,
     addInstance: addPublicCentosInstances,
     removeInstance: removePublicCentosInstances,
+    resetInstance: resetPublicCentosInstances,
   } = useInstanceData();
   const {
     instances: privateUbuntuInstances,
     addInstance: addPrivateUbuntuInstances,
     removeInstance: removePrivateUbuntuInstances,
+    resetInstance: resetPrivateUbuntuInstances,
   } = useInstanceData();
   const {
     instances: privateCentosInstances,
     addInstance: addPrivateCentosInstances,
     removeInstance: removePrivateCentosInstances,
+    resetInstance: resetPrivateCentosInstances,
   } = useInstanceData();
+
+  const resetCurrentInstances = () => {
+    resetPublicUbuntuInstances();
+    resetPublicCentosInstances();
+    resetPrivateUbuntuInstances();
+    resetPrivateCentosInstances();
+  };
 
   return (
     <T2Context.Provider
@@ -60,6 +72,8 @@ export default function T2Provider(props: React.PropsWithChildren) {
         privateCentosInstances,
         addPrivateCentosInstances,
         removePrivateCentosInstances,
+
+        resetCurrentInstances,
       }}>
       {children}
     </T2Context.Provider>

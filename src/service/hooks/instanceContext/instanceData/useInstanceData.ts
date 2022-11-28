@@ -14,5 +14,9 @@ export default function useInstanceData() {
     setInstances(new Set(instances));
   };
 
-  return { instances, addInstance, removeInstance };
+  const resetInstance = () => {
+    setInstances(new Set());
+  }
+
+  return { instances, addInstance, removeInstance, resetInstance };
 }
