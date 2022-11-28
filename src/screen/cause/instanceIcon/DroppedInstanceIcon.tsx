@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import useDblClick from "../../../service/hooks/instanceContext/useDblClick";
+import { checkIsCurrentInstance } from "../../../service/util/removeIdsBeforePost.ts";
 import { droppedInstanceIcons } from "../../../store/instanceIcon/dropped";
 import { InstanceIconType, instanceIconType } from "../../../store/types/instanceIcon.d";
 
@@ -18,6 +19,8 @@ export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
 
   function handleDoubleClick(type: InstanceIconType, instanceId: string) {
+    if (checkIsCurrentInstance(instanceId)) return;
+
     handleInstanceType(type);
     handleInstanceId(instanceId);
   }
