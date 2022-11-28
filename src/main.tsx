@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
@@ -26,14 +27,14 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <LoaderProvider>
-        <GlobalStyle />
-        <App />
-      </LoaderProvider>
-    </ThemeProvider>
-  </QueryClientProvider>,
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <LoaderProvider>
+          <GlobalStyle />
+          <App />
+        </LoaderProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  </React.StrictMode>,
 );
