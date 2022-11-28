@@ -14,7 +14,7 @@ export default function BtnContainer(props: BtnContainerProps) {
   return (
     <StBtnWrapper>
       <DeleteBtn instanceId={instanceId} />
-      <CheckBtn hyperLink={`http://${publicIp}/${localStorage.getItem("user-token")}`} />
+      {publicIp && <CheckBtn hyperLink={`http://${publicIp}/${localStorage.getItem("user-token")}`} />}
     </StBtnWrapper>
   );
 }
