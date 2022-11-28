@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ROUTER_PATH } from "../../Router";
 import { ImgLogo } from "../../store/assets";
 import CompleteButton from "./header/CompleteButton";
 
@@ -8,8 +9,8 @@ export default function Header() {
     <StHeaderContainer>
       <StLogo src={ImgLogo} alt="logo" />
       <StLinksContainer>
-        <Link to="/key">AWS 연동</Link>
-        <Link to="/cause">아키텍쳐 설계</Link>
+        <Link to={ROUTER_PATH.registerKey}>AWS 연동</Link>
+        <Link to={ROUTER_PATH.cause}>아키텍쳐 설계</Link>
       </StLinksContainer>
       <CompleteButton />
     </StHeaderContainer>

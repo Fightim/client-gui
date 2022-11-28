@@ -2,19 +2,27 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom
 
 import { Cause, Error404, Login, RegistKey } from "./screen/@page";
 
+export const ROUTER_PATH = {
+  start: "/",
+  login: "/login",
+  registerKey: "/key",
+  cause: "/cause",
+  rest: "/*",
+};
+
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<PublicRoute restricted={true} />}>
-          <Route path="/" element={<Navigate to="login" replace />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Error404 />} />
+          <Route path={ROUTER_PATH.start} element={<Navigate to={ROUTER_PATH.login} replace />} />
+          <Route path={ROUTER_PATH.login} element={<Login />} />
+          <Route path={ROUTER_PATH.rest} element={<Error404 />} />
         </Route>
         <Route element={<PrivateRoute />}>
-          <Route path="/key" element={<RegistKey />} />
-          <Route path="/cause" element={<Cause />} />
-          <Route path="*" element={<Error404 />} />
+          <Route path={ROUTER_PATH.registerKey} element={<RegistKey />} />
+          <Route path={ROUTER_PATH.cause} element={<Cause />} />
+          <Route path={ROUTER_PATH.rest} element={<Error404 />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -23,10 +31,10 @@ export default function Router() {
 
 const PublicRoute = ({ restricted = false }) => {
   const isLogined = localStorage.getItem("user-token");
-  return isLogined && restricted ? <Navigate to="/cause" replace /> : <Outlet />;
+  return isLogined && restricted ? <Navigate to={ROUTER_PATH.cause} replace /> : <Outlet />;
 };
 
 const PrivateRoute = () => {
   const isLogined = localStorage.getItem("user-token");
-  return isLogined ? <Outlet /> : <Navigate to="/login" replace />;
+  return isLogined ? <Outlet /> : <Navigate to={ROUTER_PATH.login} replace />;
 };
