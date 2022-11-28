@@ -1,7 +1,8 @@
 import { rest } from "msw";
+import { PATH } from "../../api/loadBalancers";
 
 export const loadBalancersHandler = [
-  rest.post(`${import.meta.env.VITE_BASE_URL}/load-balancers`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.loadBalancers}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -22,7 +23,7 @@ export const loadBalancersHandler = [
       }),
     );
   }),
-  rest.get(`${import.meta.env.VITE_BASE_URL}/load-balancers/*`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.loadBalancers}/*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

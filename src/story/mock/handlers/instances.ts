@@ -1,7 +1,8 @@
 import { rest } from "msw";
+import { PATH } from "../../api/instances";
 
 export const instancesHandler = [
-  rest.get(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.instances}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([
@@ -77,7 +78,7 @@ export const instancesHandler = [
       ),
     );
   }),
-  rest.post(`${import.meta.env.VITE_BASE_URL}/instances`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.instances}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -116,7 +117,7 @@ export const instancesHandler = [
       }),
     );
   }),
-  rest.get(`${import.meta.env.VITE_BASE_URL}/instances/*`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.instances}/*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

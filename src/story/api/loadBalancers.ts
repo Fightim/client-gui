@@ -1,7 +1,7 @@
 import { CreateLoadBalancerDto } from "../../store/types/requestDto";
 import { client } from ".";
 
-const PATH = {
+export const PATH = {
   loadBalancers: "/load-balancers"
 }
 

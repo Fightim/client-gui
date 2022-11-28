@@ -1,7 +1,7 @@
 import { CreateInstanceDto } from "../../store/types/requestDto";
 import { client } from ".";
 
-const PATH = {
+export const PATH = {
   instances: "/instances"
 }
 
