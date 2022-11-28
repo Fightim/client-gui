@@ -1,5 +1,6 @@
 import axios from "axios";
-import { LOCAL_STORAGE_KEY } from "./user";
+
+const LOCAL_STORAGE_KEY = "user-token";
 
 export const client = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,

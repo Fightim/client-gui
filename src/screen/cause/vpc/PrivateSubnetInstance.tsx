@@ -1,5 +1,9 @@
 import usePrivateCentos from "../../../service/hooks/instanceContext/usePrivateCentos";
 import usePrivateUbuntu from "../../../service/hooks/instanceContext/usePrivateUbuntu";
+import {
+  useFetchPrivateCentosInstances,
+  useFetchPrivateUbuntuInstances,
+} from "../../../service/hooks/queries/instances";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
 import St from "../@styled/vpc.styled";
@@ -7,6 +11,8 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetInstance() {
   const { dragRef, isDragging } = useDrag();
+  const { instances: fetchedPrivateUbuntuInstances } = useFetchPrivateUbuntuInstances();
+  const { instances: fetchedPrivateCentosInstances } = useFetchPrivateCentosInstances();
   const { privateUbuntuInstances, addPrivateUbuntuInstances } = usePrivateUbuntu();
   const { privateCentosInstances, addPrivateCentosInstances } = usePrivateCentos();
 
@@ -49,9 +55,25 @@ export default function PrivateSubnetInstance() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
       <St.VPCBoxBody>
+        {fetchedPrivateUbuntuInstances &&
+          fetchedPrivateUbuntuInstances.map((instance) => (
+            <DroppedInstanceIcon
+              key={instance.informations.id}
+              type={instanceIconType.Ubuntu}
+              instanceId={instance.informations.id}
+            />
+          ))}
         {[...privateUbuntuInstances].map((instance) => (
           <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
         ))}
+        {fetchedPrivateCentosInstances &&
+          fetchedPrivateCentosInstances.map((instance) => (
+            <DroppedInstanceIcon
+              key={instance.informations.id}
+              type={instanceIconType.Centos}
+              instanceId={instance.informations.id}
+            />
+          ))}
         {[...privateCentosInstances].map((instance) => (
           <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}

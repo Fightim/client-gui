@@ -25,6 +25,7 @@ export interface InstanceContext {
   privateCentosInstances: Set<InstanceData>;
   addPrivateCentosInstances: (_instanceId: InstanceData) => void;
   removePrivateCentosInstances: (_instanceId: InstanceData) => void;
+  resetCurrentInstances: () => void;
 }
 
 export interface LoadBalancerContext {
