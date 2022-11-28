@@ -12,7 +12,9 @@ export default function DeleteBtn(props: DeleteBtnProps) {
 
   const { mutateAsync: mutateAsyncDeleteInstances } = useDeleteInstancesMutation();
 
-  const handleClickDeleteBtn = () => {};
+  const handleClickDeleteBtn = async () => {
+    await mutateAsyncDeleteInstances(instanceId);
+  };
 
   return (
     <BtnWrapper type="button" onClick={handleClickDeleteBtn} bgcolor={theme.colors.red100}>
