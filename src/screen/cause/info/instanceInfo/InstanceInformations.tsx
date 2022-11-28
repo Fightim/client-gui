@@ -1,8 +1,10 @@
 import St from "../../@styled/infoInformations.styled";
 import ContentWrapper from "../ContentWrapper";
+import { InstanceInformations as InstanceInformationsType } from "../../../../store/types/responseDto.d";
 
-// TODO :: any 삭제
-export default function InstanceInformations(props: any) {
+type InstanceInformationsProps = Omit<InstanceInformationsType, "tier">;
+
+export default function InstanceInformations(props: InstanceInformationsProps) {
   const { id, os, privateIp, publicIp, securityGroup, type } = props;
 
   return (

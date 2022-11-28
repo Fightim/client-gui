@@ -16,7 +16,6 @@ export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
   const { handleInstanceId, handleInstanceType } = useDblClick();
 
   const isActive = true;
-  // TODO :: active는! 이 컴포넌트의 id와 context data의 id가 같은지 비교
 
   function handleDoubleClick(type: InstanceIconType, instanceId: string) {
     if (checkIsCurrentInstance(instanceId)) return;

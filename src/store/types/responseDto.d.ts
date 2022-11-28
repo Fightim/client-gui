@@ -6,7 +6,7 @@ interface RdsOption extends Option {
   masterUserName: string;
 }
 
-interface InstanceInformations {
+export interface InstanceInformations {
   id: string;
   type: "t2.micro";
   os: "UBUNTU" | "CENTOS";
@@ -14,7 +14,6 @@ interface InstanceInformations {
   publicIp: string | null;
   privateIp: string;
   securityGroup: string[];
-  storageType: "SSD" | "HDD";
 }
 
 interface LoadBalancerInformations {
