@@ -2,13 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ROUTER_PATH } from "../../Router";
 import { ImgLogo } from "../../store/assets";
+import { LOCAL_STORAGE_KEY } from "../../story/api/user";
 import CompleteButton from "./header/CompleteButton";
 
 export default function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("user-token");
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
     navigate(ROUTER_PATH.login);
   };
 

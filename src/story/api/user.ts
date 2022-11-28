@@ -12,6 +12,8 @@ const ERROR_MESSAGE = {
   unknown: "알 수 없는 에러가 발생하였습니다.\n잠시 후에 다시 시도해주세요."
 }
 
+export const LOCAL_STORAGE_KEY = "user-token";
+
 export async function postLoginUser(dataToSubmit: {
   "email": string;
   "password": string;
@@ -19,7 +21,7 @@ export async function postLoginUser(dataToSubmit: {
   try {
     const res = await client.post(`${import.meta.env.VITE_BASE_URL}${PATH.login}`, dataToSubmit);
 
-    localStorage.setItem("user-token", res.data.token);
+    localStorage.setItem(LOCAL_STORAGE_KEY, res.data.token);
     onLoginUser();
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -41,7 +43,7 @@ export async function createUser(dataToSubmit: {
       passwordCheck: dataToSubmit.password,
     });
 
-    localStorage.setItem("user-token", res.data.token);
+    localStorage.setItem(LOCAL_STORAGE_KEY, res.data.token);
     onLoginUser();
   } catch (error) {
     if (axios.isAxiosError(error)) {

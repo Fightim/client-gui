@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
 import { Cause, Error404, Login, RegistKey } from "./screen/@page";
+import { LOCAL_STORAGE_KEY } from "./story/api/user";
 
 export const ROUTER_PATH = {
   start: "/",
@@ -30,11 +31,11 @@ export default function Router() {
 }
 
 const PublicRoute = ({ restricted = false }) => {
-  const isLogined = localStorage.getItem("user-token");
+  const isLogined = localStorage.getItem(LOCAL_STORAGE_KEY);
   return isLogined && restricted ? <Navigate to={ROUTER_PATH.cause} replace /> : <Outlet />;
 };
 
 const PrivateRoute = () => {
-  const isLogined = localStorage.getItem("user-token");
+  const isLogined = localStorage.getItem(LOCAL_STORAGE_KEY);
   return isLogined ? <Outlet /> : <Navigate to={ROUTER_PATH.login} replace />;
 };
