@@ -18,3 +18,9 @@ export const createInstances = async (instances: CreateInstanceDto[]) => {
 
   return data;
 };
+
+export const deleteInstances = async (instanceId: string) => {
+  const { data } = await client.delete(`/instances/${instanceId}`);
+
+  return data;
+};

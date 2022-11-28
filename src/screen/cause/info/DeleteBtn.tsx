@@ -1,10 +1,21 @@
+import { useDeleteInstancesMutation } from "../../../service/hooks/queries/instances";
 import { IcDelete } from "../../../store/assets";
 import theme from "../../../store/style/theme";
 import { BtnWrapper } from "../@styled/button.styled";
 
-export default function DeleteBtn() {
+interface DeleteBtnProps {
+  instanceId: string;
+}
+
+export default function DeleteBtn(props: DeleteBtnProps) {
+  const { instanceId } = props;
+
+  const { mutateAsync: mutateAsyncDeleteInstances } = useDeleteInstancesMutation();
+
+  const handleClickDeleteBtn = () => {};
+
   return (
-    <BtnWrapper bgcolor={theme.colors.red100}>
+    <BtnWrapper type="button" onClick={handleClickDeleteBtn} bgcolor={theme.colors.red100}>
       <IcDelete />
       삭제하기
     </BtnWrapper>
