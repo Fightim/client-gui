@@ -28,7 +28,7 @@ export default function PrivateSubnetInstance() {
           type: "t2.micro",
           os: "UBUNTU",
           tier: "WAS",
-          name: "asdf",
+          name,
         });
         break;
       case instanceIconType.Centos:
@@ -37,7 +37,7 @@ export default function PrivateSubnetInstance() {
           type: "t2.micro",
           os: "CENTOS",
           tier: "WAS",
-          name: "asdf",
+          name,
         });
         break;
       default:
