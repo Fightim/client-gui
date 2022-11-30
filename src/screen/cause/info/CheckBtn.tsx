@@ -9,14 +9,12 @@ interface CheckBtnProps {
 export default function CheckBtn(props: CheckBtnProps) {
   const { hyperLink } = props;
 
-  const handleClickLinkBtn = () => {
-    window.location.href = hyperLink;
-  };
-
   return (
-    <BtnWrapper type="button" onClick={handleClickLinkBtn} bgcolor={theme.colors.blue200}>
-      <IcApply />
-      인스턴스 확인
+    <BtnWrapper type="button" bgcolor={theme.colors.blue200}>
+      <a href={hyperLink} target="_blank">
+        <IcApply />
+        인스턴스 확인
+      </a>
     </BtnWrapper>
   );
 }
