@@ -2,7 +2,6 @@ import { createContext, useEffect } from "react";
 
 import { InstanceContext } from "../../store/types/instanceContext";
 import useInstanceData from "../hooks/instanceContext/instanceData/useInstanceData";
-import { useFetchInstances } from "../hooks/queries/instances";
 
 export const T2Context = createContext<InstanceContext>({
   publicUbuntuInstances: new Set(),
@@ -17,6 +16,7 @@ export const T2Context = createContext<InstanceContext>({
   privateCentosInstances: new Set(),
   addPrivateCentosInstances: () => {},
   removePrivateCentosInstances: () => {},
+  resetCurrentInstances: () => {},
 });
 
 export default function T2Provider(props: React.PropsWithChildren) {
@@ -26,47 +26,33 @@ export default function T2Provider(props: React.PropsWithChildren) {
     instances: publicUbuntuInstances,
     addInstance: addPublicUbuntuInstances,
     removeInstance: removePublicUbuntuInstances,
+    resetInstance: resetPublicUbuntuInstances,
   } = useInstanceData();
   const {
     instances: publicCentosInstances,
     addInstance: addPublicCentosInstances,
     removeInstance: removePublicCentosInstances,
+    resetInstance: resetPublicCentosInstances,
   } = useInstanceData();
   const {
     instances: privateUbuntuInstances,
     addInstance: addPrivateUbuntuInstances,
     removeInstance: removePrivateUbuntuInstances,
+    resetInstance: resetPrivateUbuntuInstances,
   } = useInstanceData();
   const {
     instances: privateCentosInstances,
     addInstance: addPrivateCentosInstances,
     removeInstance: removePrivateCentosInstances,
+    resetInstance: resetPrivateCentosInstances,
   } = useInstanceData();
 
-  const { instances } = useFetchInstances();
-  useEffect(() => {
-    instances?.forEach((instance) => {
-      const postInstance = {
-        id: instance.informations.id,
-        type: instance.informations.type,
-        os: instance.informations.os,
-        tier: instance.informations.tier,
-        name: instance.options.name,
-      };
-      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WEBSERVER") {
-        return addPublicUbuntuInstances(postInstance);
-      }
-      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WEBSERVER") {
-        return addPublicCentosInstances(postInstance);
-      }
-      if (instance.informations.os === "UBUNTU" && instance.informations.tier === "WAS") {
-        return addPrivateUbuntuInstances(postInstance);
-      }
-      if (instance.informations.os === "CENTOS" && instance.informations.tier === "WAS") {
-        return addPrivateCentosInstances(postInstance);
-      }
-    });
-  }, [instances]);
+  const resetCurrentInstances = () => {
+    resetPublicUbuntuInstances();
+    resetPublicCentosInstances();
+    resetPrivateUbuntuInstances();
+    resetPrivateCentosInstances();
+  };
 
   return (
     <T2Context.Provider
@@ -86,6 +72,8 @@ export default function T2Provider(props: React.PropsWithChildren) {
         privateCentosInstances,
         addPrivateCentosInstances,
         removePrivateCentosInstances,
+
+        resetCurrentInstances,
       }}>
       {children}
     </T2Context.Provider>
