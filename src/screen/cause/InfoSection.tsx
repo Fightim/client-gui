@@ -28,9 +28,9 @@ export default function InfoSection() {
   };
 
   return (
-    <Suspense fallback={<Loader />}>
-      <StInfoSection>{InfoComponentByType(instanceType)}</StInfoSection>
-    </Suspense>
+    <StInfoSection>
+      <Suspense fallback={<Loader />}>{InfoComponentByType(instanceType)}</Suspense>
+    </StInfoSection>
   );
 }
 
