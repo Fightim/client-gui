@@ -61,7 +61,7 @@ export default function PublicSubnet() {
 
   return (
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
-      <St.VPCBoxTitle>Public Subnet</St.VPCBoxTitle>
+      <St.VPCBoxTitle>Front-End</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {fetchedPublicUbuntuInstances &&
           fetchedPublicUbuntuInstances.map((instance) => (

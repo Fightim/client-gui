@@ -53,7 +53,7 @@ export default function PrivateSubnetInstance() {
 
   return (
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
-      <St.VPCBoxTitle>Private Subnet</St.VPCBoxTitle>
+      <St.VPCBoxTitle>Database</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {fetchedPrivateUbuntuInstances &&
           fetchedPrivateUbuntuInstances.map((instance) => (
