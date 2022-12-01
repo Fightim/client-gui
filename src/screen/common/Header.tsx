@@ -2,11 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ROUTER_PATH } from "../../Router";
 import { ImgLogo } from "../../store/assets";
-import CompleteButton from "./header/CompleteButton";
+import CompleteButton from "../cause/header/CompleteButton";
 
 const LOCAL_STORAGE_KEY = "user-token";
 
-export default function Header() {
+interface HeaderProps {
+  isMain?: boolean;
+}
+
+export default function Header(props: HeaderProps) {
+  const { isMain } = props;
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,11 +24,11 @@ export default function Header() {
     <StHeaderContainer>
       <StLogo src={ImgLogo} alt="logo" />
       <StLinksContainer>
-        <StLogoutBtn onClick={handleLogout}>로그아웃</StLogoutBtn>
         <Link to={ROUTER_PATH.registerKey}>AWS 연동</Link>
         <Link to={ROUTER_PATH.cause}>아키텍쳐 설계</Link>
+        <StLogoutBtn onClick={handleLogout}>로그아웃</StLogoutBtn>
       </StLinksContainer>
-      <CompleteButton />
+      {isMain && <CompleteButton />}
     </StHeaderContainer>
   );
 }
@@ -48,8 +54,9 @@ const StLogo = styled.img`
 `;
 
 const StLogoutBtn = styled.button`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 500;
+  color: ${({ theme }) => theme.colors.gary100};
 `;
 
 const StLinksContainer = styled.div`
