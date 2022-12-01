@@ -38,7 +38,7 @@ export default function PrivateSubnetRDS() {
 
   return (
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
-      <St.VPCBoxTitle>Back-End</St.VPCBoxTitle>
+      <St.VPCBoxTitle>Database</St.VPCBoxTitle>
       <St.VPCBoxBody>
         {[...instances].map((instance) => (
           <DroppedInstanceIcon key={instance.id} type={instanceIconType.RDS} instanceId={instance.id} />
