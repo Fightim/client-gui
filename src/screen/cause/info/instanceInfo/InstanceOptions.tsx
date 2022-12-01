@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useInput from "../../../../service/hooks/useInput";
 import St from "../../@styled/infoOptions.styled";
 
@@ -6,7 +7,11 @@ interface InstanceOptionsProps {
 }
 
 export default function InstanceOptions({ name }: InstanceOptionsProps) {
-  const { value, handleChangeValue } = useInput(name);
+  const { value, setValue, handleChangeValue } = useInput(name);
+
+  useEffect(() => {
+    setValue(name);
+  }, [name]);
 
   return (
     <>
