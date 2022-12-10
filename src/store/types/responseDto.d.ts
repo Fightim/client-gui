@@ -2,8 +2,9 @@ interface Option {
   name: string;
 }
 
-interface RdsOption extends Option {
-  masterUserName: string;
+interface RdsOption {
+  name: string | null;
+  masterUserName: string | null;
 }
 
 export interface InstanceInformations {
@@ -24,9 +25,9 @@ interface LoadBalancerInformations {
 }
 
 interface RdsInformations {
-  endPoint: string;
-  port: number;
-  storage: string;
+  endPoint: string | null;
+  port: number | null;
+  storage: string | null;
 }
 
 export interface InstanceResponseDto {
