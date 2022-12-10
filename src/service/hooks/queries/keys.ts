@@ -10,4 +10,5 @@ export const QUERY_KEY = {
   public_centos: "public_centos",
   private_ubuntu: "private_ubuntu",
   private_centos: "private_centos",
+  get_rds: "get_rds"
 };

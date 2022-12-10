@@ -1,16 +1,12 @@
-import { CreateInstanceDto, CreateLoadBalancerDto, CreateRdsDto } from "./requestDto";
+import { CreateInstanceDto, CreateLoadBalancerDto, CreateRDSDto } from "./requestDto";
 
 export interface InstanceData extends CreateInstanceDto {
   id: string;
 }
-
 export interface ALBData extends CreateLoadBalancerDto {
   id: string;
 }
-
-export interface RDSData extends CreateRdsDto {
-  id: string;
-}
+export type RDSData = CreateRDSDto;
 
 export interface InstanceContext {
   publicUbuntuInstances: Set<InstanceData>;
@@ -35,7 +31,7 @@ export interface LoadBalancerContext {
 }
 
 export interface RDSContext {
-  instances: Set<RDSData>;
+  instance: RDSData | null;
   addInstance: (_instanceId: RDSData) => void;
-  removeInstance: (_instanceId: RDSData) => void;
+  resetCurrentRDS: () => void;
 }

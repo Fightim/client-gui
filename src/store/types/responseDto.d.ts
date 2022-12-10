@@ -2,8 +2,10 @@ interface Option {
   name: string;
 }
 
-interface RdsOption extends Option {
-  masterUserName: string;
+// REF :: aws-sdk 에서 optional/nullable로 안내됨
+interface RDSOption {
+  name: string | null;
+  masterUserName: string | null;
 }
 
 export interface InstanceInformations {
@@ -23,10 +25,13 @@ interface LoadBalancerInformations {
   targetGroupInstances: string[];
 }
 
-interface RdsInformations {
-  endPoint: string;
-  port: number;
-  storage: string;
+// REF :: aws-sdk 에서 optional/nullable로 안내됨
+interface RDSInformations {
+  id: string;
+  DBInstanceStatus: string | null;  //TODO :: creating, available, deleting enum값 설정
+  endPoint: string | null;
+  port: number | null;
+  storage: number | null;
 }
 
 export interface InstanceResponseDto {
@@ -39,7 +44,7 @@ export interface LoadBalancerRsponseDto {
   informations: LoadBalancerInformations;
 }
 
-export interface RdsRsponseDto {
-  options: RdsOptions;
-  informations: RdsInformations;
+export interface RDSResponseDto {
+  options: RDSOptions;
+  informations: RDSInformations;
 }

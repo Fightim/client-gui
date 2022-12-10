@@ -5,12 +5,12 @@ import { ALBData } from "../../../../store/types/instanceContext";
 export default function useALBData() {
   const [instances, setInstances] = useState<Set<ALBData>>(new Set());
 
-  const addInstance = (instanceId: ALBData) => {
-    setInstances(new Set(instances.add(instanceId)));
+  const addInstance = (currentInstance: ALBData) => {
+    setInstances(new Set(instances.add(currentInstance)));
   };
 
-  const removeInstance = (instanceId: ALBData) => {
-    instances.delete(instanceId);
+  const removeInstance = (currentInstance: ALBData) => {
+    instances.delete(currentInstance);
     setInstances(new Set(instances));
   };
 

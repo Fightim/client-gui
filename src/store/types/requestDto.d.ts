@@ -9,7 +9,7 @@ export interface CreateLoadBalancerDto {
   name: string;
 }
 
-export interface CreateRdsDto {
+export interface CreateRDSDto {
   name: string;
   masterUserName: string;
   rdsPassword: string;

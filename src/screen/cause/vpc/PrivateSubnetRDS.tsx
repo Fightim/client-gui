@@ -1,4 +1,5 @@
 import useRDS from "../../../service/hooks/instanceContext/useRDS";
+import { useFetchRDS } from "../../../service/hooks/queries/rds";
 import useDrag from "../../../service/hooks/useDrag";
 import { instanceIconType } from "../../../store/types/instanceIcon.d";
 import St from "../@styled/vpc.styled";
@@ -6,11 +7,10 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 
 export default function PrivateSubnetRDS() {
   const { dragRef, isDragging } = useDrag();
-  const { instances, addInstance } = useRDS();
+  const { rds } = useFetchRDS();
+  const { instance, addInstance } = useRDS();
 
-  const MAX_SIZE = 1;
-  const isAffordBox = instances.size < MAX_SIZE;
-  const isCorrectBox = dragRef.current === instanceIconType.RDS && isAffordBox;
+  const isCorrectBox = instance === null && dragRef.current === instanceIconType.RDS;
 
   function onDrop() {
     if (!isCorrectBox) return;
@@ -24,7 +24,6 @@ export default function PrivateSubnetRDS() {
     switch (dragRef.current) {
       case instanceIconType.RDS:
         addInstance({
-          id: "" + Math.random(),
           name,
           masterUserName,
           rdsPassword,
@@ -40,9 +39,17 @@ export default function PrivateSubnetRDS() {
     <St.VPCBox onDragOver={(e) => e.preventDefault()} onDrop={onDrop} isactive={isDragging && isCorrectBox}>
       <St.VPCBoxTitle>Database</St.VPCBoxTitle>
       <St.VPCBoxBody>
-        {[...instances].map((instance) => (
-          <DroppedInstanceIcon key={instance.id} type={instanceIconType.RDS} instanceId={instance.id} />
-        ))}
+        {rds &&
+          rds.map((rds) => (
+            <DroppedInstanceIcon
+              key={rds.informations.id}
+              type={instanceIconType.RDS}
+              instanceId={rds.informations.id}
+            />
+          ))}
+        {instance && (
+          <DroppedInstanceIcon key={"" + Math.random()} type={instanceIconType.RDS} instanceId={"" + Math.random()} />
+        )}
       </St.VPCBoxBody>
     </St.VPCBox>
   );

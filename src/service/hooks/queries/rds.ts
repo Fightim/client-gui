@@ -1,13 +1,70 @@
-import { useQuery } from "react-query";
-
-import { getRDSOption } from "../../../story/api/rds";
+import axios, { AxiosError } from "axios";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { RDSResponseDto } from "../../../store/types/responseDto";
+import { createRDS, deleteRDS, getRDS, getRDSOption } from "../../../story/api/rds";
+import useLoader from "../useLoader";
 import { QUERY_KEY } from "./keys";
 
+export const useFetchRDS = () => {
+  const { data } = useQuery<RDSResponseDto[]>([QUERY_KEY.get_rds], () => getRDS(), {
+    staleTime: 10000,
+  });
+
+  return {
+    rds: data,
+  };
+};
+
 export const useFetchRDSOption = (id: string) => {
-  const fetcher = () => getRDSOption(id);
-  const { data } = useQuery([QUERY_KEY.option, id], fetcher);
+  const { data } = useQuery<RDSResponseDto>([QUERY_KEY.option, id], () => getRDSOption(id));
 
   return {
     rdsOption: data,
   };
 };
+
+export const useCreatRDSsMutation = () => {
+  const queryClient = useQueryClient();
+  const { showLoader, hideLoader } = useLoader();
+
+  return useMutation(createRDS, {
+    onSuccess() {
+      queryClient.invalidateQueries([QUERY_KEY.get_rds]);
+    },
+    onMutate() {
+      showLoader();
+    },
+    onSettled() {
+      hideLoader();
+    },
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
+    }
+  })
+}
+
+export const useDeleteRDSMutation = () => {
+  const queryClient = useQueryClient();
+  const { showLoader, hideLoader } = useLoader();
+
+  return useMutation(deleteRDS, {
+    onSuccess() {
+      queryClient.invalidateQueries([QUERY_KEY.get_rds]);
+    },
+    onMutate() {
+      showLoader();
+    },
+    onSettled() {
+      hideLoader();
+    },
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
+    }
+  })
+}

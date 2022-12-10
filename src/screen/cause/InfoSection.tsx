@@ -4,8 +4,6 @@ import styled from "styled-components";
 import useDblClick from "../../service/hooks/instanceContext/useDblClick";
 import { instanceIconType, InstanceIconTypeWithNull } from "../../store/types/instanceIcon.d";
 import Loader from "../common/Loader";
-import CheckBtn from "./info/CheckBtn";
-import DeleteBtn from "./info/DeleteBtn";
 import InstanceInfo from "./info/instanceInfo";
 import LoadBalancerInfo from "./info/loadBalancerInfo";
 import RDSInfo from "./info/rdsInfo";
