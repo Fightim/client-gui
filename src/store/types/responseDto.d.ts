@@ -42,7 +42,7 @@ export interface LoadBalancerRsponseDto {
   informations: LoadBalancerInformations;
 }
 
-export interface RDSRsponseDto {
+export interface RDSResponseDto {
   options: RDSOptions;
   informations: RDSInformations;
 }
