@@ -11,13 +11,12 @@ export default function RDSInfo(props: RDSInfoProps) {
   const { id } = props;
 
   const { rdsOption } = useFetchRDSOption(id);
-  console.log(rdsOption.data);
 
+  if (!rdsOption) return <div>Error</div>;
   return (
     <>
-      <RDSOptions name={rdsOption.data.options.name} masterUserName={rdsOption.data.options.masterUserName} />
-      <RDSInformations {...rdsOption.data.informations} />
-      <BtnContainer instanceId={id} publicIp={rdsOption.informations.publicIp} />
+      <RDSOptions name={rdsOption.options.name} masterUserName={rdsOption.options.masterUserName} />
+      <RDSInformations {...rdsOption.informations} />
     </>
   );
 }
