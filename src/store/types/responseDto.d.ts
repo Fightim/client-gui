@@ -2,6 +2,7 @@ interface Option {
   name: string;
 }
 
+// REF :: aws-sdk 에서 optional/nullable로 안내됨
 interface RDSOption {
   name: string | null;
   masterUserName: string | null;
@@ -24,8 +25,9 @@ interface LoadBalancerInformations {
   targetGroupInstances: string[];
 }
 
+// REF :: aws-sdk 에서 optional/nullable로 안내됨
 interface RDSInformations {
-  id: string | null;
+  id: string;
   DBInstanceStatus: string | null;  //TODO :: creating, available, deleting enum값 설정
   endPoint: string | null;
   port: number | null;
