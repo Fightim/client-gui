@@ -22,9 +22,3 @@ export const removeALBIdsBeforePost = (instance: ALBData): CreateLoadBalancerDto
 
   return currentInstance;
 };
-
-export const removeRDSIdsBeforePost = (instance: RDSData): CreateRDSDto => {
-  const { id: _id, ...currentInstance } = instance;
-
-  return currentInstance;
-};

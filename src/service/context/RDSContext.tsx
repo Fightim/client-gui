@@ -5,15 +5,15 @@ import { RDSContext } from "../../store/types/instanceContext";
 import useRDSData from "../hooks/instanceContext/instanceData/useRDSData";
 
 export const _RDSContext = createContext<RDSContext>({
-  instances: new Set(),
+  instance: null,
   addInstance: () => {},
-  removeInstance: () => {},
+  resetCurrentRDS: () => {},
 });
 
 export default function RDSProvider(props: React.PropsWithChildren) {
   const { children } = props;
 
-  const { instances, addInstance, removeInstance } = useRDSData();
+  const { instance, addInstance, resetCurrentRDS } = useRDSData();
 
-  return <_RDSContext.Provider value={{ instances, addInstance, removeInstance }}>{children}</_RDSContext.Provider>;
+  return <_RDSContext.Provider value={{ instance, addInstance, resetCurrentRDS }}>{children}</_RDSContext.Provider>;
 }

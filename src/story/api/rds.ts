@@ -17,8 +17,8 @@ export const getRDSOption = async (rdsId: string) => {
   return data;
 };
 
-export const createRDS = async (rdses: CreateRDSDto[]) => {
-  const { data } = await client.post(PATH.rds, rdses);
+export const createRDS = async (rds: CreateRDSDto) => {
+  const { data } = await client.post(PATH.rds, rds);
 
   return data;
 };

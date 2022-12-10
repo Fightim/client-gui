@@ -1,3 +1,4 @@
+import axios, { AxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { RDSResponseDto } from "../../../store/types/responseDto";
 import { createRDS, deleteRDS, getRDS, getRDSOption } from "../../../story/api/rds";
@@ -36,6 +37,11 @@ export const useCreatRDSsMutation = () => {
     onSettled() {
       hideLoader();
     },
+    // TODO :: any 제거
+    onError(error: any) {
+      alert(error.response.data.message);
+      location.reload();
+    }
   })
 }
 

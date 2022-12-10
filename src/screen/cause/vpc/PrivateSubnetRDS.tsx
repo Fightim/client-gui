@@ -8,11 +8,9 @@ import DroppedInstanceIcon from "../instanceIcon/DroppedInstanceIcon";
 export default function PrivateSubnetRDS() {
   const { dragRef, isDragging } = useDrag();
   const { rds } = useFetchRDS();
-  const { instances, addInstance } = useRDS();
+  const { instance, addInstance } = useRDS();
 
-  const MAX_SIZE = 1;
-  const isAffordBox = instances.size < MAX_SIZE;
-  const isCorrectBox = dragRef.current === instanceIconType.RDS && isAffordBox;
+  const isCorrectBox = instance === null && dragRef.current === instanceIconType.RDS;
 
   function onDrop() {
     if (!isCorrectBox) return;
@@ -49,9 +47,9 @@ export default function PrivateSubnetRDS() {
               instanceId={rds.informations.id}
             />
           ))}
-        {[...instances].map((instance) => (
-          <DroppedInstanceIcon key={instance.name} type={instanceIconType.RDS} instanceId={instance.name} />
-        ))}
+        {instance && (
+          <DroppedInstanceIcon key={"" + Math.random()} type={instanceIconType.RDS} instanceId={"" + Math.random()} />
+        )}
       </St.VPCBoxBody>
     </St.VPCBox>
   );

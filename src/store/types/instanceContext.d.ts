@@ -31,7 +31,7 @@ export interface LoadBalancerContext {
 }
 
 export interface RDSContext {
-  instances: Set<RDSData>;
+  instance: RDSData | null;
   addInstance: (_instanceId: RDSData) => void;
-  removeInstance: (_instanceId: RDSData) => void;
+  resetCurrentRDS: () => void;
 }

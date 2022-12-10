@@ -6,11 +6,8 @@ import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCen
 import usePublicUbuntu from "../../../service/hooks/instanceContext/usePublicUbuntu";
 import useRDS from "../../../service/hooks/instanceContext/useRDS";
 import { useCreateInstancesMutation } from "../../../service/hooks/queries/instances";
-import {
-  removeALBIdsBeforePost,
-  removeInstanceIdsBeforePost,
-  removeRDSIdsBeforePost,
-} from "../../../service/util/removeIdsBeforePost.ts";
+import { useCreatRDSsMutation } from "../../../service/hooks/queries/rds";
+import { removeALBIdsBeforePost, removeInstanceIdsBeforePost } from "../../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../../store/assets";
 // import { createLoadBalancer } from "../../../story/api/loadBalancers";
 import { createRDS } from "../../../story/api/rds";
@@ -21,8 +18,9 @@ export default function CompleteButton() {
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
   const { mutateAsync: mutateAsyncCreateInstances } = useCreateInstancesMutation();
+  const { instance: postingRDS, resetCurrentRDS } = useRDS();
+  const { mutateAsync: mutateAsyncCreateRDS } = useCreatRDSsMutation();
   // const { instances: alb } = useALB();
-  const { instances: rds } = useRDS();
 
   async function handleClickComplete() {
     const postingInstances = removeInstanceIdsBeforePost([
@@ -31,19 +29,19 @@ export default function CompleteButton() {
       ...privateCentosInstances,
       ...publicCentosInstances,
     ]);
-    // TODO :: ALB, RDS TEST
+    // TODO :: ALB TEST
     // const postingALB = removeALBIdsBeforePost([...alb][0]);
-    // const postingRDS = removeRDSIdsBeforePost([...rds][0]);
 
-    await mutateAsyncCreateInstances(postingInstances);
+    postingInstances.length && (await mutateAsyncCreateInstances(postingInstances));
+    postingRDS && (await mutateAsyncCreateRDS(postingRDS));
     // await createLoadBalancer(postingALB);
-    // await createRDS(postingRDS);
 
     resetAll();
   }
 
   function resetAll() {
     resetCurrentInstances();
+    resetCurrentRDS();
   }
 
   return (

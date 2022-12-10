@@ -3,16 +3,15 @@ import { useState } from "react";
 import { RDSData } from "../../../../store/types/instanceContext";
 
 export default function useRDSData() {
-  const [instances, setInstances] = useState<Set<RDSData>>(new Set());
+  const [instance, setInstance] = useState<RDSData | null>(null);
 
   const addInstance = (currentInstance: RDSData) => {
-    setInstances(new Set(instances.add(currentInstance)));
+    setInstance({ ...currentInstance });
   };
 
-  const removeInstance = (currentInstance: RDSData) => {
-    instances.delete(currentInstance);
-    setInstances(new Set(instances));
-  };
+  const resetCurrentRDS = () => {
+    setInstance(null);
+  }
 
-  return { instances, addInstance, removeInstance };
+  return { instance, addInstance, resetCurrentRDS };
 }
