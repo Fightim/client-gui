@@ -26,7 +26,6 @@ export default function PrivateSubnetRDS() {
     switch (dragRef.current) {
       case instanceIconType.RDS:
         addInstance({
-          id: "" + Math.random(),
           name,
           masterUserName,
           rdsPassword,
@@ -51,7 +50,7 @@ export default function PrivateSubnetRDS() {
             />
           ))}
         {[...instances].map((instance) => (
-          <DroppedInstanceIcon key={instance.id} type={instanceIconType.RDS} instanceId={instance.id} />
+          <DroppedInstanceIcon key={instance.name} type={instanceIconType.RDS} instanceId={instance.name} />
         ))}
       </St.VPCBoxBody>
     </St.VPCBox>

@@ -3,14 +3,10 @@ import { CreateInstanceDto, CreateLoadBalancerDto, CreateRDSDto } from "./reques
 export interface InstanceData extends CreateInstanceDto {
   id: string;
 }
-
 export interface ALBData extends CreateLoadBalancerDto {
   id: string;
 }
-
-export interface RDSData extends CreateRDSDto {
-  id: string;
-}
+export type RDSData = CreateRDSDto;
 
 export interface InstanceContext {
   publicUbuntuInstances: Set<InstanceData>;

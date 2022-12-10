@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useALB from "../../../service/hooks/instanceContext/useALB";
+// import useALB from "../../../service/hooks/instanceContext/useALB";
 import usePrivateCentos from "../../../service/hooks/instanceContext/usePrivateCentos";
 import usePrivateUbuntu from "../../../service/hooks/instanceContext/usePrivateUbuntu";
 import usePublicCentos from "../../../service/hooks/instanceContext/usePublicCentos";
@@ -13,7 +13,7 @@ import {
 } from "../../../service/util/removeIdsBeforePost.ts";
 import { IcApply } from "../../../store/assets";
 // import { createLoadBalancer } from "../../../story/api/loadBalancers";
-// import { createRDS } from "../../../story/api/rds";
+import { createRDS } from "../../../story/api/rds";
 
 export default function CompleteButton() {
   const { privateUbuntuInstances } = usePrivateUbuntu();
@@ -21,7 +21,7 @@ export default function CompleteButton() {
   const { privateCentosInstances } = usePrivateCentos();
   const { publicCentosInstances } = usePublicCentos();
   const { mutateAsync: mutateAsyncCreateInstances } = useCreateInstancesMutation();
-  const { instances: alb } = useALB();
+  // const { instances: alb } = useALB();
   const { instances: rds } = useRDS();
 
   async function handleClickComplete() {
@@ -39,6 +39,10 @@ export default function CompleteButton() {
     // await createLoadBalancer(postingALB);
     // await createRDS(postingRDS);
 
+    resetAll();
+  }
+
+  function resetAll() {
     resetCurrentInstances();
   }
 
