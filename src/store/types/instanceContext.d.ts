@@ -1,4 +1,4 @@
-import { CreateInstanceDto, CreateLoadBalancerDto, CreateRdsDto } from "./requestDto";
+import { CreateInstanceDto, CreateLoadBalancerDto, CreateRDSDto } from "./requestDto";
 
 export interface InstanceData extends CreateInstanceDto {
   id: string;
@@ -8,7 +8,7 @@ export interface ALBData extends CreateLoadBalancerDto {
   id: string;
 }
 
-export interface RDSData extends CreateRdsDto {
+export interface RDSData extends CreateRDSDto {
   id: string;
 }
 

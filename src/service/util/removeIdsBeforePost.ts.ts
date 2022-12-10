@@ -1,5 +1,5 @@
 import { ALBData, InstanceData, RDSData } from "../../store/types/instanceContext";
-import { CreateInstanceDto, CreateLoadBalancerDto, CreateRdsDto } from "../../store/types/requestDto";
+import { CreateInstanceDto, CreateLoadBalancerDto, CreateRDSDto } from "../../store/types/requestDto";
 
 export const checkIsCurrentInstance = (_id: string) => +_id < 1;
 
@@ -23,7 +23,7 @@ export const removeALBIdsBeforePost = (instance: ALBData): CreateLoadBalancerDto
   return currentInstance;
 };
 
-export const removeRDSIdsBeforePost = (instance: RDSData): CreateRdsDto => {
+export const removeRDSIdsBeforePost = (instance: RDSData): CreateRDSDto => {
   const { id: _id, ...currentInstance } = instance;
 
   return currentInstance;

@@ -2,7 +2,7 @@ interface Option {
   name: string;
 }
 
-interface RdsOption {
+interface RDSOption {
   name: string | null;
   masterUserName: string | null;
 }
@@ -24,7 +24,7 @@ interface LoadBalancerInformations {
   targetGroupInstances: string[];
 }
 
-interface RdsInformations {
+interface RDSInformations {
   id: string | null;
   DBInstanceStatus: string | null;  //TODO :: creating, available, deleting enum값 설정
   endPoint: string | null;
@@ -42,7 +42,7 @@ export interface LoadBalancerRsponseDto {
   informations: LoadBalancerInformations;
 }
 
-export interface RdsRsponseDto {
-  options: RdsOptions;
-  informations: RdsInformations;
+export interface RDSRsponseDto {
+  options: RDSOptions;
+  informations: RDSInformations;
 }

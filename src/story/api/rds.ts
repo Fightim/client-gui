@@ -1,4 +1,4 @@
-import { CreateRdsDto } from "../../store/types/requestDto";
+import { CreateRDSDto } from "../../store/types/requestDto";
 import { client } from ".";
 
 export const PATH = {
@@ -17,7 +17,7 @@ export const getRDSOption = async (rdsId: string) => {
   return data;
 };
 
-export const createRDS = async (rdses: CreateRdsDto[]) => {
+export const createRDS = async (rdses: CreateRDSDto[]) => {
   const { data } = await client.post(PATH.rds, rdses);
 
   return data;
