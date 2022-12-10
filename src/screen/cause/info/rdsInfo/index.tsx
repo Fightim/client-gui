@@ -17,6 +17,7 @@ export default function RDSInfo(props: RDSInfoProps) {
     <>
       <RDSOptions name={rdsOption.options.name} masterUserName={rdsOption.options.masterUserName} />
       <RDSInformations {...rdsOption.informations} />
+      <BtnContainer instanceId={id} publicIp={null} />
     </>
   );
 }

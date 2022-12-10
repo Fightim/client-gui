@@ -1,6 +1,9 @@
+import useDblClick from "../../../service/hooks/instanceContext/useDblClick";
 import { useDeleteInstancesMutation } from "../../../service/hooks/queries/instances";
+import { useDeleteRDSMutation } from "../../../service/hooks/queries/rds";
 import { IcDelete } from "../../../store/assets";
 import theme from "../../../store/style/theme";
+import { instanceIconType } from "../../../store/types/instanceIcon.d";
 import { BtnWrapper } from "../@styled/button.styled";
 
 interface DeleteBtnProps {
@@ -9,11 +12,24 @@ interface DeleteBtnProps {
 
 export default function DeleteBtn(props: DeleteBtnProps) {
   const { instanceId } = props;
+  const { instanceType } = useDblClick();
 
   const { mutateAsync: mutateAsyncDeleteInstances } = useDeleteInstancesMutation();
+  const { mutateAsync: mutateAsyncDeleteRDS } = useDeleteRDSMutation();
 
   const handleClickDeleteBtn = async () => {
-    await mutateAsyncDeleteInstances(instanceId);
+    switch (instanceType) {
+      case instanceIconType.Ubuntu:
+      case instanceIconType.Centos:
+        await mutateAsyncDeleteInstances(instanceId);
+        break;
+      case instanceIconType.ALB:
+        break;
+      case instanceIconType.RDS:
+        await mutateAsyncDeleteRDS(instanceId);
+        break;
+      default:
+    }
   };
 
   return (
