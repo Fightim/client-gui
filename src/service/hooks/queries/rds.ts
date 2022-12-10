@@ -37,10 +37,11 @@ export const useCreatRDSsMutation = () => {
     onSettled() {
       hideLoader();
     },
-    // TODO :: any 제거
-    onError(error: any) {
-      alert(error.response.data.message);
-      location.reload();
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
     }
   })
 }
@@ -59,5 +60,11 @@ export const useDeleteRDSMutation = () => {
     onSettled() {
       hideLoader();
     },
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
+    }
   })
 }

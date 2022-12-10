@@ -1,3 +1,4 @@
+import axios, { AxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { InstanceResponseDto } from "../../../store/types/responseDto";
 
@@ -71,6 +72,12 @@ export const useCreateInstancesMutation = () => {
     onSettled() {
       hideLoader();
     },
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
+    }
   })
 }
 
@@ -88,5 +95,11 @@ export const useDeleteInstancesMutation = () => {
     onSettled() {
       hideLoader();
     },
+    onError(error: Error | AxiosError) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data.message);
+        location.reload();
+      }
+    }
   })
 }
