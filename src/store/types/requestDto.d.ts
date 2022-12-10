@@ -3,6 +3,7 @@ export interface CreateInstanceDto {
   os: "UBUNTU" | "CENTOS";
   tier: "WEBSERVER" | "WAS";
   name: string;
+  githubUrl: string | null;
 }
 
 export interface CreateLoadBalancerDto {
