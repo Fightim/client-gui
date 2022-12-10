@@ -25,9 +25,11 @@ interface LoadBalancerInformations {
 }
 
 interface RdsInformations {
+  id: string | null;
+  DBInstanceStatus: string | null;  //TODO :: creating, available, deleting enum값 설정
   endPoint: string | null;
   port: number | null;
-  storage: string | null;
+  storage: number | null;
 }
 
 export interface InstanceResponseDto {
