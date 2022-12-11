@@ -28,7 +28,7 @@ export default function PrivateSubnetInstance() {
     if (!name) return;
 
     let githubUrl = prompt(
-      "프로비저닝을 위한 깃허브 레포지터리 링크를 입력해주세요. (ex :: https://github.com/qkrwjdan/EBSStudySample)",
+      "프로비저닝을 위한 깃허브 레포지터리 링크를 입력해주세요.\n(ex :: https://github.com/qkrwjdan/EBSStudySample)",
       "",
     );
     if (!githubUrl) githubUrl = null;

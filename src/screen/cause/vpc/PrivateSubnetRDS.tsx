@@ -15,9 +15,9 @@ export default function PrivateSubnetRDS() {
   function onDrop() {
     if (!isCorrectBox) return;
 
-    const name = prompt("인스턴스의 이름을 입력해주세요.", "");
+    const name = prompt("RDS의 이름을 입력해주세요.", "");
     const masterUserName = prompt("마스터 유저의 이름을 입력해주세요.", "");
-    const rdsPassword = prompt("rds에 접근할 비밀번호를 입력해주세요.", "");
+    const rdsPassword = prompt("RDS에 접근할 비밀번호를 입력해주세요.", "");
     const rdsPasswordCheck = prompt("비밀번호를 다시 한 번 입력해주세요.", "");
     if (!name || !masterUserName || !rdsPassword || !rdsPasswordCheck || rdsPassword !== rdsPasswordCheck) return;
 

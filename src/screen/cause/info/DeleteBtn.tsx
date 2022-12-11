@@ -12,7 +12,7 @@ interface DeleteBtnProps {
 
 export default function DeleteBtn(props: DeleteBtnProps) {
   const { instanceId } = props;
-  const { instanceType } = useDblClick();
+  const { instanceType, resetInstance } = useDblClick();
 
   const { mutateAsync: mutateAsyncDeleteInstances } = useDeleteInstancesMutation();
   const { mutateAsync: mutateAsyncDeleteRDS } = useDeleteRDSMutation();
@@ -22,11 +22,13 @@ export default function DeleteBtn(props: DeleteBtnProps) {
       case instanceIconType.Ubuntu:
       case instanceIconType.Centos:
         await mutateAsyncDeleteInstances(instanceId);
+        resetInstance();
         break;
       case instanceIconType.ALB:
         break;
       case instanceIconType.RDS:
         await mutateAsyncDeleteRDS(instanceId);
+        resetInstance();
         break;
       default:
     }
