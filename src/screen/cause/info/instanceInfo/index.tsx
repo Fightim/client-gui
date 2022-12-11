@@ -15,7 +15,7 @@ export default function InstanceInfo(props: InstanceInfoProps) {
   if (!instanceOption) return <div>Error</div>;
   return (
     <>
-      <InstanceOptions name={instanceOption.options.name} />
+      <InstanceOptions name={instanceOption.options.name} githubUrl={instanceOption.options.githubUrl} />
       <InstanceInformations {...instanceOption.informations} />
       <BtnContainer
         instanceId={id}

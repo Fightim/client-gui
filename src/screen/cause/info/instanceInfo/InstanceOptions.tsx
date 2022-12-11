@@ -4,20 +4,32 @@ import St from "../../@styled/infoOptions.styled";
 
 interface InstanceOptionsProps {
   name: string;
+  githubUrl: string;
 }
 
-export default function InstanceOptions({ name }: InstanceOptionsProps) {
-  const { value, setValue, handleChangeValue } = useInput(name);
+export default function InstanceOptions({ name, githubUrl }: InstanceOptionsProps) {
+  const { value: nameValue, setValue: setNameValue, handleChangeValue: handleChangeNameValue } = useInput(name);
+  const {
+    value: githubUrlValue,
+    setValue: setGithubUrlValue,
+    handleChangeValue: handleChangeGithubUrlValue,
+  } = useInput(githubUrl);
 
   useEffect(() => {
-    setValue(name);
+    setNameValue(name);
   }, [name]);
+
+  useEffect(() => {
+    setGithubUrlValue(githubUrl);
+  }, [githubUrl]);
 
   return (
     <>
       <St.Subject>설정 가능한 옵션</St.Subject>
-      <St.SubTitle>name</St.SubTitle>
-      <St.Input value={value} onChange={handleChangeValue} />
+      <St.SubTitle>Name</St.SubTitle>
+      <St.Input value={nameValue} onChange={handleChangeNameValue} />
+      <St.SubTitle>Github URL</St.SubTitle>
+      <St.Input value={githubUrlValue} onChange={handleChangeGithubUrlValue} />
     </>
   );
 }
