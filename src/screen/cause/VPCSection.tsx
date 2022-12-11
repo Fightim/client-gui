@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import styled from "styled-components";
+import Loader from "../common/Loader";
 
 import Style from "./@styled/instanceBox.styled";
 import PrivateSubnetInstance from "./vpc/PrivateSubnetInstance";
@@ -10,9 +12,11 @@ export default function VPCSection() {
     <StVPCSection>
       <StVPCContainerTitle>Default VPC</StVPCContainerTitle>
       <StVPCContainerBody>
-        <PublicSubnet />
-        <PrivateSubnetInstance />
-        <PrivateSubnetRDS />
+        <Suspense fallback={<Loader />}>
+          <PublicSubnet />
+          <PrivateSubnetInstance />
+          <PrivateSubnetRDS />
+        </Suspense>
       </StVPCContainerBody>
     </StVPCSection>
   );
