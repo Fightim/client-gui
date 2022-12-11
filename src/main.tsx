@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { ThemeProvider } from "styled-components";
 
 import App from "./App";
@@ -33,6 +34,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <LoaderProvider>
           <GlobalStyle />
           <App />
+          <ReactQueryDevtools />
         </LoaderProvider>
       </ThemeProvider>
     </QueryClientProvider>
