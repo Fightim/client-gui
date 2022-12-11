@@ -17,7 +17,11 @@ export default function InstanceInfo(props: InstanceInfoProps) {
     <>
       <InstanceOptions name={instanceOption.options.name} />
       <InstanceInformations {...instanceOption.informations} />
-      <BtnContainer instanceId={id} publicIp={instanceOption.informations.publicIp} />
+      <BtnContainer
+        instanceId={id}
+        publicIp={instanceOption.informations.publicIp}
+        isUrlFromGithub={instanceOption.options.githubUrl !== ""}
+      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 interface Option {
   name: string;
+  githubUrl: string;
 }
 
 // REF :: aws-sdk 에서 optional/nullable로 안내됨
