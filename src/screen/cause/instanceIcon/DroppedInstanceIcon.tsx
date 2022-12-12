@@ -8,14 +8,13 @@ import { InstanceIconType, instanceIconType } from "../../../store/types/instanc
 interface DroppedInstanceIconProps {
   type: InstanceIconType;
   instanceId: string;
+  isActive?: boolean;
 }
 
 export default function DroppedInstanceIcon(props: DroppedInstanceIconProps) {
-  const { type, instanceId } = props;
+  const { type, instanceId, isActive = false } = props;
 
   const { handleInstanceId, handleInstanceType } = useDblClick();
-
-  const isActive = true;
 
   function handleDoubleClick(type: InstanceIconType, instanceId: string) {
     if (checkIsCurrentInstance(instanceId)) return;

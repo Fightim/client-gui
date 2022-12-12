@@ -77,19 +77,21 @@ export default function PublicSubnet() {
               key={instance.informations.id}
               type={instanceIconType.Ubuntu}
               instanceId={instance.informations.id}
+              isActive={true}
             />
           ))}
-        {[...publicUbuntuInstances].map((instance) => (
-          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
-        ))}
         {fetchedPublicCentosInstances &&
           fetchedPublicCentosInstances.map((instance) => (
             <DroppedInstanceIcon
               key={instance.informations.id}
               type={instanceIconType.Centos}
               instanceId={instance.informations.id}
+              isActive={true}
             />
           ))}
+        {[...publicUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
+        ))}
         {[...publicCentosInstances].map((instance) => (
           <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}

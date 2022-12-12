@@ -69,19 +69,21 @@ export default function PrivateSubnetInstance() {
               key={instance.informations.id}
               type={instanceIconType.Ubuntu}
               instanceId={instance.informations.id}
+              isActive={true}
             />
           ))}
-        {[...privateUbuntuInstances].map((instance) => (
-          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
-        ))}
         {fetchedPrivateCentosInstances &&
           fetchedPrivateCentosInstances.map((instance) => (
             <DroppedInstanceIcon
               key={instance.informations.id}
               type={instanceIconType.Centos}
               instanceId={instance.informations.id}
+              isActive={true}
             />
           ))}
+        {[...privateUbuntuInstances].map((instance) => (
+          <DroppedInstanceIcon key={instance.id} type={instanceIconType.Ubuntu} instanceId={instance.id} />
+        ))}
         {[...privateCentosInstances].map((instance) => (
           <DroppedInstanceIcon key={instance.id} type={instanceIconType.Centos} instanceId={instance.id} />
         ))}

@@ -45,6 +45,7 @@ export default function PrivateSubnetRDS() {
               key={rds.informations.id}
               type={instanceIconType.RDS}
               instanceId={rds.informations.id}
+              isActive={true}
             />
           ))}
         {instance && (
