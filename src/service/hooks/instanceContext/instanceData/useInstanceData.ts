@@ -18,10 +18,5 @@ export default function useInstanceData() {
     setInstances(new Set());
   }
 
-  useEffect(() => {
-    console.log('instances', instances)
-  }, [instances])
-
-
   return { instances, addInstance, removeInstance, resetInstance };
 }
