@@ -4,25 +4,30 @@
 
 코드형 인프라(Infrastructure as Code, IaC)를 처음 접하고 높은 러닝커브로 인해 도입을 주저하는 사용자들에게 GUI 환경에서 쉽고 편리하게 클라우드 인프라를 구성하고 관리할 수 있는 클라우드 인프라 구축 자동화 및 시각화 서비스 방법을 지원하는 시스템을 제공합니다.
 
+1. **[📜 최종 보고서 (서론, 배경, 요구사항)](https://snuupi.notion.site/GUI-Fightim-1dfe8a37a2184956bcf5139a9d3cfa0d)**
+2. **[📜 최종 보고서 (결과, 결론)](https://snuupi.notion.site/GUI-Fightim-58691c409a994aac92b4bd68adbe4118)**
+
 <br />
 
 ## ☁️ 서비스 소개
 ### 1️⃣ 로그인 페이지
-...
 
 ### 2️⃣ AWS 연동 페이지
-...
 
 ### 3️⃣ 원인 페이지 (메인 페이지)
 
 <img src="https://user-images.githubusercontent.com/47105088/198917350-e6a1fca5-c009-4489-b4e7-801d3e476e5d.png" style="width: 80%; text-align: center;">
 
-- 인스턴스, 로드 밸런서, RDS 아이콘을 드래그 앤 드랍 형태로 이동한다
-- Subnet에서 동작하는 인스턴스에 대해 상세 정보를 나타낸다
-- 간단한 버튼 조작으로 인스턴스를 조작한다
+- 사용자는 클라우드 리소스 아이콘을 클릭 및 드래그하여 배치할 수 있다.
+- 리소스들을 서로 연결하여 인프라를 설계한다.
+- 클라우드 서버에 연결하여 관리할 수 있다.
+- 배치한 리소스 아이콘들이 생성 가능한지 확인해준다.
+- 클라우드 리소스 아이콘을 더블 클릭하면 기능 설명을 볼 수 있다.
+- Github 레포지터리 URL을 연동하여 서비스를 올릴 수 있다.
+- 프로비저닝 된 인스턴스의 Public IP에 접속하여 결과 페이지를 확인할 수 있다.
 
 ### 4️⃣ 결과 페이지
-...
+[:link: Github](https://github.com/Fightim/resultpage_frontend)
 
 <br />
 
@@ -37,7 +42,7 @@
 |Formatting|![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)|
 |Package Manager|![pnpm](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)|                                             
 |Version Control|![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) |
-|Deploy|![AWS AMPLIFY](https://img.shields.io/badge/AWS%20AMPLIFY-FF9900?style=for-the-badge&logo=AWS%20Amplify&logoColor=white)|
+|Deploy|![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white)|
 
 <br />
 
@@ -52,11 +57,16 @@
 ┃ ┣ 📂service
 ┃ ┃ ┣ 📂context
 ┃ ┃ ┗ 📂hooks
+┃ ┃   ┣ 📂instanceContext
+┃ ┃   ┗ 📂queries
 ┃ ┣ 📂store
 ┃ ┃ ┣ 📂assets
 ┃ ┃ ┣ 📂style
 ┃ ┃ ┗ 📂types
 ┃ ┗ 📂story
-┃ ┃ ┗ 📂mock
+┃   ┣ 📂api
+┃   ┗ 📂mock
+┣ 📜index.html
+┣ 📜pacakge.json
 ┗ 📜etc (setting files)
 ```
